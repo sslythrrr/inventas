@@ -1,0 +1,1087 @@
+AC bekas masih operasional? status_barang
+AC central masih berfungsi? status_barang
+AC portable masih bagus? status_barang
+AC standing masih berfungsi? status_barang
+AC window masih bekerja? status_barang
+Ada barang dibawah 1.7 juta? range_harga
+Ada barang dibawah 750rb? range_harga
+Ada barang dibawah 790rb? range_harga
+Ada barang dibawah 800rb? range_harga
+Ada barang dibawah 870rb? range_harga
+Ada barang dibawah 880rb? range_harga
+Ada barang dibawah 920rb? range_harga
+Ada barang lelang besok? lelang_barang
+Ada barang lelang bulan depan? lelang_barang
+Ada barang lelang hari ini? lelang_barang
+Ada barang lelang minggu ini? lelang_barang
+Ada barang murah di bawah 3 juta nggak? range_harga
+Ada barang murah di bawah 6 juta? range_harga
+Ada barang murah under 900rb? range_harga
+Ada barang yang akan lelang bulan ini nggak? lelang_barang
+Ada barang yang bakal dilelang minggu ini? lelang_barang
+Ada barang yang harganya di bawah 2 juta? range_harga
+Ada berapa kursi lipat di gudang? jumlah_barang
+Ada berapa kursi rapat jumlah_barang
+Ada berapa unit barang barang di lantai 2? jumlah_barang
+Ada berapa unit barang yang masih tersedia? jumlah_barang
+Ada berapa unit kursi rapat? jumlah_barang
+Ada brp router Cisco di IT? jumlah_barang
+Ada daftar barang yang mau dilelang nggak? lelang_barang
+Ada diskon barang di bawah 1 juta? range_harga
+Ada gak barang murah di bawah 3 juta? range_harga
+Ada item dibawah 1.05 juta? range_harga
+Ada item dibawah 1.15 juta? range_harga
+Ada item dibawah 1.28 juta? range_harga
+Ada item dibawah 1.35 juta? range_harga
+Ada item dibawah 1.65 juta? range_harga
+Ada item dibawah 1.8 juta? range_harga
+Ada item dibawah 950rb? range_harga
+Ada kursi gaming mau dilelang? lelang_barang
+Ada lelang alat elektronik? lelang_barang
+Ada lelang alat fotografi? lelang_barang
+Ada lelang alat listrik? lelang_barang
+Ada lelang alat masak? lelang_barang
+Ada lelang alat medis? lelang_barang
+Ada lelang alat musik? lelang_barang
+Ada lelang alat pertukangan? lelang_barang
+Ada lelang alat survey? lelang_barang
+Ada lelang furniture? lelang_barang
+Ada lelang kendaraan? lelang_barang
+Ada lelang komputer minggu depan? lelang_barang
+Ada lelang peralatan audio? lelang_barang
+Ada lelang peralatan gym? lelang_barang
+Ada lelang peralatan kantor? lelang_barang
+Ada lelang peralatan lab? lelang_barang
+Ada lelang peralatan masak? lelang_barang
+Ada lelang peralatan salon? lelang_barang
+Ada lelang perangkat AR? lelang_barang
+Ada lelang perangkat IoT? lelang_barang
+Ada lelang perangkat drone? lelang_barang
+Ada meja harga 500 ribuan? range_harga
+Ada nggak barang budget rendah di bawah 4 juta? range_harga
+Ada produk dibawah 1 juta? range_harga
+Ada produk murah < 1.2 juta? range_harga
+Alat listrik masih aman? status_barang
+Alat musik masih layak? status_barang
+Apa aja barang yang akan dilelang? lelang_barang
+Apa aja barang yang udah siap dilelang? lelang_barang
+Apa aja yg masuk lelang? lelang_barang
+Apa kabar bot, bisa bantu saya? sapaan
+Apa kabar bot? sapaan
+Apa kabar? Siap bantu saya? sapaan
+Apa saja barang lelang IT? lelang_barang
+Apa saja lelang minggu depan? lelang_barang
+Apa saja yang dilelang minggu ini? lelang_barang
+Apa status mesin fotocopy? status_barang
+Apa yg dilelang bulan depan? lelang_barang
+Apa yg mau dilelang besok? lelang_barang
+Apakah kursi kerja disimpan di ruangan IT? lokasi_barang
+Assalamualaikum pak sapaan
+Assalamualaikum sapaan
+Assalamualaikum, ada apa? sapaan
+Assalamualaikum, bot sapaan
+Assalamualaikum, cek jumlah sapaan
+Assalamualaikum, cek range sapaan
+Assalamualaikum, cek status sapaan
+Assalamualaikum, cek stok sapaan
+Assalamualaikum, mau tanya sapaan
+Barang apa saja yang masuk lelang bulan ini? lelang_barang
+Barang apa yang sudah masuk daftar lelang? lelang_barang
+Barang barang dimiliki oleh siapa? kepemilikan_barang
+Barang barang ini punya siapa? kepemilikan_barang
+Barang barang itu milik siapa? kepemilikan_barang
+Barang barang lagi status apa sekarang? status_barang
+Barang barang masih ada atau udah dijual? status_barang
+Barang barang milik siapa? kepemilikan_barang
+Barang barang sekarang tinggal berapa unit? jumlah_barang
+Barang barang simpan di mana ya? lokasi_barang
+Barang barang statusnya apa sekarang? status_barang
+Barang barang yang tersisa masih berapa? jumlah_barang
+Barang bekas di bawah 1.5jt range_harga
+Barang bekas di bawah 1.6jt range_harga
+Barang bekas di bawah 1.8jt range_harga
+Barang bekas di bawah 2jt range_harga
+Barang budget < 530rb? range_harga
+Barang budget < 550rb? range_harga
+Barang budget < 590rb? range_harga
+Barang budget < 680rb? range_harga
+Barang budget < 720rb? range_harga
+Barang budget rendah < 600rb range_harga
+Barang budget rendah apa aja ya? range_harga
+Barang dengan harga kurang dari 10 juta ada? range_harga
+Barang dengan harga terjangkau apa aja ya? range_harga
+Barang di bawah 2jt ada diskon? range_harga
+Barang dibawah 500rb ada? range_harga
+Barang diskon di bawah 1.1jt range_harga
+Barang diskon di bawah 1.4jt range_harga
+Barang diskon di bawah 2.2jt range_harga
+Barang diskon di bawah 2.4jt range_harga
+Barang diskon di bawah 2.8jt range_harga
+Barang diskon di bawah 700rb range_harga
+Barang elektronik murah ada? range_harga
+Barang harga kecil dibawah 700rb range_harga
+Barang ini siapa yang punya ya? kepemilikan_barang
+Barang itu punya karyawan siapa? kepemilikan_barang
+Barang lelang apa yang bakal dilelang minggu ini? lelang_barang
+Barang lelang apa yg ready? lelang_barang
+Barang lelang bulan Desember apa? lelang_barang
+Barang lelang bulan depan apa saja? lelang_barang
+Barang lelang bulan ini apa? lelang_barang
+Barang lelang dengan harga rendah lelang_barang
+Barang lelang dengan kondisi baik lelang_barang
+Barang lelang harga diskon lelang_barang
+Barang lelang harga miring lelang_barang
+Barang lelang harga mulai 300rb lelang_barang
+Barang lelang harga promo lelang_barang
+Barang lelang harga spesial lelang_barang
+Barang lelang harga start 500rb lelang_barang
+Barang lelang kondisi 90% lelang_barang
+Barang lelang kondisi 95% lelang_barang
+Barang lelang kondisi seperti baru lelang_barang
+Barang lelang ready stock? lelang_barang
+Barang lelang under 1.5 juta apa? range_harga
+Barang murah buat kantor range_harga
+Barang murah di bawah 1.2jt range_harga
+Barang murah di bawah 2.5jt range_harga
+Barang murah di bawah 3.5jt range_harga
+Barang murah di bawah 4.5jt range_harga
+Barang murah di bawah 5.5jt range_harga
+Barang murah di bawah 6.5jt range_harga
+Barang murah dibawah 1 juta apa saja? range_harga
+Barang murah under 1.1 juta range_harga
+Barang murah under 1.3 juta range_harga
+Barang murah under 420rb? range_harga
+Barang murah under 460rb? range_harga
+Barang murah under 490rb? range_harga
+Barang murah under 580rb? range_harga
+Barang murah under 650rb? range_harga
+Barang murah under 850rb? range_harga
+Barang ready atau sold? status_barang
+Barang second di bawah 400rb range_harga
+Barang second di bawah 500rb range_harga
+Barang second di bawah 600rb range_harga
+Barang second di bawah 700rb range_harga
+Barang yang akan dilelang ada apa aja? lelang_barang
+Barang yang akan dilelang apa aja? lelang_barang
+Barang yang mau di lelang apa aja? lelang_barang
+Berapa banderol NAS Synology? harga_barang
+Berapa banderol kursi kuliah? harga_barang
+Berapa banderol mesin absensi? harga_barang
+Berapa banderol proyektor 3D? harga_barang
+Berapa banderol smart lock? harga_barang
+Berapa banderol tablet holder? harga_barang
+Berapa banderol tablet stand? harga_barang
+Berapa banyak kursi rapat jumlah_barang
+Berapa banyak kursi rapat yang masih ada? jumlah_barang
+Berapa banyak stok barang barang yang tersedia? jumlah_barang
+Berapa duit kursi executive? harga_barang
+Berapa duit kursi hidrolik? harga_barang
+Berapa duit lampu LED panel? harga_barang
+Berapa duit lampu sorot? harga_barang
+Berapa duit mesin penghancur kertas? harga_barang
+Berapa duit mesin press? harga_barang
+Berapa duit proyektor 4K? harga_barang
+Berapa duit sound system? harga_barang
+Berapa harga NAS storage? harga_barang
+Berapa harga kursi rapat harga_barang
+Berapa harga meja rapat? harga_barang
+Berapa harga printer harga_barang
+Berapa harga router wifi? harga_barang
+Berapa harga scanner dokumen? harga_barang
+Berapa harga switch jaringan? harga_barang
+Berapa jumlah kursi rapat yang ada sekarang? jumlah_barang
+Berapa jumlah kursi rapat yang tersedia jumlah_barang
+Berapa kursi barber chair? harga_barang
+Berapa nilai UPS besar? harga_barang
+Berapa nilai kursi bar? harga_barang
+Berapa nilai kursi visitor? harga_barang
+Berapa nilai proyektor benq? harga_barang
+Berapa nilai rack server? harga_barang
+Berapa nilai rak server? harga_barang
+Berapa nilai server blade? harga_barang
+Bisa kasih tau barang yang bakal dilelang? lelang_barang
+Bisa kasih tau harga laptop? harga_barang
+Cari PC di bawah 4jt range_harga
+Cari barang harga dibawah 7 juta, ada? range_harga
+Cari kamera di bawah 5jt range_harga
+Cari laptop di bawah 1.5 juta range_harga
+Cari laptop gaming di bawah 15jt range_harga
+Cari lokasi proyektor dong lokasi_barang
+Cari monitor di bawah 2jt range_harga
+Cari proyektor di bawah 5jt range_harga
+Cari server di bawah 10jt range_harga
+Cari tablet di bawah 3jt range_harga
+Cari tau dong tempat penyimpanan kursi rapat lokasi_barang
+Cek barang yang mau dilelang sekarang lelang_barang
+Cek dong siapa pemilik meja rapat kepemilikan_barang
+Cek harga NAS storage harga_barang
+Cek harga VR headset harga_barang
+Cek harga action cam harga_barang
+Cek harga kulkas harga_barang
+Cek harga layar proyektor dong harga_barang
+Cek harga lemari besi dong harga_barang
+Cek harga smart TV harga_barang
+Cek harga smartwatch harga_barang
+Cek harga standing desk harga_barang
+Cek harga water dispenser harga_barang
+Cek lokasi alat audio lokasi_barang
+Cek lokasi alat kebun lokasi_barang
+Cek lokasi alat laboratorium lokasi_barang
+Cek lokasi alat pemadam lokasi_barang
+Cek lokasi alat pembersih lokasi_barang
+Cek lokasi alat pemotong lokasi_barang
+Cek lokasi alat sablon lokasi_barang
+Cek lokasi server room lokasi_barang
+Cek nama pemilik meja kerja kepemilikan_barang
+Cek status laptop dong status_barang
+Coba cari barang dengan harga kurang dari 10 juta range_harga
+Daftar aset lelang terkini lelang_barang
+Daftar barang lelang IT lelang_barang
+Daftar barang lelang Q4 lelang_barang
+Daftar barang yang mau dilelang dong lelang_barang
+Daftar lelang Q3 taun ini lelang_barang
+Daftar lelang akhir tahun lelang_barang
+Daftar lelang aset IT terbaru lelang_barang
+Daftar lelang aset bergerak lelang_barang
+Daftar lelang aset digital lelang_barang
+Daftar lelang aset tidak bergerak lelang_barang
+Daftar lelang aset tidak terpakai lelang_barang
+Daftar lelang asset tidak terpakai lelang_barang
+Daftar lelang barang seni lelang_barang
+Daftar lelang bulan Oktober lelang_barang
+Daftar lelang triwulan I lelang_barang
+Daftar lelang triwulan IV lelang_barang
+Daftar lelang triwulan ini lelang_barang
+Di lantai berapa alat fitness? lokasi_barang
+Di lantai berapa alat olahraga? lokasi_barang
+Di lantai berapa peralatan audio? lokasi_barang
+Di lantai berapa peralatan video? lokasi_barang
+Di lantai berapa proyektor disimpan? lokasi_barang
+Di lantai berapa rak buku? lokasi_barang
+Di mana tempat alat kebersihan? lokasi_barang
+Di mana tempat proyektor spare? lokasi_barang
+Di mana tempat server cadangan? lokasi_barang
+Di mana tempat server lama? lokasi_barang
+Di mana tempat server? lokasi_barang
+Di ruangan mana server disimpan? lokasi_barang
+Dimana barang barang disimpan? lokasi_barang
+Dimana lokasi laptop kerja disimpan? lokasi_barang
+Dimana lokasi scanner? lokasi_barang
+Dimana meja kerja ini disimpan? lokasi_barang
+Dimana penyimpanan alat berkebun? lokasi_barang
+Dimana penyimpanan alat camping? lokasi_barang
+Dimana penyimpanan alat diving? lokasi_barang
+Dimana penyimpanan alat lukis? lokasi_barang
+Dimana penyimpanan alat medis? lokasi_barang
+Dimana penyimpanan alat musik? lokasi_barang
+Dimana penyimpanan alat olahraga? lokasi_barang
+Dimana penyimpanan alat pesta? lokasi_barang
+Dimana penyimpanan alat potong? lokasi_barang
+Dimana penyimpanan alat safety? lokasi_barang
+Dimana penyimpanan alat tenun? lokasi_barang
+Dimana penyimpanan alat ukir? lokasi_barang
+Dimana penyimpanan dokumen? lokasi_barang
+Dimana penyimpanan kursi lipat? lokasi_barang
+Dimana posisi TV LED? lokasi_barang
+Dimana projector portable disimpan? lokasi_barang
+Dimana simpan UPS? lokasi_barang
+Dimana tempat barang barang disimpan? lokasi_barang
+Dimana tempat menyimpan barang barang? lokasi_barang
+Disimpan di mana alat arsip? lokasi_barang
+Disimpan di mana alat berat? lokasi_barang
+Disimpan di mana alat kebersihan? lokasi_barang
+Disimpan di mana alat las? lokasi_barang
+Disimpan di mana alat parkir? lokasi_barang
+Disimpan di mana alat pertanian? lokasi_barang
+Disimpan di mana alat snorkeling? lokasi_barang
+Disimpan di mana alat woodworking? lokasi_barang
+Disimpan di mana kursi ergonomis? lokasi_barang
+Disimpan di mana lemari besi? lokasi_barang
+Gimana status barang barang? Masih ada atau udah dijual? status_barang
+Hai sapaan
+Hai, cek harga dong sapaan
+Hai, cek stok dong sapaan
+Hai, info harga terbaru sapaan
+Hai, info pemilik barang sapaan
+Hai, lokasi barang dong sapaan
+Hai, mau konfirmasi harga sapaan
+Hai, mau tanya harga sapaan
+Hai, tanya harga spesial sapaan
+Hai, tanya kepemilikan sapaan
+Hai, tanya stok terbaru sapaan
+Hallo gais sapaan
+Halo bestie sapaan
+Halo chatbot sapaan
+Halo chatbot, apa kabar? sapaan
+Halo, bisa bantu cek harga? sapaan
+Halo, cek kepemilikan dong sapaan
+Halo, cek range harga sapaan
+Halo, cek status dong sapaan
+Halo, range harga murah sapaan
+Halo, saya mau tanya sapaan
+Halo, tanya range harga sapaan
+Halo, tanya range murah sapaan
+Halo, tanya stok sapaan
+Harga AC split berapa? harga_barang
+Harga CCTV IP berapa? harga_barang
+Harga CCTV PTZ berapa? harga_barang
+Harga CCTV indoor berapa? harga_barang
+Harga CCTV outdoor berapa? harga_barang
+Harga CCTV thermal berapa? harga_barang
+Harga CCTV wireless? harga_barang
+Harga access point berapa? harga_barang
+Harga alat pemindai dokumen? harga_barang
+Harga alat presentasi pointer? harga_barang
+Harga dispenser air berapa? harga_barang
+Harga docking station berapa? harga_barang
+Harga drone FPV berapa? harga_barang
+Harga generator listrik? harga_barang
+Harga genset berapa? harga_barang
+Harga kabel HDMI panjang 5m brp? harga_barang
+Harga karpet kantor? harga_barang
+Harga kursi bar tinggi? harga_barang
+Harga kursi ergonomis berapa ya? harga_barang
+Harga kursi kantor mesh? harga_barang
+Harga kursi konferensi? harga_barang
+Harga kursi lipat premium? harga_barang
+Harga kursi pijat shiatsu? harga_barang
+Harga kursi rapat berapa harga_barang
+Harga kursi tunggu kayu? harga_barang
+Harga kursi tunggu kulit? harga_barang
+Harga kursi tunggu premium? harga_barang
+Harga lampu emergency? harga_barang
+Harga laptop berapa harga_barang
+Harga mesin 3D printer harga_barang
+Harga mesin CNC berapa? harga_barang
+Harga mesin absensi berapa? harga_barang
+Harga mesin binding berapa? harga_barang
+Harga mesin binding? harga_barang
+Harga mesin emboss berapa? harga_barang
+Harga mesin fax berapa? harga_barang
+Harga mesin jahit berapa? harga_barang
+Harga mesin jahit industri harga_barang
+Harga mesin jahit industri? harga_barang
+Harga mesin kopi berapa? harga_barang
+Harga mesin kopi komersial? harga_barang
+Harga mesin label harga_barang
+Harga mesin laminating berapa? harga_barang
+Harga mesin laminating? harga_barang
+Harga mesin pemotong rumput harga_barang
+Harga mesin penghancur kertas harga_barang
+Harga mesin penghitung uang? harga_barang
+Harga mesin stamping berapa? harga_barang
+Harga mesin vacuum sealer? harga_barang
+Harga microwave berapa? harga_barang
+Harga monitor 24 inch berapa? harga_barang
+Harga monitor curved 32"? harga_barang
+Harga papan tulis elektronik? harga_barang
+Harga papan tulis magnetik? harga_barang
+Harga pengeras suara portable? harga_barang
+Harga printer berapa harga_barang
+Harga printer label? harga_barang
+Harga proyektor Epson berapa? harga_barang
+Harga proyektor itu berapa ya? harga_barang
+Harga robot vacuum berapa? harga_barang
+Harga server rack? harga_barang
+Harga smart TV 55 inch? harga_barang
+Harga standing desk berapa? harga_barang
+Harga standing fan industrial? harga_barang
+Harga treadmill kantor? harga_barang
+Harga webcam conference? harga_barang
+Hi chatbot, ada yang baru? sapaan
+Hi, bisa bantu? sapaan
+Hi, cek kepemilikan aset sapaan
+Hi, cek lokasi gudang sapaan
+Hi, cek lokasi penyimpanan sapaan
+Hi, status barang dong sapaan
+Info dong, barang apa aja yang mau dilelang? lelang_barang
+Itu barang barang gimana, statusnya apa? status_barang
+Itu barang barang milik siapa? kepemilikan_barang
+Itu printer statusnya apa ya? status_barang
+Itu proyektor berapa duit ya? harga_barang
+Jumlah AC inverter? jumlah_barang
+Jumlah CCTV di koridor? jumlah_barang
+Jumlah CCTV di lantai dasar? jumlah_barang
+Jumlah CCTV di lobby utama? jumlah_barang
+Jumlah CCTV di parkiran? jumlah_barang
+Jumlah CCTV outdoor? jumlah_barang
+Jumlah CCTV tersedia berapa? jumlah_barang
+Jumlah CCTV yang tersedia? jumlah_barang
+Jumlah access point berapa? jumlah_barang
+Jumlah barang barang masih ada berapa unit? jumlah_barang
+Jumlah drone DJI berapa? jumlah_barang
+Jumlah drone sisa berapa? jumlah_barang
+Jumlah headset tersedia? jumlah_barang
+Jumlah keyboard mekanik berapa? jumlah_barang
+Jumlah kursi anak berapa? jumlah_barang
+Jumlah kursi bar berapa? jumlah_barang
+Jumlah kursi barber berapa? jumlah_barang
+Jumlah kursi kantor berapa? jumlah_barang
+Jumlah kursi lipat berapa? jumlah_barang
+Jumlah kursi plastik berapa? jumlah_barang
+Jumlah kursi rapat ada berapa jumlah_barang
+Jumlah kursi roda berapa? jumlah_barang
+Jumlah kursi sofa berapa? jumlah_barang
+Jumlah kursi training center? jumlah_barang
+Jumlah kursi tunggu berapa? jumlah_barang
+Jumlah lampu emergency berapa? jumlah_barang
+Jumlah laptop di departemen HRD? jumlah_barang
+Jumlah laptop di departemen sales? jumlah_barang
+Jumlah laptop di divisi marketing? jumlah_barang
+Jumlah laptop di lantai 10? jumlah_barang
+Jumlah laptop di ruang desain? jumlah_barang
+Jumlah laptop gaming berapa? jumlah_barang
+Jumlah laptop masih tersedia berapa? jumlah_barang
+Jumlah meja kerja di lantai 1 tinggal berapa? jumlah_barang
+Jumlah meja kerja tersedia? jumlah_barang
+Jumlah meja komputer tersisa berapa? jumlah_barang
+Jumlah meja lipat di gudang B? jumlah_barang
+Jumlah microphone berapa? jumlah_barang
+Jumlah mixer audio berapa? jumlah_barang
+Jumlah modem 5G berapa? jumlah_barang
+Jumlah printer ada berapa jumlah_barang
+Jumlah printer di divisi IT? jumlah_barang
+Jumlah printer warna? jumlah_barang
+Jumlah proyektor 4K? jumlah_barang
+Jumlah proyektor di aula utama? jumlah_barang
+Jumlah proyektor di cabang Surabaya? jumlah_barang
+Jumlah proyektor di lantai 3? jumlah_barang
+Jumlah proyektor di ruang rapat? jumlah_barang
+Jumlah proyektor di ruang training? jumlah_barang
+Jumlah proyektor di ruang workshop? jumlah_barang
+Jumlah proyektor yang ada sekarang berapa? jumlah_barang
+Jumlah switch jaringan berapa? jumlah_barang
+Jumlah tablet iPad berapa? jumlah_barang
+Jumlah tripod kamera berapa? jumlah_barang
+Jumlah tripod video berapa? jumlah_barang
+Kamera DSLR milik divisi mana? kepemilikan_barang
+Kasih tau dong harga mesin scanner harga_barang
+Kepemilikan TV 65 inch? kepemilikan_barang
+Kepemilikan TV 75 inch? kepemilikan_barang
+Kepemilikan TV conference siapa? kepemilikan_barang
+Kepemilikan alat VR? kepemilikan_barang
+Kepemilikan alat kalibrasi? kepemilikan_barang
+Kepemilikan alat studio foto? kepemilikan_barang
+Kepemilikan alat studio? kepemilikan_barang
+Kepemilikan alat tes lingkungan? kepemilikan_barang
+Kepemilikan alat tes optik? kepemilikan_barang
+Kepemilikan alat ukur? kepemilikan_barang
+Kepemilikan gedung siapa? kepemilikan_barang
+Kepemilikan iPad Pro 2022 siapa? kepemilikan_barang
+Kepemilikan kursi pijat? kepemilikan_barang
+Kepemilikan mesin fax? kepemilikan_barang
+Kepemilikan mesin kasir? kepemilikan_barang
+Kepemilikan mobil dinas siapa? kepemilikan_barang
+Kepemilikan proyektor mini? kepemilikan_barang
+Kepemilikan ruang meeting? kepemilikan_barang
+Kepemilikan ruang server? kepemilikan_barang
+Kepemilikan smart TV OLED? kepemilikan_barang
+Kepemilikan smartwatch kantor? kepemilikan_barang
+Kepemilikan soundbar? kepemilikan_barang
+Kepemilikan webcam HD? kepemilikan_barang
+Kepemilikan whiteboard siapa? kepemilikan_barang
+Kulkas 2 pintu statusnya? status_barang
+Kulkas display statusnya? status_barang
+Kulkas mini statusnya? status_barang
+Kulkas pendingin minuman status? status_barang
+Kulkas wine cooler status? status_barang
+Kursi bar milik siapa? kepemilikan_barang
+Kursi direktur ada di mana? lokasi_barang
+Kursi direktur disimpan dimana? lokasi_barang
+Kursi direktur masih tersedia nggak? status_barang
+Kursi gaming punya siapa? kepemilikan_barang
+Kursi kantor ergonomis punya siapa? kepemilikan_barang
+Kursi kerja itu punya siapa? kepemilikan_barang
+Kursi pijat elektrik milik siapa? kepemilikan_barang
+Kursi pimpinan punya siapa? kepemilikan_barang
+Kursi rapat ada di lokasi mana? lokasi_barang
+Kursi rapat disimpan di ruangan mana? lokasi_barang
+Kursi rapat harganya berapa harga_barang
+Kursi rapat masih ada berapa unit ya? jumlah_barang
+Laptop HP 280 G4 PCI harganya brp ya? harga_barang
+Laptop harganya berapa harga_barang
+Laptop ini milik siapa ya? kepemilikan_barang
+Laptop ini punya siapa sih? kepemilikan_barang
+Laptop ini punya siapa ya? kepemilikan_barang
+Laptop ini punya siapa? kepemilikan_barang
+Laptop itu ada di mana tempatnya? lokasi_barang
+Laptop itu masih ada nggak? status_barang
+Laptop kerja itu ada di mana? lokasi_barang
+Laptop yang tersedia ada berapa jumlah_barang
+Laptop yang tersisa ada berapa unit lagi? jumlah_barang
+Laptop yang tersisa ada berapa ya? jumlah_barang
+Lelang aset IT minggu depan? lelang_barang
+Lelang aset kantor cabang lelang_barang
+Lelang aset tidak produktif lelang_barang
+Lelang barang IT bekas lelang_barang
+Lelang barang bekas kantor apa? lelang_barang
+Lelang barang bekas pakai lelang_barang
+Lelang barang interior kantor lelang_barang
+Lelang furniture executive lelang_barang
+Lelang furniture kantor lama lelang_barang
+Lelang furniture modern lelang_barang
+Lelang gadget kantor lelang_barang
+Lelang gadget terbaru lelang_barang
+Lelang perabot bekas kantor lelang_barang
+Lelang perabot kantor vintage lelang_barang
+Lelang peralatan broadcast lelang_barang
+Lelang peralatan dapur kantor lelang_barang
+Lelang peralatan kantor bekas lelang_barang
+Lelang peralatan kantor lengkap lelang_barang
+Lelang peralatan laboratorium lelang_barang
+Lelang peralatan presentasi lelang_barang
+Lelang perangkat IoT kantor lelang_barang
+Lelang perangkat VR kantor lelang_barang
+Lelang perangkat jaringan lelang_barang
+Lemari arsip disimpen di ruang mana? lokasi_barang
+Lemari arsip statusnya? status_barang
+Lemari kantor itu kisaran harga berapa? harga_barang
+Lemari pajangan ada di ruang? lokasi_barang
+List barang lelang minggu ini ada apa? lelang_barang
+Lokasi lemari arsip di mana? lokasi_barang
+Lokasi lemari besi gudang? lokasi_barang
+Lokasi lemari dokumen ruang? lokasi_barang
+Lokasi lemari obat? lokasi_barang
+Lokasi penyimpanan alat olahraga? lokasi_barang
+Lokasi penyimpanan arsip lama? lokasi_barang
+Lokasi penyimpanan dokumen? lokasi_barang
+Lokasi penyimpanan karpet? lokasi_barang
+Lokasi penyimpanan kursi direktur ada di mana? lokasi_barang
+Lokasi penyimpanan kursi lipat? lokasi_barang
+Lokasi penyimpanan kursi? lokasi_barang
+Lokasi penyimpanan meja mana ya? lokasi_barang
+Lokasi penyimpanan printer di? lokasi_barang
+Lokasi penyimpanan server? lokasi_barang
+Lokasi proyektor di gedung mana? lokasi_barang
+Lokasi proyektor infocus? lokasi_barang
+Lokasi rak IT dimana? lokasi_barang
+Lokasi rak IT maintenance? lokasi_barang
+Lokasi rak buku perpustakaan? lokasi_barang
+Lokasi rak inventory sparepart? lokasi_barang
+Lokasi rak inventory? lokasi_barang
+Lokasi rak jaringan? lokasi_barang
+Lokasi rak server ruang apa? lokasi_barang
+Lokasi server backup? lokasi_barang
+Lokasi server cloud? lokasi_barang
+Lokasi server development? lokasi_barang
+Lokasi server utama? lokasi_barang
+Lokasi server virtual? lokasi_barang
+Makasih atas bantuannya ucapan_terima_kasih
+Makasih atas infonya! ucapan_terima_kasih
+Makasih atas penjelasannya! ucapan_terima_kasih
+Makasih atas waktunya! ucapan_terima_kasih
+Makasih banget bot ucapan_terima_kasih
+Makasih bantuannya pak! ucapan_terima_kasih
+Makasih bantuannya ya ucapan_terima_kasih
+Makasih bantuannya! ucapan_terima_kasih
+Makasih banyak bang! ucapan_terima_kasih
+Makasih banyak buat bantuannya! ucapan_terima_kasih
+Makasih banyak gan! ucapan_terima_kasih
+Makasih banyak informasinya! ucapan_terima_kasih
+Makasih banyak kakak! ucapan_terima_kasih
+Makasih banyak mas! ucapan_terima_kasih
+Makasih banyak mbak! ucapan_terima_kasih
+Makasih banyak pak! ucapan_terima_kasih
+Makasih banyak, sangat membantu! ucapan_terima_kasih
+Makasih infonya bro! ucapan_terima_kasih
+Makasih respon cepatnya! ucapan_terima_kasih
+Makasih responnya cepat! ucapan_terima_kasih
+Makasih sarannya! ucapan_terima_kasih
+Makasih solusinya! ucapan_terima_kasih
+Makasih udah membantu ucapan_terima_kasih
+Makasih ya bot ucapan_terima_kasih
+Makasih ya bot! ucapan_terima_kasih
+Makasih, sangat informatif! ucapan_terima_kasih
+Malam, bot sapaan
+Malam, cek harga dong sapaan
+Malam, cek jumlah dong sapaan
+Malam, cek status dong sapaan
+Malam, cek stok dong sapaan
+Malam, info harga dong sapaan
+Malam, tanya harga sapaan
+Masih ada berapa kursi rapat jumlah_barang
+Masih ada berapa unit kursi kerja? jumlah_barang
+Masih ada jumlah unit barang, kan? jumlah_barang
+Masih ada meja komputer? status_barang
+Masih ada stock laptop? status_barang
+Masih ada stock proyektor mini? status_barang
+Masih tersedia nggak kursi direktur? status_barang
+Masih tersedia proyektor portable? status_barang
+Mau nanya dong sapaan
+Mau tanya, printer harganya brp? harga_barang
+Meja gambar masih ada? status_barang
+Meja gambar status available? status_barang
+Meja kantor besar di mana? lokasi_barang
+Meja kerja ada di tempat apa? lokasi_barang
+Meja kerja ini milik siapa? kepemilikan_barang
+Meja kerja udah laku atau masih ada? status_barang
+Meja komputer corner di mana? lokasi_barang
+Meja komputer status available? status_barang
+Meja lipat panjang status? status_barang
+Meja lipat status available? status_barang
+Meja meeting besar status? status_barang
+Meja meeting punya siapa? kepemilikan_barang
+Meja rapat ada di mana ya disimpan? lokasi_barang
+Meja rapat besar di mana? lokasi_barang
+Meja rapat oval status? status_barang
+Meja resepsionis milik siapa? kepemilikan_barang
+Meja standing desk di mana? lokasi_barang
+Met siang, bot! sapaan
+Milik siapa drone enterprise? kepemilikan_barang
+Milik siapa keyboard mechanical? kepemilikan_barang
+Milik siapa kursi rapat? kepemilikan_barang
+Milik siapa mixer video? kepemilikan_barang
+Milik siapa monitor curved? kepemilikan_barang
+Milik siapa printer 3D? kepemilikan_barang
+Milik siapa printer thermal? kepemilikan_barang
+Milik siapa proyektor Epson? kepemilikan_barang
+Milik siapa webcam 4K? kepemilikan_barang
+Milik siapa webcam logitech? kepemilikan_barang
+Milik siapa whiteboard interaktif? kepemilikan_barang
+Monitor 4K akan dilelang? lelang_barang
+Monitor color grading akan dilelang? lelang_barang
+Monitor curved akan dilelang? lelang_barang
+Monitor gaming akan dilelang? lelang_barang
+Monitor medical akan dilelang? lelang_barang
+Monitor touchscreen di mana? lokasi_barang
+Monitor ultrawide akan dilelang? lelang_barang
+Monitor ultrawide masih ada? status_barang
+NOTE BOOK HP PAVILION ini punya siapa? kepemilikan_barang
+NOTE BOOK HP PAVILION milik siapa? kepemilikan_barang
+Oke clear, makasih! ucapan_terima_kasih
+Oke clear, terima kasih! ucapan_terima_kasih
+Oke jelas, makasih! ucapan_terima_kasih
+Oke jelas, terima kasih banyak! ucapan_terima_kasih
+Oke mantap, makasih ya! ucapan_terima_kasih
+Oke mantap, makasih! ucapan_terima_kasih
+Oke mantap, tengkyu! ucapan_terima_kasih
+Oke noted, tengkyu! ucapan_terima_kasih
+Oke noted, thanks! ucapan_terima_kasih
+Oke sip makasih ucapan_terima_kasih
+Oke sip, makasih banyak ucapan_terima_kasih
+Oke sip, makasih! ucapan_terima_kasih
+Oke sip, terima kasih! ucapan_terima_kasih
+Oke terima kasih banyak! ucapan_terima_kasih
+PC All-in-One punya siapa? kepemilikan_barang
+PC all-in-one dilelang? lelang_barang
+PC gaming mau dilelang? lelang_barang
+PC mini dilelang? lelang_barang
+PC workstation dilelang? lelang_barang
+Pagi, bot! sapaan
+Pagi, butuh info harga sapaan
+Pagi, butuh info stok sapaan
+Pagi, cek lokasi dong sapaan
+Pagi, info lokasi barang sapaan
+Pagi, info pemilik sapaan
+Pagi, info status sapaan
+Pagi, tanya kepemilikan sapaan
+Pemilik CCTV dome siapa? kepemilikan_barang
+Pemilik alat presentasi? kepemilikan_barang
+Pemilik alat scanner 3D? kepemilikan_barang
+Pemilik alat tes elektronik? kepemilikan_barang
+Pemilik alat tes jaringan? kepemilikan_barang
+Pemilik alat tes kimia? kepemilikan_barang
+Pemilik alat tes listrik? kepemilikan_barang
+Pemilik alat tes material? kepemilikan_barang
+Pemilik alat tes mekanik? kepemilikan_barang
+Pemilik alat ukur suara? kepemilikan_barang
+Pemilik alat ukur teknik? kepemilikan_barang
+Pemilik barang barang siapa? kepemilikan_barang
+Pemilik barang siapa? kepemilikan_barang
+Pemilik drone Phantom? kepemilikan_barang
+Pemilik headset wireless? kepemilikan_barang
+Pemilik keyboard gaming? kepemilikan_barang
+Pemilik kursi rapat siapa? kepemilikan_barang
+Pemilik lemari besi siapa? kepemilikan_barang
+Pemilik meja gambar siapa? kepemilikan_barang
+Pemilik meja resepsionis siapa? kepemilikan_barang
+Pemilik mesin fotocopi? kepemilikan_barang
+Pemilik microwave kantor? kepemilikan_barang
+Pemilik mixer audio? kepemilikan_barang
+Pemilik mouse gaming? kepemilikan_barang
+Pemilik proyektor itu siapa? kepemilikan_barang
+Pemilik proyektor laser? kepemilikan_barang
+Pemilik tablet drawing Wacom? kepemilikan_barang
+Penyimpanan alat kantor di? lokasi_barang
+Penyimpanan dokumen di mana? lokasi_barang
+Penyimpanan kursi executive di? lokasi_barang
+Penyimpanan kursi plastik di? lokasi_barang
+Penyimpanan kursi rapat di? lokasi_barang
+Posisi lemari alat berat? lokasi_barang
+Posisi lemari alat kantor? lokasi_barang
+Posisi lemari alat medis? lokasi_barang
+Posisi lemari alat? lokasi_barang
+Posisi lemari baju? lokasi_barang
+Posisi lemari brankas tinggi? lokasi_barang
+Posisi lemari brankas? lokasi_barang
+Posisi server rack dimana? lokasi_barang
+Printer 3D punya siapa? kepemilikan_barang
+Printer DTG dilelang? lelang_barang
+Printer UV masih ada? status_barang
+Printer dot matrix masih ada? status_barang
+Printer harganya berapa harga_barang
+Printer ini milik siapa? kepemilikan_barang
+Printer label masih ada? status_barang
+Printer large format dilelang? lelang_barang
+Printer laser ready stock? status_barang
+Printer portable masih ada? status_barang
+Printer portable milik siapa? kepemilikan_barang
+Printer receipt punya siapa? kepemilikan_barang
+Printer sublimasi masih ada? status_barang
+Printer thermal punya siapa? kepemilikan_barang
+Printer warna masih ada? status_barang
+Printer yang tersedia ada berapa jumlah_barang
+Produk < 2.8 juta apa aja? range_harga
+Produk < 2.9 juta apa? range_harga
+Produk < 3.1 juta apa? range_harga
+Produk < 3.8 juta apa? range_harga
+Produk < 4.7 juta apa? range_harga
+Produk < 4.8 juta apa? range_harga
+Produk harga < 2.6 juta range_harga
+Produk harga < 2.7 juta range_harga
+Produk harga < 3.4 juta range_harga
+Produk harga < 3.5 juta range_harga
+Produk harga < 4.3 juta range_harga
+Produk harga < 4.5 juta range_harga
+Proyektor 360 derajat di mana? lokasi_barang
+Proyektor 4K harga? harga_barang
+Proyektor Epson masih bagus? status_barang
+Proyektor LG masih berfungsi? status_barang
+Proyektor ada di ruang mana? lokasi_barang
+Proyektor benq di mana? lokasi_barang
+Proyektor disimpan di mana ya? lokasi_barang
+Proyektor epson harga? harga_barang
+Proyektor interaktif harga? harga_barang
+Proyektor itu disimpan di ruangan apa? lokasi_barang
+Proyektor itu harga berapaan? harga_barang
+Proyektor laser di mana? lokasi_barang
+Proyektor masih ada berapa unit sih? jumlah_barang
+Proyektor masih bisa dipakai nggak? status_barang
+Proyektor mini harga? harga_barang
+Proyektor mini masih ada? status_barang
+Proyektor mini portable harga? harga_barang
+Proyektor optoma masih ada? status_barang
+Proyektor outdoor di mana? lokasi_barang
+Proyektor ultra short throw di mana? lokasi_barang
+Punya siapa barang ini? kepemilikan_barang
+Punya siapa drone Mavic? kepemilikan_barang
+Punya siapa headset Bose? kepemilikan_barang
+Punya siapa kamera meeting? kepemilikan_barang
+Punya siapa keyboard piano? kepemilikan_barang
+Punya siapa kursi direktur ini? kepemilikan_barang
+Punya siapa laptop Lenovo ThinkPad? kepemilikan_barang
+Punya siapa laptop docking? kepemilikan_barang
+Punya siapa printer laser? kepemilikan_barang
+Punya siapa proyektor itu? kepemilikan_barang
+Punya siapa proyektor ultra short? kepemilikan_barang
+Punya siapa tablet Samsung S7? kepemilikan_barang
+Rak buku ada di lantai berapa? lokasi_barang
+Ruang apa tempat penyimpanan TV? lokasi_barang
+Ruang penyimpanan AC dimana? lokasi_barang
+Ruang penyimpanan alat kebersihan? lokasi_barang
+Ruang penyimpanan alat musik? lokasi_barang
+Ruang penyimpanan alat presentasi? lokasi_barang
+Ruang penyimpanan arsip? lokasi_barang
+Ruang server ada di mana? lokasi_barang
+Sangat informatif, makasih! ucapan_terima_kasih
+Sangat membantu, makasih! ucapan_terima_kasih
+Sangat membantu, terima kasih ucapan_terima_kasih
+Sangat membantu, terima kasih ya ucapan_terima_kasih
+Sangat membantu, terima kasih! ucapan_terima_kasih
+Saya cari barang harga kecil range_harga
+Saya ingin tahu harga kursi kerja harga_barang
+Saya ingin tahu harga kursi rapat harga_barang
+Saya lagi cari barang yang harganya terjangkau range_harga
+Scanner A3 masih ada? status_barang
+Scanner A4 masih tersedia? status_barang
+Scanner buku di mana? lokasi_barang
+Scanner dokumen besar di mana? lokasi_barang
+Scanner dokumen di mana? lokasi_barang
+Scanner dokumen masih tersedia? status_barang
+Scanner fingerprint di mana? lokasi_barang
+Scanner harga murah ada? range_harga
+Scanner portable di mana? lokasi_barang
+Scanner portable masih ada? status_barang
+Scanner slide di mana? lokasi_barang
+Selamat beristirahat, bot sapaan
+Selamat istirahat siang, bot sapaan
+Selamat istirahat, bot sapaan
+Selamat malam, bot sapaan
+Selamat pagi sapaan
+Selamat pagi, chatbot! sapaan
+Selamat petang, bot sapaan
+Selamat siang bot! sapaan
+Selamat siang, info stok sapaan
+Selamat sore, bot sapaan
+Selamat sore, info jumlah sapaan
+Server backup lokasinya? lokasi_barang
+Server blade di mana? lokasi_barang
+Server rack lokasinya? lokasi_barang
+Server rack unit di mana? lokasi_barang
+Siapa pemilik NOTE BOOK HP PAVILION? kepemilikan_barang
+Siapa pemilik VR headset? kepemilikan_barang
+Siapa pemilik alat HVAC? kepemilikan_barang
+Siapa pemilik alat berat? kepemilikan_barang
+Siapa pemilik barang? kepemilikan_barang
+Siapa pemilik drone DJI? kepemilikan_barang
+Siapa pemilik drone? kepemilikan_barang
+Siapa pemilik forklift? kepemilikan_barang
+Siapa pemilik generator? kepemilikan_barang
+Siapa pemilik kursi pimpinan? kepemilikan_barang
+Siapa pemilik kursi rapat? kepemilikan_barang
+Siapa pemilik laptop Dell? kepemilikan_barang
+Siapa pemilik laptop Macbook? kepemilikan_barang
+Siapa pemilik laptop ini? kepemilikan_barang
+Siapa pemilik monitor 32 inch? kepemilikan_barang
+Siapa pemilik monitor 4K? kepemilikan_barang
+Siapa pemilik monitor curved ultra-wide? kepemilikan_barang
+Siapa pemilik monitor gaming? kepemilikan_barang
+Siapa pemilik plotter? kepemilikan_barang
+Siapa pemilik printer? kepemilikan_barang
+Siapa pemilik scanner? kepemilikan_barang
+Siapa pemilik tablet Samsung? kepemilikan_barang
+Siapa yang memiliki barang barang ini? kepemilikan_barang
+Siapa yang memiliki barang? kepemilikan_barang
+Siapa yang memiliki scanner ini? kepemilikan_barang
+Siapa yang punya AC sentral? kepemilikan_barang
+Siapa yang punya CCTV? kepemilikan_barang
+Siapa yang punya barang barang ini? kepemilikan_barang
+Siapa yang punya barang? kepemilikan_barang
+Siapa yang punya generator? kepemilikan_barang
+Siapa yang punya kompresor? kepemilikan_barang
+Siapa yang punya laptop ini? kepemilikan_barang
+Siapa yang punya mobil kantor? kepemilikan_barang
+Siapa yang punya proyektor itu? kepemilikan_barang
+Siapa yang punya server? kepemilikan_barang
+Siapa yg memiliki iPad Air? kepemilikan_barang
+Siapa yg memiliki iPad mini? kepemilikan_barang
+Siapa yg memiliki kulkas mini? kepemilikan_barang
+Siapa yg memiliki laptop Dell XPS? kepemilikan_barang
+Siapa yg memiliki tablet? kepemilikan_barang
+Siapa yg punya harddisk external? kepemilikan_barang
+Siapa yg punya headset VR? kepemilikan_barang
+Siapa yg punya kursi eksekutif? kepemilikan_barang
+Siapa yg punya tablet drawing? kepemilikan_barang
+Siapa yg punya tablet iPad Pro? kepemilikan_barang
+Sip, makasih infonya! ucapan_terima_kasih
+Sip, makasih sarannya! ucapan_terima_kasih
+Sisa kursi auditorium? jumlah_barang
+Sisa kursi bar cafe? jumlah_barang
+Sisa kursi lipat berapa? jumlah_barang
+Sisa kursi rapat berapa unit? jumlah_barang
+Sisa kursi sofa? jumlah_barang
+Sisa kursi tunggu di lobby? jumlah_barang
+Sisa kursi tunggu? jumlah_barang
+Sisa meja kerja standing? jumlah_barang
+Sisa meja komputer standing? jumlah_barang
+Sisa meja komputer? jumlah_barang
+Sisa meja rapat besar? jumlah_barang
+Sisa meja rapat oval? jumlah_barang
+Sisa meja rapat segitiga? jumlah_barang
+Sisa unit laptop di gudang? jumlah_barang
+Sofa ruang tunggu di mana? lokasi_barang
+Sound system di ruang mana? lokasi_barang
+Status AC split bagaimana? status_barang
+Status CCTV masih aktif? status_barang
+Status TV conference? status_barang
+Status alat fitness? status_barang
+Status alat masak listrik? status_barang
+Status alat musik elektronik? status_barang
+Status alat pemanas ruangan? status_barang
+Status alat pendingin? status_barang
+Status alat pengering? status_barang
+Status alat pengolah makanan? status_barang
+Status drone masih bagus? status_barang
+Status generator listrik? status_barang
+Status kursi ergonomis baru? status_barang
+Status kursi gaming masih tersedia? status_barang
+Status kursi kantor baru? status_barang
+Status kursi kuliah baru? status_barang
+Status kursi pijat tersedia? status_barang
+Status kursi pijat? status_barang
+Status lampu projector ready? status_barang
+Status laptop gaming ready? status_barang
+Status lemari arsip available? status_barang
+Status lemari besi terkunci? status_barang
+Status lemari buku bagaimana? status_barang
+Status lemari itu apa ya? status_barang
+Status meja rapat terjual? status_barang
+Status mesin binding ready? status_barang
+Status mesin fotokopi digital? status_barang
+Status mesin fotokopi warna? status_barang
+Status mesin jahit industri? status_barang
+Status mesin jahit ok? status_barang
+Status mesin penghancur kertas? status_barang
+Status printer 3D available? status_barang
+Status printer barang gimana? status_barang
+Status printer multifungsi? status_barang
+Status printer warna bagaimana? status_barang
+Status smartboard interaktif? status_barang
+Status smartboard ready? status_barang
+Status smartwatch ready stock? status_barang
+Status sound system portable? status_barang
+Status soundbar ready stock? status_barang
+Status standing fan ready? status_barang
+Status treadmill elektrik? status_barang
+Status treadmill masih ok? status_barang
+Status whiteboard elektronik? status_barang
+Stok AC di gedung baru? jumlah_barang
+Stok AC di lantai 5 berapa? jumlah_barang
+Stok AC portable? jumlah_barang
+Stok CCTV di gudang? jumlah_barang
+Stok CCTV di pintu masuk? jumlah_barang
+Stok CCTV dome indoor? jumlah_barang
+Stok UPS APC berapa unit? jumlah_barang
+Stok UPS di ruang server? jumlah_barang
+Stok barang masih ada berapa? jumlah_barang
+Stok charger laptop berapa? jumlah_barang
+Stok drawing tablet berapa? jumlah_barang
+Stok harddisk eksternal berapa? jumlah_barang
+Stok kabel HDMI berapa? jumlah_barang
+Stok kipas angin portable? jumlah_barang
+Stok kursi ergonomis tersisa? jumlah_barang
+Stok kursi kantor berapa? jumlah_barang
+Stok kursi rapat berapa jumlah_barang
+Stok laptop di cabang Bandung? jumlah_barang
+Stok laptop di cabang Medan? jumlah_barang
+Stok laptop di cabang Yogya? jumlah_barang
+Stok laptop di gudang pusat? jumlah_barang
+Stok laptop gaming sisa berapa? jumlah_barang
+Stok laptop i7 berapa unit? jumlah_barang
+Stok lightbox berapa? jumlah_barang
+Stok meja kantor metal? jumlah_barang
+Stok meja kerja masih berapa? jumlah_barang
+Stok meja kerja sekarang tinggal berapa? jumlah_barang
+Stok meja meeting tinggal berapa? jumlah_barang
+Stok memory card berapa? jumlah_barang
+Stok mouse wireless berapa? jumlah_barang
+Stok power bank berapa? jumlah_barang
+Stok printer HP ada berapa unit? jumlah_barang
+Stok proyektor di cabang? jumlah_barang
+Stok proyektor di gudang utama? jumlah_barang
+Stok proyektor di ruang direksi? jumlah_barang
+Stok proyektor di warehouse? jumlah_barang
+Stok router Wi-Fi berapa? jumlah_barang
+Stok speaker aktif berapa? jumlah_barang
+Stok standing desk? jumlah_barang
+Stok tablet ada berapa? jumlah_barang
+Stok webcam berapa? jumlah_barang
+Tampilin harga laptop di bawah 3 juta range_harga
+Tampilkan aset yg akan dilelang lelang_barang
+Tampilkan barang < 2.0 juta range_harga
+Tampilkan barang < 2.1 juta range_harga
+Tampilkan barang < 3.2 juta range_harga
+Tampilkan barang < 3.5 juta range_harga
+Tampilkan barang < 3.7 juta range_harga
+Tampilkan barang < 4.1 juta range_harga
+Tampilkan barang < 4.2 juta range_harga
+Tampilkan barang di bawah 1.7jt range_harga
+Tampilkan barang di bawah 1.8jt range_harga
+Tampilkan barang di bawah 2.3jt range_harga
+Tampilkan barang di bawah 2.6jt range_harga
+Tampilkan barang di bawah 5 juta range_harga
+Tampilkan barang di bawah 800rb range_harga
+Tampilkan barang lelang under 2 juta range_harga
+Tampilkan barang yang harganya di bawah 5 juta dong range_harga
+Tampilkan daftar barang lelang lelang_barang
+Tampilkan daftar lelang bulan depan lelang_barang
+Tampilkan harga < 1.25 juta range_harga
+Tampilkan harga < 2.2 juta range_harga
+Tampilkan harga di bawah 1.3jt range_harga
+Tampilkan harga di bawah 1.9jt range_harga
+Tampilkan harga di bawah 2.1jt range_harga
+Tampilkan harga di bawah 2.7jt range_harga
+Tampilkan harga di bawah 900rb range_harga
+Tampilkan item < 2.3 juta range_harga
+Tampilkan item < 2.4 juta range_harga
+Tampilkan item < 2.5 juta range_harga
+Tampilkan item < 3 juta range_harga
+Tampilkan item < 3.3 juta range_harga
+Tampilkan item < 3.6 juta range_harga
+Tampilkan item < 4.6 juta range_harga
+Tampilkan lelang barang elektronik lelang_barang
+Tampilkan produk < 4 juta range_harga
+Tampilkan produk harga < 1.5 juta range_harga
+Tengkyu banyak pak! ucapan_terima_kasih
+Tengkyu banyak ya! ucapan_terima_kasih
+Tengkyu infonya! ucapan_terima_kasih
+Tengkyu informasinya! ucapan_terima_kasih
+Terima kasih atas responnya ucapan_terima_kasih
+Terima kasih banyak banget ucapan_terima_kasih
+Terima kasih banyak banget! ucapan_terima_kasih
+Terima kasih banyak bos ucapan_terima_kasih
+Terima kasih banyak bu! ucapan_terima_kasih
+Terima kasih banyak buat infonya! ucapan_terima_kasih
+Terima kasih banyak mas! ucapan_terima_kasih
+Terima kasih banyak om! ucapan_terima_kasih
+Terima kasih banyak pak bos! ucapan_terima_kasih
+Terima kasih banyak pakde! ucapan_terima_kasih
+Terima kasih banyak sist! ucapan_terima_kasih
+Terima kasih banyak ucapan_terima_kasih
+Terima kasih banyak ya ucapan_terima_kasih
+Terima kasih banyak ya! ucapan_terima_kasih
+Terima kasih informasinya ucapan_terima_kasih
+Terima kasih sudah membantu ucapan_terima_kasih
+Terima kasih ucapan_terima_kasih
+Terima kasih untuk bantuannya ucapan_terima_kasih
+Terimakasih respon cepatnya ucapan_terima_kasih
+Tersisa berapa meja rapat di lantai 1? jumlah_barang
+Tersisa berapa proyektor? jumlah_barang
+Tersisa berapa unit barang barang yang bisa di lelang? jumlah_barang
+Thank you bot! ucapan_terima_kasih
+Thank you so much ucapan_terima_kasih
+Thanks atas bantuannya ucapan_terima_kasih
+Thanks atas bantuannya! ucapan_terima_kasih
+Thanks atas jawabannya! ucapan_terima_kasih
+Thanks atas solusinya ucapan_terima_kasih
+Thanks banget ucapan_terima_kasih
+Thanks bantuannya! ucapan_terima_kasih
+Thanks banyak lho ucapan_terima_kasih
+Thanks banyak ya! ucapan_terima_kasih
+Thanks buat bantuannya ucapan_terima_kasih
+Thanks respon cepatnya! ucapan_terima_kasih
+Thanks responnya! ucapan_terima_kasih
+Thanks ucapan_terima_kasih
+Thanks udah respon cepat ucapan_terima_kasih
+Thanks, bot, you're the best ucapan_terima_kasih
+Thanks, sangat berguna! ucapan_terima_kasih
+Thx buat jawabannya ucapan_terima_kasih
+Thx ya buat infonya ucapan_terima_kasih
+Tolong beri tau barang lelang yang tersedia lelang_barang
+Tolong cari lokasi lemari besi lokasi_barang
+Tolong cek di mana posisi kursi direktur lokasi_barang
+Tolong cek harga kursi rapat harga_barang
+Tolong info barang yang mau dilelang lelang_barang
+Tolong infoin harga lemari rak dokumen harga_barang
+Tolong tunjukkan barang lelang yang ada lelang_barang
+Total barang barang ada berapa? jumlah_barang
+Tunjukkan barang harga kurang dari 5 juta dong range_harga
+Udah dijual belum printer itu? status_barang
+Udah dilelang belum meja kerja? status_barang
+Udah dilelang belum meja? status_barang
+Udah laku proyektor lama? status_barang
+Udah laku rak server? status_barang
+Udah laku server rack? status_barang
+Udah laku smart TV? status_barang
+Udah laku sound system? status_barang
+Udah laku soundbar? status_barang
+Udah laku treadmill? status_barang
+Udah terjual kulkas mini? status_barang
+Udah terjual kursi tunggu? status_barang
+Udah terjual laptop Thinkpad? status_barang
+Udah terjual lemari arsip? status_barang
+Udah terjual lemari besi? status_barang
+Udah terjual meja meeting? status_barang
+Udah terjual smart TV? status_barang
+Wah lengkap bgt, makasih! ucapan_terima_kasih
+Yo, bot! Ada barang lelang? sapaan
+Yo, cek jumlah stok sapaan
+Yo, cek status barang dong sapaan
+Yo, info jumlah barang sapaan
+Yo, info jumlah terbaru sapaan
+Yo, info status barang sapaan
+Yo, info status terbaru sapaan
+hai bro sapaan
+makasih ucapan_terima_kasih
+tengkyu ucapan_terima_kasih
+tengs ucapan_terima_kasih

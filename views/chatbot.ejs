@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <style>
+        .chatbot-container {
+            max-width: 650px;
+            margin: 30px auto;
+        }
+
+        .chat-messages {
+            height: 500px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: pre-wrap;
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 15px;
+            line-height: 1.4;
+            font-size: 15px;
+        }
+
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #e9ecef;
+            color: #333;
+            margin-right: auto;
+        }
+
+        .message-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .message-container.user {
+            justify-content: flex-end;
+        }
+
+        .message-container.bot {
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="d-flex">
+        <%- include('partials/sidebar') %>
+            <div class="container chatbot-container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="mb-0"><i class="fas fa-robot"></i> Chatbot</h3>
+                    <button class="btn btn-sm btn-outline-danger" onclick="clearChat()" title="Bersihkan Chat">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="chat-messages" id="chatbotMessages">
+                    <div class="text-muted text-center">Hi! Ada yang bisa dibantu?</div>
+                </div>
+                <form id="chatbotForm" class="d-flex">
+                    <input type="text" class="form-control me-2" id="chatbotInput" placeholder="Ketik pesan...">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+    </div>
+    <script>
+        const currentUser = '<%= locals.currentUser %>';
+        const userType = '<%= locals.userType %>';
+
+        function getChatKey() {
+            return `chatbot_${userType}_${currentUser}_${Date.now()}`;
+        }
+
+        function saveChatToSession() {
+            const chatMessages = document.getElementById('chatbotMessages').innerHTML;
+            const chatKey = getChatKey();
+            sessionStorage.setItem('current_chat_key', chatKey);
+            sessionStorage.setItem(chatKey, chatMessages);
+        }
+
+        function loadChatFromSession() {
+            const currentChatKey = sessionStorage.getItem('current_chat_key');
+            if (currentChatKey && currentChatKey.includes(currentUser)) {
+                const savedMessages = sessionStorage.getItem(currentChatKey);
+                if (savedMessages) {
+                    document.getElementById('chatbotMessages').innerHTML = savedMessages;
+                    document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+                }
+            }
+        }
+
+        function clearChat() {
+            if (confirm('Yakin ingin menghapus semua percakapan?')) {
+                document.getElementById('chatbotMessages').innerHTML = '<div class="text-muted text-center">Hi! Ada yang bisa dibantu?</div>';
+                const currentChatKey = sessionStorage.getItem('current_chat_key');
+                if (currentChatKey) {
+                    sessionStorage.removeItem(currentChatKey);
+                }
+            }
+        }
+
+        window.onload = function () {
+            Object.keys(sessionStorage).forEach(key => {
+                if (key.startsWith('chatbot_') && !key.includes(currentUser)) {
+                    sessionStorage.removeItem(key);
+                }
+            });
+            loadChatFromSession();
+        }
+
+        document.getElementById('chatbotForm').onsubmit = async function (e) {
+            e.preventDefault();
+            var input = document.getElementById('chatbotInput');
+            var msg = input.value.trim();
+            if (!msg) return;
+
+            var chat = document.getElementById('chatbotMessages');
+            // Tampilkan pesan user
+            chat.innerHTML += '<div class="message-container user"><div class="message-bubble user-message">' + msg + '</div></div>';
+            chat.scrollTop = chat.scrollHeight;
+            saveChatToSession();
+            input.value = '';
+
+            // Tampilkan loading
+            chat.innerHTML += '<div class="message-container bot" id="loading-bot"><div class="message-bubble bot-message">Bot sedang mengetik...</div></div>';
+            chat.scrollTop = chat.scrollHeight;
+            saveChatToSession();
+
+            // Kirim ke backend Express
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                const data = await response.json();
+
+                // Hapus loading
+                var loading = document.getElementById('loading-bot');
+                if (loading) loading.remove();
+
+                // Tampilkan response bot
+                if (data && data.response) {
+                    chat.innerHTML += '<div class="message-container bot"><div class="message-bubble bot-message">' + data.response + '</div></div>';
+                    chat.scrollTop = chat.scrollHeight;
+                    saveChatToSession();
+                } else {
+                    chat.innerHTML += '<div class="message-container bot"><div class="message-bubble bot-message" style="background: #dc3545; color: white;">Maaf, terjadi kesalahan.</div></div>';
+                }
+                chat.scrollTop = chat.scrollHeight;
+                saveChatToSession();
+            } catch (err) {
+                // Hapus loading
+                var loading = document.getElementById('loading-bot');
+                if (loading) loading.remove();
+
+                chat.innerHTML += '<div class="message-container bot"><div class="message-bubble bot-message" style="background: #dc3545; color: white;">Maaf, server tidak merespon.</div></div>';
+                chat.scrollTop = chat.scrollHeight;
+            }
+        };
+
+        function clearChatOnLogout() {
+            sessionStorage.removeItem('chatbot_session');
+            localStorage.removeItem('chatbot_session');
+        }
+    </script>
+</body>
+
+</html>

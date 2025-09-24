@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Data Karyawan</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amethysta&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <%- include('partials/sidebar') %>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+                        <div class="modal fade" id="addKaryawanModal" tabindex="-1"
+                            aria-labelledby="addKaryawanModalLabel" aria-hidden="true" style="top: 10%;
+                            align-items: center;
+                            justify-content: center;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addKaryawanModalLabel">Tambah Karyawan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form id="addKaryawanForm">
+                                        <div class="modal-body">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">ID Karyawan</label>
+                                                    <input type="text" class="form-control" name="id_karyawan" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Nama Karyawan</label>
+                                                    <input type="text" class="form-control" name="nama_karyawan"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Jabatan</label>
+                                                    <select class="form-select" name="jabatan" required>
+                                                        <option value="">Pilih Jabatan</option>
+                                                        <option value="BRANCH MANAGER">BRANCH MANAGER</option>
+                                                        <option value="SERVICES SECTOR HEAD">SERVICES SECTOR HEAD
+                                                        </option>
+                                                        <option value="CASH & PENSION REPORT VERIF. SCR HEAD">CASH &
+                                                            PENSION REPORT VERIF. SCR HEAD</option>
+                                                        <option value="FINANCE ADMINISTRATION SECTOR HEAD">FINANCE
+                                                            ADMINISTRATION SECTOR HEAD</option>
+                                                        <option value="SERVICES STAFF">SERVICES STAFF</option>
+                                                        <option value="MEMBERSHIP STAFF">MEMBERSHIP STAFF</option>
+                                                        <option value="HC AND GA STAFF">HC AND GA STAFF</option>
+                                                        <option value="HC AND GA SECTOR HEAD">HC AND GA SECTOR HEAD
+                                                        </option>
+                                                        <option value="CASH & PENSION REPORT VERIF. STAFF">CASH &
+                                                            PENSION REPORT VERIF. STAFF</option>
+                                                        <option value="FINANCE ADM. STAFF">FINANCE ADM. STAFF</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Jenis Kelamin</label>
+                                                    <select class="form-select" name="jenis_kelamin" required>
+                                                        <option value="">Pilih Kelamin</option>
+                                                        <option value="L">LAKI-LAKI</option>
+                                                        <option value="P">PEREMPUAN</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="confirmDeleteModalK" tabindex="-1" aria-hidden="true" style="top: 25%;
+                        align-items: center;
+                        justify-content: center;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Konfirmasi Hapus</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah Anda yakin ingin menghapus data karyawan ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-danger"
+                                            id="deleteConfirmBtnK">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="editKaryawanModal" tabindex="-1"
+                            aria-labelledby="editKaryawanModalLabel" aria-hidden="true" style="top: 10%;
+                            align-items: center;
+                            justify-content: center;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editKaryawanModalLabel">Edit Karyawan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form id="editKaryawanForm">
+                                        <div class="modal-body">
+                                            <input type="hidden" name="id_karyawan" id="id_karyawan">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Nama Karyawan</label>
+                                                    <input type="text" class="form-control" name="nama_karyawan"
+                                                        id="nama_karyawan" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Jabatan</label>
+                                                    <select class="form-select" name="jabatan" id="jabatan" required>
+                                                        <option value="">Pilih Jabatan</option>
+                                                        <option value="BRANCH MANAGER">BRANCH MANAGER</option>
+                                                        <option value="SERVICES SECTOR HEAD">SERVICES SECTOR HEAD
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Jenis Kelamin</label>
+                                                    <select class="form-select" name="jenis_kelamin" id="jenis_kelamin"
+                                                        required>
+                                                        <option value="">Pilih Kelamin</option>
+                                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
+                                                        <option value="PEREMPUAN">PEREMPUAN</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Status</label>
+                                                    <select class="form-select" name="status_karyawan"
+                                                        id="status_karyawan" required>
+                                                        <option value="aktif">Aktif</option>
+                                                        <option value="nonaktif">Non-Aktif</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="border: 0px; margin-top:-20px; margin-left:10px;margin-right:10px">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 text-nowrap">
+                                        <div id="dataTable_length" class="d-flex align-items-center" aria-controls="dataTable">
+                                            <select class="form-select-sm me-3" id="entriesSelect" onchange="changeEntries(this.value)" style="width: auto;">
+                                                <option value="10" <%= limit == 10 ? 'selected' : '' %>>10</option>
+                                                <option value="25" <%= limit == 25 ? 'selected' : '' %>>25</option>
+                                                <option value="50" <%= limit == 50 ? 'selected' : '' %>>50</option>
+                                                <option value="100" <%= limit == 100 ? 'selected' : '' %>>100</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 d-flex justify-content-end">
+                                        <% if (role !== 'atasan') { %>
+                                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                                data-bs-target="#addKaryawanModal" style="background: #1cda18;">
+                                                <i class="fas fa-plus me-2"></i>Buat Baru
+                                            </button>
+                                        <% } %>
+                                        <button type="button" class="btn btn-secondary" id="printBtn">
+                                            <i class="fas fa-print me-2"></i>Cetak
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <% if (searchQuery) { %>
+                                        <div class="search-info">
+                                            <p>Menampilkan hasil pencarian untuk: "<%= searchQuery %>"</p>
+                                            <a href="/karyawan" class="clear-search">Tampilkan Semua</a>
+                                        </div>
+                                    <% } %>
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 15%;">NIK</th>
+                                                <th>Nama Karyawan</th>
+                                                <th>Jabatan</th>
+                                                <th style="width: 15%;">Jenis Kelamin</th>
+                                                <% if (role !== 'atasan') { %>
+                                                <th class="px-4 py-3 text-sm font-semibold tracking-wide text-center"
+                                                    style="width:10%;">
+                                                    Opsi
+                                                </th>
+                                                <% } %>
+                                            </tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(karyawan.length> 0) { %>
+                                                <% karyawan.forEach(item=> { %>
+                                                    <tr>
+                                                        <td class="px-4 py-3 text-center">
+                                                            <%= item.id_karyawan %>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.nama_karyawan %>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.jabatan %>
+                                                        </td>
+                                                        <td class="px-4 py-3 text-center">
+                                                            <%= item.jenis_kelamin %>
+                                                        </td>
+                                                        <% if (role !== 'atasan') { %>
+                                                        <td class="px-4 py-3 text-center">
+                                                            <div class="btn-group" role="group">
+                                                     <!--         <button class="btn btn-white btn-sm"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editKaryawanModal" title="Edit"
+                                                                    onclick="getKaryawanDetail('<%= item.id_karyawan %>')">
+                                                                    <i class="fas fa-ellipsis-v"></i>
+                                                                </button>-->  
+                                                                
+                                                                <button class="btn btn-danger btn-sm"
+                                                                    data-bs-toggle="popup" title="Hapus"
+                                                                    onclick="confirmDeleteK('<%= item.id_karyawan %>')">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                        <% } %>
+                                                    </tr>
+                                                    <% }); %>
+                                                        <% } else { %>
+                                                            <tr>
+                                                                <td colspan="8" class="text-center">Tidak ada data</td>
+                                                            </tr>
+                                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-6 align-self-center">
+                                        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                            Menampilkan <%= (currentPage - 1) * limit + 1 %> - <%= Math.min(currentPage *
+                                                    limit, totalData) %> dari <%= totalData %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav
+                                            class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                            <ul class="pagination">
+                                                <% if (currentPage> 1) { %>
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                            href="/karyawan?page=<%= currentPage - 1 %>"
+                                                            aria-label="Previous">
+                                                            <span aria-hidden="true">«</span>
+                                                        </a>
+                                                    </li>
+                                                    <% } else { %>
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">«</span>
+                                                            </a>
+                                                        </li>
+                                                        <% } %>
+
+                                                            <% for (let i=1; i <=totalPages; i++) { %>
+                                                                <li
+                                                                    class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                                                    <a class="page-link" href="/karyawan?page=<%= i %>">
+                                                                        <%= i %>
+                                                                    </a>
+                                                                </li>
+                                                                <% } %>
+
+                                                                    <% if (currentPage < totalPages) { %>
+                                                                        <li class="page-item">
+                                                                            <a class="page-link"
+                                                                                href="/karyawan?page=<%= currentPage + 1 %>"
+                                                                                aria-label="Next">
+                                                                                <span aria-hidden="true">»</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <% } else { %>
+                                                                            <li class="page-item disabled">
+                                                                                <a class="page-link" href="#"
+                                                                                    aria-label="Next">
+                                                                                    <span aria-hidden="true">»</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <% } %>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('partials/footer') %>
+                </div>
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            </div>
+            <%- include('partials/scripts') %>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Manajemen Lelang</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amethysta&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <%- include('partials/sidebar') %>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+                        <div class="modal fade" id="konfirmasiLelangModal" tabindex="-1" style="top: 10%;
+                        align-items: center;
+                        justify-content: center;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Konfirmasi Lelang</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <form id="formKonfirmasiLelang">
+                                        <div class="modal-body">
+                                            <input type="hidden" id="idBarangKonfirmasi">
+                                            <div class="mb-3">
+                                                <label>Waktu Mulai</label>
+                                                <input type="datetime-local" class="form-control" id="waktuMulaiLelang"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Waktu Selesai</label>
+                                                <input type="datetime-local" class="form-control"
+                                                    id="waktuSelesaiLelang" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Harga Lelang</label>
+                                                <input type="text" class="form-control" id="hargaLelang" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="editLelangModal" tabindex="-1" style="top: 10%;
+                        align-items: center;
+                        justify-content: center;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <form id="formEditLelang">
+                                        <div class="modal-body">
+                                            <input type="hidden" id="idLelangEdit">
+                                            <div class="mb-3">
+                                                <label>Waktu Selesai</label>
+                                                <input type="datetime-local" class="form-control" id="waktuSelesaiEdit"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Harga Lelang</label>
+                                                <input type="text" class="form-control" id="hargaLelangEdit" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% if (searchQuery) { %>
+                            <div class="search-info">
+                                <p>Menampilkan hasil pencarian untuk: "<%= searchQuery %>"</p>
+                                <a href="/barang" class="clear-search">Tampilkan Semua</a>
+                            </div>
+                            <% } %>
+                                <div class="card mb-4 shadow-sm border-0" style="margin-top: 10px;">
+                                    <div class="card-header text-white bg-warning py-3"
+                                        style="padding: 8px 16px; margin-bottom: 0;" id="headerlelang">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-gavel fa-2x me-3"></i>
+                                            <h5 class="mb-0 flex-grow-1">Barang Akan Dilelang</h5>
+                                            <span class="badge bg-light text-warning">
+                                                <%= akanLelang.length %> Barang
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding: 0">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover align-middle text-center" style="margin: 0;"
+                                                id="tabellelang">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th class="px-4 py-3 text-center" style="padding: 6px;">ID
+                                                            Barang</th>
+                                                        <th class="px-4 py-3 text-center" style="padding: 6px;">Nama
+                                                            Barang</th>
+                                                        <th class="px-4 py-3 text-center" style="padding: 6px;">Harga
+                                                            Awal</th>
+                                                        <th class="px-4 py-3 text-center" style="padding: 6px;">Status Konfirmasi Atasan</th>   
+                                                        <th class="px-4 py-3 text-center" style="padding: 6px;">Aksi
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% akanLelang.forEach(item=> { %>
+                                                        <tr>
+                                                            <td style="padding: 6px;">
+                                                                <%= item.id_barang %>
+                                                            </td>
+                                                            <td style="padding: 6px;">
+                                                                <%= item.nama_barang %>
+                                                            </td>
+                                                            <td style="padding: 6px;">Rp <%=
+                                                                    item.harga_barang.toLocaleString() %>
+                                                            </td>
+                                                            
+                                                            <td style="padding: 6px;">
+                                                                <%= item.status_konfirmasi_atasan %>
+                                                            </td>
+                                                            <td style="padding: 6px;">
+                                                                <div class="btn-group">
+                                                                    <% if(item.status_barang === 'lelang' || item.status_barang === 'ditolak atasan') { %>
+                                                                        <button
+                                                                            class="btn btn-primary btn-sm konfirmasi-lelang"
+                                                                            style="padding: 4px 8px;"
+                                                                            data-id="<%= item.id_barang %>"
+                                                                            data-harga="<%= item.harga_barang %>">
+                                                                            Konfirmasi
+                                                                        </button>
+                                                                        <button class="btn btn-danger btn-sm batal-lelang"
+                                                                            style="padding: 4px 8px;"
+                                                                            data-id="<%= item.id_barang %>">
+                                                                            Batal
+                                                                        </button>
+                                                                    <% } else { %>
+                                                                        <span class="badge bg-secondary">Menunggu Konfirmasi Atasan</span>
+                                                                    <% } %>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-4 shadow-sm border-0">
+                                    <div class="card-header text-white bg-info py-3" id="headerlelang">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-clock fa-2x me-3"></i>
+                                            <h5 class="mb-0 flex-grow-1">Dalam Proses Lelang</h5>
+                                            <span class="badge bg-light text-info">
+                                                <%= prosesLelang.length %> Proses
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding: 0">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover align-middle text-center" id="tabellelang">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th class="px-4 py-3 text-center">ID Barang</th>
+                                                        <th class="px-4 py-3 text-center">Nama Barang</th>
+                                                        <th class="px-4 py-3 text-center">Harga Lelang</th>
+                                                        <th class="px-4 py-3 text-center">Sisa Waktu</th>
+                                                        <th class="px-4 py-3 text-center">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% prosesLelang.forEach(item=> { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= item.id_barang %>
+                                                            </td>
+                                                            <td>
+                                                                <%= item.nama_barang %>
+                                                            </td>
+                                                            <td>Rp <%= item.harga_lelang.toLocaleString() %>
+                                                            </td>
+                                                            <td>
+                                                                <span id="timer-<%= item.id_barang %>"
+                                                                    data-start-time="<%= item.waktu_mulai %>"
+                                                                    data-end-time="<%= item.waktu_selesai %>">
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <button class="btn btn-warning btn-sm edit-lelang"
+                                                                        data-id="<%= item.id_barang %>"
+                                                                        data-harga="<%= item.harga_lelang %>"
+                                                                        data-waktu-selesai="<%= item.waktu_selesai ? new Date(item.waktu_selesai).toISOString().slice(0, 16) : '' %>">
+                                                                        <i class="fas fa-edit me-1"></i>
+                                                                    </button>
+
+                                                                    <button class="btn btn-danger btn-sm hapus-lelang"
+                                                                        data-id="<%= item.id_barang %>">
+                                                                        <i class="fas fa-trash me-1"></i>
+                                                                    </button>
+
+                                                                    <button
+                                                                        class="btn btn-success btn-sm selesai-lelang ms-2"
+                                                                        style="padding: 4px 12px;"
+                                                                        data-id="<%= item.id_barang %>">
+                                                                        <i class="fas fa-check me-1"></i>Selesai
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
+                <%- include('partials/footer') %>
+            </div>
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+            <%- include('partials/scripts') %>
+</body>
+
+</html>

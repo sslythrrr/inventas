@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Riwayat Notifikasi</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <%- include('partials/sidebar') %>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+                        <div class="card" style="border: 0px; margin-top:-20px; margin-left:10px;margin-right:10px">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 text-nowrap">
+                                        <div id="dataTable_length" class="d-flex align-items-center" aria-controls="dataTable">
+                                            <select class="form-select-sm me-3" id="entriesSelect" onchange="changeEntries(this.value)" style="width: auto;">
+                                                <option value="10" <%= limit == 10 ? 'selected' : '' %>>10</option>
+                                                <option value="25" <%= limit == 25 ? 'selected' : '' %>>25</option>
+                                                <option value="50" <%= limit == 50 ? 'selected' : '' %>>50</option>
+                                                <option value="100" <%= limit == 100 ? 'selected' : '' %>>100</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table table-success">
+                                        <thead>
+                                            <tr>
+                                                <th class="px-4 py-3 text-center" style="width: 20%;">Waktu</th>
+                                                <th class="px-4 py-3 text-center" style="width: 15%;">ID Barang</th>
+                                                <th class="px-4 py-3 text-center" style="width: 15%;">Tipe Notifikasi</th>
+                                                <th class="px-4 py-3 text-center">Pesan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% notifications.forEach(notification => { %>
+                                                <tr>
+                                                    <td><%= notification.waktu_dibuat %></td>
+                                                    <td><%= notification.id_barang %></td>
+                                                    <td><%= notification.tipe_notifikasi %></td>
+                                                    <td><%= notification.pesan %></td>
+                                                </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-6 align-self-center">
+                                        <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                            Menampilkan <%= (currentPage - 1) * limit + 1 %> - <%= Math.min(currentPage * limit, totalData) %> dari <%= totalData %>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                            <ul class="pagination">
+                                                <% if (currentPage > 1) { %>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/r_notif?page=<%= currentPage - 1 %>" aria-label="Previous">
+                                                            <span aria-hidden="true">«</span>
+                                                        </a>
+                                                    </li>
+                                                <% } else { %>
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Previous">
+                                                            <span aria-hidden="true">«</span>
+                                                        </a>
+                                                    </li>
+                                                <% } %>
+
+                                                <% for (let i=1; i <= totalPages; i++) { %>
+                                                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                                        <a class="page-link" href="/r_notif?page=<%= i %>">
+                                                            <%= i %>
+                                                        </a>
+                                                    </li>
+                                                <% } %>
+
+                                                <% if (currentPage < totalPages) { %>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/r_notif?page=<%= currentPage + 1 %>" aria-label="Next">
+                                                            <span aria-hidden="true">»</span>
+                                                        </a>
+                                                    </li>
+                                                <% } else { %>
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Next">
+                                                            <span aria-hidden="true">»</span>
+                                                        </a>
+                                                    </li>
+                                                <% } %>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('partials/footer') %>
+                </div>
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            </div>
+            <%- include('partials/scripts') %>
+</body>
+</html>

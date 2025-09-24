@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Data Barang</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amethysta&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <%- include('partials/sidebar') %>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+                        <div class="container-fluid">
+
+                            <div class="card" style="border: 0px; margin-top:-20px">
+                                <div class="card-body" style="width: 105%;margin-left:-30px">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-8 text-nowrap d-flex align-items-center">
+                                            <div id="dataTable_length" class="d-flex align-items-center"
+                                                aria-controls="dataTable">
+                                                <select class="form-select-sm me-3" id="entriesSelect"
+                                                    onchange="changeEntries(this.value)" style="width: auto;">
+                                                    <option value="10" <%=limit==10 ? 'selected' : '' %>>10</option>
+                                                    <option value="25" <%=limit==25 ? 'selected' : '' %>>25</option>
+                                                    <option value="50" <%=limit==50 ? 'selected' : '' %>>50</option>
+                                                    <option value="100" <%=limit==100 ? 'selected' : '' %>>100</option>
+                                                </select>
+                                                <select class="form-select-sm" id="sortSelect"
+                                                    onchange="sortByDate(this.value)" style="width: auto;">
+                                                    <option value="DESC" <%=sortField==='waktu_masuk' &&
+                                                        sortOrder==='DESC' ? 'selected' : '' %>>Terbaru</option>
+                                                    <option value="ASC" <%=sortField==='waktu_masuk' &&
+                                                        sortOrder==='ASC' ? 'selected' : '' %>>Terlama</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 d-flex justify-content-end">
+
+                                            <% if (role !=='atasan' ) { %>
+                                                <button type="button" class="btn btn-primary me-2"
+                                                    data-bs-toggle="modal" data-bs-target="#addBarangModal"
+                                                    style="background: #1cda18;">
+                                                    <i class="fas fa-plus me-2"></i>Buat Baru
+                                                </button>
+                                                <% } %>
+
+                                                    <button type="button" class="btn btn-secondary" id="printBtn">
+                                                        <i class="fas fa-print me-2"></i>Cetak
+                                                    </button>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <% if (searchQuery) { %>
+                                            <div class="search-info">
+                                                <p>Menampilkan hasil pencarian untuk: "<%= searchQuery %>"</p>
+                                                <a href="/barang" class="clear-search">Tampilkan Semua</a>
+                                            </div>
+                                            <% } %>
+
+                                                <table class="table table-hover align-middle border-separate"
+                                                    id="dataTable">
+                                                    <thead>
+                                                        <tr class="bg-light">
+                                                            <th
+                                                                class="px-4 py-3 text-sm font-semibold tracking-wide text-left">
+                                                                ID Barang
+                                                            </th>
+                                                            <th
+                                                                class="px-4 py-3 text-sm font-semibold tracking-wide text-left">
+                                                                Nama Barang
+                                                            </th>
+                                                            <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left sortable"
+                                                                data-field="kategori"
+                                                                data-current-sort="<%= sortField %>"
+                                                                data-current-order="<%= sortOrder %>">
+                                                                Kategori
+                                                                <% if (sortField==='kategori' ) { %>
+                                                                    <i
+                                                                        class="fas fa-sort-<%= sortOrder.toLowerCase() === 'asc' ? 'up' : 'down' %>"></i>
+                                                                    <% } else { %>
+                                                                        <i class="fas fa-sort"></i>
+                                                                        <% } %>
+                                                            </th>
+                                                            <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left sortable"
+                                                                data-field="lokasi_barang"
+                                                                data-current-sort="<%= sortField %>"
+                                                                data-current-order="<%= sortOrder %>">
+                                                                Lokasi
+                                                                <% if (sortField==='lokasi_barang' ) { %>
+                                                                    <i
+                                                                        class="fas fa-sort-<%= sortOrder.toLowerCase() === 'asc' ? 'up' : 'down' %>"></i>
+                                                                    <% } else { %>
+                                                                        <i class="fas fa-sort"></i>
+                                                                        <% } %>
+                                                            </th>
+                                                            <th
+                                                                class="px-4 py-3 text-sm font-semibold tracking-wide text-left">
+                                                                Pemilik
+                                                            </th>
+                                                            <th
+                                                                class="px-4 py-3 text-sm font-semibold tracking-wide text-center">
+                                                                Masa Lelang
+                                                            </th>
+                                                            <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left sortable"
+                                                                data-field="status_barang"
+                                                                data-current-sort="<%= sortField %>"
+                                                                data-current-order="<%= sortOrder %>">
+                                                                Status
+                                                                <% if (sortField==='status_barang' ) { %>
+                                                                    <i
+                                                                        class="fas fa-sort-<%= sortOrder.toLowerCase() === 'asc' ? 'up' : 'down' %>"></i>
+                                                                    <% } else { %>
+                                                                        <i class="fas fa-sort"></i>
+                                                                        <% } %>
+                                                            </th>
+                                                            <th
+                                                                class="px-4 py-3 text-sm font-semibold tracking-wide text-center">
+                                                                Opsi
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="bg-white divide-y">
+                                                        <% if(barang.length> 0) { %>
+                                                            <% barang.forEach(item=> { %>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%= item.id_barang %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.nama_barang %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.kategori %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.lokasi_barang %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.nama_karyawan %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.masa_lelang==null ? '-' :
+                                                                            item.masa_lelang %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <% let statusClass='' , statusText='' ;
+                                                                            switch(item.status_barang) { case 'tersedia'
+                                                                            : statusClass='bg-success' ;
+                                                                            statusText='Tersedia' ; break; case 'lelang'
+                                                                            : statusClass='bg-warning' ;
+                                                                            statusText='Menunggu' ; break; case 'jual' :
+                                                                            statusClass='bg-danger' ; statusText='Jual'
+                                                                            ; break; case 'proses' :
+                                                                            statusClass='bg-primary' ;
+                                                                            statusText='Sedang Lelang' ; break;
+                                                                            case 'diproses atasan' :
+                                                                            statusClass='bg-primary' ;
+                                                                            statusText='Diproses Atasan' ; break;
+                                                                            case 'ditolak atasan' :
+                                                                            statusClass='bg-danger' ;
+                                                                            statusText='Ditolak Atasn' ; break; default:
+                                                                            statusClass='bg-secondary' ;
+                                                                            statusText='Tidak Diketahui' ; } %>
+                                                                            <span
+                                                                                class="badge <%= statusClass %> text-white px-3 py-1 rounded-pill">
+                                                                                <%= statusText %>
+                                                                            </span>
+                                                                    </td>
+
+                                                                    <% if (role !=='atasan' ) { %>
+                                                                        <td>
+                                                                            <div class="btn-group" role="group">
+                                                                                <button class="btn btn-white btn-sm"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#editBarangModal"
+                                                                                    title="Edit"
+                                                                                    onclick="getBarangDetail('<%= item.id_barang %>')">
+                                                                                    <i class="fas fa-ellipsis-v"></i>
+                                                                                </button>
+                                                                                <button class="btn btn-danger btn-sm"
+                                                                                    data-bs-toggle="popup" title="Hapus"
+                                                                                    onclick="confirmDelete('<%= item.id_barang %>')">
+                                                                                    <i class="fas fa-trash"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                        <% } else { %>
+                                                                            <td>
+                                                                                <button class="btn btn-info btn-sm"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#detailBarangModal"
+                                                                                    title="Detail"
+                                                                                    onclick="showDetailBarang('<%= item.id_barang %>')">
+                                                                                    <i class="fas fa-info-circle"></i>
+                                                                                    Detail
+                                                                                </button>
+                                                                            </td>
+                                                                            <% } %>
+                                                                </tr>
+                                                                <% }); %>
+                                                                    <% } else { %>
+                                                                        <tr>
+                                                                            <td colspan="8"
+                                                                                class="px-4 py-8 text-center text-gray-500">
+                                                                                <i
+                                                                                    class="fas fa-box-open fa-2x mb-2"></i>
+                                                                                <p>Tidak ada data tersedia</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                    </div>
+                                    <div class="row" style="margin-top: 20px;">
+                                        <div class="col-md-6 align-self-center">
+                                            <p id="dataTable_info" class="dataTables_info" role="status"
+                                                aria-live="polite">
+                                                Menampilkan <%= (currentPage - 1) * limit + 1 %> - <%=
+                                                        Math.min(currentPage * limit, totalData) %> dari <%= totalData
+                                                            %>
+                                            </p>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <nav
+                                                class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                                <ul class="pagination">
+                                                    <% if (currentPage> 1) { %>
+                                                        <li class="page-item">
+                                                            <a class="page-link"
+                                                                href="/barang?page=<%= currentPage - 1 %>"
+                                                                aria-label="Previous">
+                                                                <span aria-hidden="true">«</span>
+                                                            </a>
+                                                        </li>
+                                                        <% } else { %>
+                                                            <li class="page-item disabled">
+                                                                <a class="page-link" href="#" aria-label="Previous">
+                                                                    <span aria-hidden="true">«</span>
+                                                                </a>
+                                                            </li>
+                                                            <% } %>
+
+                                                                <% // Calculate pagination range let startPage, endPage;
+                                                                    let maxVisiblePages=5; if (totalPages
+                                                                    <=maxVisiblePages) { startPage=1;
+                                                                    endPage=totalPages; } else { if (currentPage <=3) {
+                                                                    startPage=1; endPage=maxVisiblePages; } else if
+                                                                    (currentPage + 2>= totalPages) {
+                                                                    startPage = totalPages - maxVisiblePages + 1;
+                                                                    endPage = totalPages;
+                                                                    } else {
+                                                                    startPage = currentPage - 2;
+                                                                    endPage = currentPage + 2;
+                                                                    }
+                                                                    }
+                                                                    %>
+
+                                                                    <!-- First page if not in range -->
+                                                                    <% if (startPage> 1) { %>
+                                                                        <li class="page-item">
+                                                                            <a class="page-link"
+                                                                                href="/barang?page=1">1</a>
+                                                                        </li>
+                                                                        <% if (startPage> 2) { %>
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link">...</span>
+                                                                            </li>
+                                                                            <% } %>
+                                                                                <% } %>
+
+                                                                                    <!-- Page numbers in range -->
+                                                                                    <% for (let i=startPage; i
+                                                                                        <=endPage; i++) { %>
+                                                                                        <li
+                                                                                            class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                                                                            <a class="page-link"
+                                                                                                href="/barang?page=<%= i %>">
+                                                                                                <%= i %>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <% } %>
+
+                                                                                            <!-- Last page if not in range -->
+                                                                                            <% if (endPage < totalPages)
+                                                                                                { %>
+                                                                                                <% if (endPage <
+                                                                                                    totalPages - 1) { %>
+                                                                                                    <li
+                                                                                                        class="page-item disabled">
+                                                                                                        <span
+                                                                                                            class="page-link">...</span>
+                                                                                                    </li>
+                                                                                                    <% } %>
+                                                                                                        <li
+                                                                                                            class="page-item">
+                                                                                                            <a class="page-link"
+                                                                                                                href="/barang?page=<%= totalPages %>">
+                                                                                                                <%= totalPages
+                                                                                                                    %>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                        <% } %>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="addBarangModal" tabindex="-1"
+                                aria-labelledby="addBarangModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="addBarangModalLabel">Tambah Barang Baru</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form id="addBarangForm" action="/barang" method="POST"
+                                            enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">ID Barang</label>
+                                                        <input type="text" class="form-control" name="id_barang"
+                                                            required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Nama Barang</label>
+                                                        <input type="text" class="form-control" name="nama_barang"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Gambar Barang</label>
+                                                        <input type="file" class="form-control" name="gambar_barang">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Tanggal Perolehan</label>
+                                                        <input type="datetime-local" class="form-control"
+                                                            name="waktu_masuk"
+                                                            value="<%= tanggal.formatDateTimeLocal(new Date()) %>"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Deskripsi Barang</label>
+                                                    <textarea class="form-control" name="deskripsi_barang"
+                                                        rows="3"></textarea>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Kategori</label>
+                                                        <select class="form-select" name="kategori" required>
+                                                            <option value="">Pilih Kategori</option>
+                                                            <option value="Elektronik">Elektronik</option>
+                                                            <option value="Furniture">Furniture</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Lokasi Barang</label>
+                                                        <input type="text" class="form-control" name="lokasi_barang"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Harga Barang</label>
+                                                        <input type="text" class="form-control input-harga"
+                                                            name="harga_barang" required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Status Barang</label>
+                                                        <select class="form-select" name="status_barang" required>
+                                                            <option value="tersedia">Tersedia</option>
+                                                            <option value="lelang">Lelang</option>
+                                                            <option value="jual">Jual</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Kondisi Barang</label>
+                                                        <select class="form-select" name="kondisi_barang" required>
+                                                            <option value="sangat baik">Sangat Baik</option>
+                                                            <option value="baik">Baik</option>
+                                                            <option value="kurang baik">Kurang Baik</option>
+                                                            <option value="rusak">Rusak</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Pemilik</label>
+                                                        <select class="form-select" name="id_karyawan" required>
+                                                            <option value="">Pilih Pemilik</option>
+                                                            <% karyawan.forEach(function(k) { %>
+                                                                <option value="<%= k.id_karyawan %>">
+                                                                    <%= k.nama_karyawan %>
+                                                                </option>
+                                                                <% }); %>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    id="submitBarang">Simpan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Detail Barang (khusus atasan) -->
+                            <div class="modal fade" id="detailBarangModal" tabindex="-1"
+                                aria-labelledby="detailBarangModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="detailBarangModalLabel">Detail Barang</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">Nama Barang</dt>
+                                                <dd class="col-sm-8" id="detailNamaBarang"></dd>
+                                                <dt class="col-sm-4">Kategori</dt>
+                                                <dd class="col-sm-8" id="detailKategori"></dd>
+                                                <dt class="col-sm-4">Lokasi</dt>
+                                                <dd class="col-sm-8" id="detailLokasi"></dd>
+                                                <dt class="col-sm-4">Pemilik</dt>
+                                                <dd class="col-sm-8" id="detailPemilik"></dd>
+                                                <dt class="col-sm-4">Status</dt>
+                                                <dd class="col-sm-8" id="detailStatus"></dd>
+                                                <dt class="col-sm-4">Masa Lelang</dt>
+                                                <dd class="col-sm-8" id="detailMasaLelang"></dd>
+                                                <dt class="col-sm-4">Harga</dt>
+                                                <dd class="col-sm-8" id="detailHarga"></dd>
+                                            </dl>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="editBarangModal" tabindex="-1"
+                                aria-labelledby="editBarangModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-bottom">
+                                            <div class="d-flex flex-column">
+                                                <h5 class="modal-title mb-0" id="editBarangModalLabel">
+                                                    <span class="text-small" id="id_display"></span>
+                                                </h5>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form id="editBarangForm" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                <input type="hidden" name="id_barang" id="id_barang">
+                                                <div class="row">
+                                                    <div class="col-md-6 text-center position-relative">
+                                                        <div class="image-upload-container shadow-sm"
+                                                            style="width: 200px; height: 200px; cursor: pointer; border-radius: 10px; overflow: hidden; border: 2px dashed #dee2e6; margin: 0 auto;">
+                                                            <img id="previewImage" src="/placeholder-image.jpg"
+                                                                alt="Preview"
+                                                                class="img-fluid w-100 h-100 object-fit-cover">
+                                                            <div class="image-upload-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                                                                style="background: rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.3s;">
+                                                                <i class="fas fa-camera text-white fs-3"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" name="gambar_barang" id="gambar_barang"
+                                                            class="d-none">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" name="nama_barang" class="form-control"
+                                                                id="nama_barang" required>
+                                                            <label for="nama_barang">Nama Barang</label>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <textarea name="deskripsi_barang" class="form-control"
+                                                                id="deskripsi_barang" style="height: 100px"></textarea>
+                                                            <label for="deskripsi_barang">Deskripsi</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row g-3 mt-3">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" name="lokasi_barang" class="form-control"
+                                                                id="lokasi_barang">
+                                                            <label for="lokasi_barang">Lokasi</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" name="harga_barang" class="form-control"
+                                                                id="harga_barang">
+                                                            <label for="harga_barang">Harga Barang</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <select name="kategori" class="form-select" id="kategori">
+                                                                <option value="Elektronik">Elektronik</option>
+                                                                <option value="Furniture">Furniture</option>
+                                                            </select>
+                                                            <label for="kategori">Kategori</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <select name="kondisi_barang" class="form-select" required
+                                                                id="kondisi_barang">
+                                                                <option value="">Pilih Kondisi</option>
+                                                                <option value="sangat baik">Sangat Baik</option>
+                                                                <option value="baik">Baik</option>
+                                                                <option value="kurang baik">Kurang Baik</option>
+                                                                <option value="rusak">Rusak</option>
+                                                            </select>
+                                                            <label>Kondisi Barang</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <select name="id_karyawan" class="form-select"
+                                                                id="pemilikBarang" required>
+                                                                <% karyawan.forEach(function(data) { %>
+                                                                    <option value="<%= data.id_karyawan %>"
+                                                                        <%=data.id_karyawan===karyawan.id_karyawan
+                                                                        ? 'selected' : '' %>><%= data.nama_karyawan %>
+                                                                    </option>
+                                                                    <% }); %>
+                                                            </select>
+                                                            <label for="pemilikBarang">Pemilik</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <select name="status_barang" class="form-select"
+                                                                id="status_barang">
+                                                                <option value="tersedia">Tersedia</option>
+                                                                <option value="lelang">Lelang</option>
+                                                                <option value="jual">Jual</option>
+                                                            </select>
+                                                            <label for="status_barang">Status Barang</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3">
+                                                    <p class="text-muted mb-1">Tanggal Perolehan:</p>
+                                                    <p class="fw" id="waktu_masuk"></p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer border-top">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                                                    <i class="fas fa-times me-1"></i>Tutup
+                                                </button>
+                                                <button type="submit" class="btn btn-dark">
+                                                    <i class="fas fa-save me-1"></i>Simpan Perubahan
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+                                aria-labelledby="confirmDeleteLabel" aria-hidden="true" style="top: 25%;
+align-items: center;
+justify-content: center;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteLabel">Konfirmasi Hapus</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah Anda yakin ingin menghapus barang ini beserta data terkait?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-danger"
+                                                id="deleteConfirmBtn">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <%- include('partials/footer') %>
+            </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <%- include('partials/scripts') %>
+        <script>window.role = '<%= role %>';</script>
+</body>
+
+</html>

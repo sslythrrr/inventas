@@ -1,0 +1,143 @@
+<nav class="navbar navbar-expand bg-white topbar mb-4 static-top">
+    <div class="container-fluid">
+        <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h4 class="h4 mb-0 text-gray-800 d-none d-sm-inline-block" style="font-weight: 700;">
+            <% if (locals.userRole === 'atasan') { %>
+                <%= locals.url.includes('/atasan/lelang') ? 'MANAJEMEN LELANG ATASAN' : locals.url.includes('/dashboard') ? 'DASHBOARD' : locals.url.includes('/barang') ? 'DATA BARANG' :
+                    locals.url.includes('/pemilik') ? 'PEMILIK BARANG'
+                    : locals.url.includes('/mutasi') ? 'MUTASI BARANG' : locals.url.includes('/karyawan')
+                    ? 'DAFTAR KARYAWAN' : locals.url.includes('/penjualan')
+                    ? 'DATA PENJUALAN' : locals.url.includes('/jual')
+                    ? 'JUAL BARANG' : locals.url.includes('/profil') ? 'PROFIL ADMIN' : locals.url.includes('/logadmin')
+                    ? 'LOG AKTIVITAS' : 'DASHBOARD' %>
+            <% } else { %>
+                <%= locals.url.includes('/dashboard') ? 'DASHBOARD' : locals.url.includes('/barang') ? 'DATA BARANG' :
+                    locals.url.includes('/pemilik') ? 'PEMILIK BARANG' : locals.url.includes('/lelang') ? 'MANAJEMEN LELANG'
+                    : locals.url.includes('/mutasi') ? 'MUTASI BARANG' : locals.url.includes('/karyawan')
+                    ? 'DAFTAR KARYAWAN' : locals.url.includes('/penjualan')
+                    ? 'DATA PENJUALAN' : locals.url.includes('/jual')
+                    ? 'JUAL BARANG' : locals.url.includes('/profil') ? 'PROFIL ADMIN' : locals.url.includes('/logadmin')
+                    ? 'LOG AKTIVITAS' : 'DASHBOARD' %>
+            <% } %>
+        </h4>
+        <form class=" d-sm--block ms-auto me-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input class="form-control bg-light border-2 small" type="text" placeholder="Cari..."
+                    value="<%= locals.searchQuery || '' %>">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </form>
+        <ul class="navbar-nav align-items-center">
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle p-2" href="#" id="alertsDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bell fa-lg"></i>
+                    <span
+                        class="badge bg-danger badge-counter position-absolute top-10 start-95 translate-middle"></span>
+                </a>
+                <div class="dropdown-list dropdown-menu dropdown-menu-end animated--grow-in"
+                    aria-labelledby="alertsDropdown" style="min-width: 300px; max-width: 400px;">
+                    <div class="dropdown-header bg-primary py-3 px-4 d-flex justify-content-between align-items-center">
+                        <span class="text-white fw-bold">Notifikasi</span>
+                        <button class="btn btn-link btn-sm text-white text-decoration-none p-0"
+                            onclick="markAllNotificationsAsRead()">
+                            <small>Tandai Semua Dibaca</small>
+                        </button>
+                    </div>
+                    <div class="notifications-container" style="max-height: 400px; overflow-y: auto;">
+                        <div class="text-center p-4 loading-indicator">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <span class="d-none d-lg-inline text-gray-600 small me-2">
+                        <% if (locals.userRole === 'atasan') { %>
+                            <%= locals.atasanData ? atasanData.nama_atasan : 'Atasan' %>
+                        <% } else { %>
+                            <%= locals.adminData ? adminData.username : 'Admin' %>
+                        <% } %>
+                    </span>
+                    <img class="img-profile rounded-circle"
+                        src="<%= locals.adminData && adminData.foto ? `profil/photo/${adminData.id_admin}` : '/img/avatars/pfp.jpg' %>"
+                        style="width: 32px; height: 32px; object-fit: cover;">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end custom-dropdown">
+                    <% if (locals.userRole === 'atasan') { %>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/atasan/lelang')) ? 'active' : '' %>"
+                            href="/atasan/lelang">
+                            <i class="fas fa-gavel fa-sm fa-fw me-2 text-gray-400"></i>
+                            Manajemen Lelang
+                        </a>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/profil')) ? 'active' : '' %>"
+                            href="/profil">
+                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                            Profil Atasan
+                        </a>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/logadmin')) ? 'active' : '' %>"
+                            href="/logadmin">
+                            <i class="fas fa-history fa-sm fa-fw me-2 text-gray-400"></i>
+                            Log Aktivitas
+                        </a>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/riwayat_notifikasi')) ? 'active' : '' %>"
+                            href="/r_notif">
+                            <i class="fas fa-history fa-sm fa-fw me-2 text-gray-400"></i>
+                            Riwayat Notifikasi
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <form action="/atasan/logout" method="GET" style="display: inline;" onsubmit="return handleLogout()">
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                Logout
+                            </button>
+                        </form>
+                    <% } else { %>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/profil')) ? 'active' : '' %>"
+                            href="/profil">
+                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                            Profil Admin
+                        </a>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/logadmin')) ? 'active' : '' %>"
+                            href="/logadmin">
+                            <i class="fas fa-history fa-sm fa-fw me-2 text-gray-400"></i>
+                            Log Aktivitas
+                        </a>
+                        <a class="dropdown-item <%= (locals.url && url.includes('/riwayat_notifikasi')) ? 'active' : '' %>"
+                            href="/r_notif">
+                            <i class="fas fa-history fa-sm fa-fw me-2 text-gray-400"></i>
+                            Riwayat Notifikasi
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <form action="/logout" method="POST" style="display: inline;" onsubmit="return handleLogout()">
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                Logout
+                            </button>
+                        </form>
+                    <% } %>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script>
+    function handleLogout() {
+    const currentUser = document.querySelector('span.text-gray-600')?.textContent?.trim();
+    Object.keys(sessionStorage).forEach(key => {
+        if (key.startsWith('chatbot_') || key === 'current_chat_key') {
+            sessionStorage.removeItem(key);
+        }
+    });
+    return true;
+}
+</script>

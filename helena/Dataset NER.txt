@@ -1,0 +1,7425 @@
+Berapa O
+harga B-price
+kursi B-item
+rapat I-item
+
+Harga B-price
+kursi B-item
+rapat I-item
+adalah O
+1.000.000 B-price
+
+Harga B-price
+printer B-item
+adalah O
+2.500.000 B-price
+
+Harga B-price
+laptop B-item
+adalah O
+5.000.000 B-price
+
+Berapa O
+harga B-price
+printer B-item
+
+Printer B-item
+harganya B-price
+berapa O
+
+Harga B-price
+printer B-item
+berapa O
+
+Tolong O
+cek O
+harga B-price
+kursi B-item
+rapat I-item
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Saya O
+ingin O
+tahu O
+harga B-price
+kursi B-item
+rapat I-item
+
+Harga B-price
+kursi B-item
+rapat I-item
+sekarang O
+berapa O
+
+Harga B-price
+printer B-item
+sekarang O
+berapa O
+
+Harga B-price
+laptop B-item
+sekarang O
+berapa O
+
+Harga B-price
+lemari B-item
+besi I-item
+berapa O
+
+Harga B-price
+meja B-item
+kerja I-item
+berapa O
+
+Harga B-price
+proyektor B-item
+berapa O
+
+Harga B-price
+scanner B-item
+berapa O
+
+Harga B-price
+layar B-item
+proyektor I-item
+berapa O
+
+Harga B-price
+lemari B-item
+rak I-item
+dokumen I-item
+berapa O
+
+Harga B-price
+laptop B-item
+HP I-item
+280 I-item
+G4 I-item
+PCI I-item
+berapa O
+
+Cek O
+harga B-price
+meja B-item
+rapat I-item
+
+Cek O
+harga B-price
+lemari B-item
+besi I-item
+dong O
+
+Harga B-price
+proyektor B-item
+itu O
+berapa O
+ya O
+
+Saya O
+ingin O
+tahu O
+harga B-price
+kursi B-item
+kerja I-item
+
+Proyektor B-item
+itu O
+harga B-price
+berapaan O
+
+Mau O
+tanya O
+printer B-item
+harganya B-price
+brp O
+
+Itu O
+proyektor B-item
+berapa O
+duit B-price
+ya O
+
+Kasih O
+tau O
+dong O
+harga B-price
+mesin B-item
+scanner I-item
+
+Bisa O
+kasih O
+tau O
+harga B-price
+laptop B-item
+
+Lemari B-item
+kantor I-item
+itu O
+kisaran O
+harga B-price
+berapa O
+
+Cek O
+harga B-price
+layar B-item
+proyektor I-item
+dong O
+
+Tolong O
+infoin O
+harga B-price
+lemari B-item
+rak I-item
+dokumen I-item
+
+Laptop B-item
+HP I-item
+280 I-item
+G4 I-item
+PCI I-item
+harga B-price
+nya O
+brp O
+ya O
+
+Status B-status
+lemari B-item
+itu O
+apa O
+ya O
+
+Udah O
+di O
+lelang B-status
+belum O
+meja B-item
+kerja I-item
+
+Barang O
+masih O
+ada B-status
+atau O
+udah O
+dijual B-status
+
+Cek O
+status B-status
+laptop B-item
+dong O
+
+Masih O
+tersedia B-status
+nggak O
+kursi B-item
+direktur I-item
+
+Meja B-item
+kerja I-item
+udah O
+laku O
+atau O
+masih O
+ada B-status
+
+Barang O
+status B-status
+nya O
+apa O
+sekarang B-date
+
+Laptop B-item
+itu O
+masih O
+ada B-status
+nggak O
+
+Kursi B-item
+direktur I-item
+masih O
+tersedia B-status
+nggak O
+
+Meja B-item
+kerja I-item
+itu O
+masih O
+ada B-status
+
+Itu O
+barang O
+gimana O
+status B-status
+nya O
+apa O
+
+Proyektor B-item
+masih O
+bisa O
+dipakai O
+nggak O
+
+Barang O
+lagi O
+status B-status
+apa O
+sekarang B-date
+
+Gimana O
+status B-status
+barang O
+Masih O
+ada B-status
+atau O
+udah O
+di O
+jual B-status
+
+Itu O
+printer B-item
+status B-status
+nya O
+apa O
+ya O
+
+Status B-status
+printer B-item
+gimana O
+
+Ada O
+berapa B-quantity
+unit O
+kursi B-item
+rapat I-item
+
+Jumlah B-quantity
+laptop B-item
+masih O
+tersedia B-status
+berapa O
+
+Tersisa O
+berapa B-quantity
+proyektor B-item
+
+Total B-quantity
+barang O
+ada O
+berapa O
+
+Stok B-quantity
+meja B-item
+kerja I-item
+masih O
+berapa O
+
+Berapa B-quantity
+banyak O
+kursi B-item
+rapat I-item
+yang O
+masih O
+ada B-status
+
+Laptop B-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+ya O
+
+Jumlah O
+proyektor B-item
+yang O
+ada O
+sekarang B-date 
+berapa B-quantity
+
+Ada O
+berapa B-quantity
+unit O
+yang O
+masih O
+tersedia B-status
+
+Stok B-quantity
+meja B-item
+kerja I-item
+sekarang B-date
+tinggal O
+berapa O
+
+Masih O
+ada O
+berapa B-quantity
+unit O
+kursi B-item
+kerja I-item
+
+Berapa O
+banyak O
+stok B-quantity
+barang O
+yang O
+tersedia O
+
+Jumlah B-quantity
+barang O
+masih O
+ada O
+berapa O
+unit O
+
+Proyektor B-item
+masih O
+ada O
+berapa B-quantity
+unit O
+sih O
+
+Tersisa O
+berapa B-quantity
+meja B-item
+rapat I-item
+di O
+lantai B-location
+1 I-location
+
+Stok B-quantity
+masih O
+ada O
+berapa O
+
+Berapa O
+jumlah B-quantity
+kursi B-item
+rapat I-item
+yang O
+ada O
+sekarang B-date
+
+Ada O
+berapa B-quantity
+unit O
+barang O
+di O
+lantai B-location
+2 I-location
+
+Jumlah B-quantity
+meja B-item
+kerja I-item
+di O
+lantai B-location
+2 I-location
+tinggal O
+berapa O
+
+Laptop B-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+unit O
+lagi O
+
+Kursi B-item
+rapat I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+ya O
+
+Barang O
+sekarang B-date
+tinggal O
+berapa B-quantity
+unit O
+
+Tersisa O
+berapa B-quantity
+unit O
+barang O
+yang O
+bisa O
+di O
+lelang B-status
+
+Masih O
+ada O
+unit O
+kan O
+
+Barang O
+yang O
+tersisa O
+masih O
+berapa B-quantity
+
+Disimpan O
+dimana B-location
+lemari B-item
+besi I-item
+
+Lokasi B-location
+penyimpanan O
+meja B-item
+mana O
+ya O
+
+Cari O
+lokasi B-location
+proyektor B-item
+dong O
+
+Kursi B-item
+direktur I-item
+ada O
+dimana B-location
+
+Dimana O
+lokasi B-location
+laptop B-item
+kerja I-item
+disimpan O
+
+Dimana B-location
+barang B-item
+disimpan O
+
+Kursi B-item
+rapat I-item
+ada O
+di O
+lokasi B-location
+mana O
+
+Proyektor B-item
+disimpan O
+dimana B-location
+ya O
+
+Laptop B-item
+itu O
+ada O
+dimana B-location
+tempatnya O
+
+Dimana B-location
+meja B-item
+kerja I-item
+ini O
+disimpan O
+
+Tolong O
+cari O
+lokasi B-location
+lemari B-item
+besi I-item
+
+Lokasi B-location
+penyimpanan O
+kursi B-item
+direktur I-item
+ada O
+di O
+mana O
+
+Meja B-item
+rapat I-item
+ada O
+dimana B-location
+ya O
+disimpan O
+
+Laptop B-item
+kerja I-item
+itu O
+ada O
+dimana B-location
+
+Dimana O
+tempat B-location
+menyimpan O
+barang B-item
+
+Proyektor B-item
+itu O
+disimpan O
+di O
+ruangan B-location
+apa O
+
+Cari O
+tau O
+dong O
+tempat B-location
+penyimpanan O
+kursi B-item
+rapat I-item
+
+Dimana O
+tempat B-location
+barang B-item
+disimpan O
+
+Barang B-item
+simpan O
+dimana B-location
+ya O
+
+Meja B-item
+kerja I-item
+ada O
+di O
+tempat B-location
+apa O
+
+Tolong O
+cek O
+di O
+mana O
+posisi B-location
+kursi B-item
+direktur I-item
+
+Kursi B-item
+rapat I-item
+disimpan O
+di O
+ruangan B-location
+mana O
+
+Apakah O
+kursi B-item
+kerja I-item
+disimpan O
+di O
+ruangan B-location
+IT I-location
+
+Proyektor B-item
+ada O
+di O
+ruang B-location
+mana O
+
+Itu O
+barang B-item
+milik O
+siapa B-karyawan
+
+Siapa O
+pemilik B-karyawan
+laptop B-item
+ini O
+
+Laptop B-item
+ini O
+punya O
+siapa O
+ya O
+
+Cek O
+nama O
+pemilik B-karyawan
+meja B-item
+kerja I-item
+
+Barang B-item
+itu O
+punya O
+karyawan B-karyawan
+siapa O
+
+Siapa B-karyawan
+yang O
+punya O
+barang B-item
+ini O
+
+Laptop B-item
+ini O
+punya O
+siapa B-karyawan
+sih O
+
+Barang B-item
+dimiliki O
+oleh O
+siapa B-karyawan
+
+Pemilik B-karyawan
+kursi B-item
+rapat I-item
+siapa O
+
+Kursi B-item
+kerja I-item
+itu O
+punya O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+barang B-item
+ini O
+
+Pemilik B-karyawan
+proyektor B-item
+itu O
+siapa B-karyawan
+
+Laptop B-item
+ini O
+milik B-karyawan
+siapa O
+ya O
+
+Cek O
+dong O
+siapa B-karyawan
+pemilik B-karyawan
+meja B-item
+rapat I-item
+
+Barang B-item
+itu O
+milik O
+siapa B-karyawan
+
+Punya O
+siapa B-karyawan
+proyektor B-item
+itu O
+
+Meja B-item
+kerja I-item
+ini O
+milik O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+memiliki O
+barang B-item
+ini O
+
+Barang B-item
+ini O
+siapa B-karyawan
+yang O
+punya O
+ya O
+
+Punya O
+siapa B-karyawan
+kursi B-item
+direktur I-item
+ini O
+
+Pemilik B-karyawan
+barang B-item
+siapa O
+
+Apa O
+aja O
+barang B-item
+yang O
+akan O
+dilelang B-status
+
+Tampilkan O
+daftar O
+barang B-item
+lelang B-status
+
+Barang B-item
+apa O
+saja O
+yang O
+masuk O
+lelang B-status
+bulan B-date
+ini O
+
+Ada O
+barang B-item
+lelang B-status
+minggu B-date
+ini O
+
+Tolong O
+info O
+barang B-item
+yang O
+mau O
+dilelang B-status
+
+Daftar O
+barang B-item
+yang O
+mau O
+dilelang B-status
+dong O
+
+Barang B-item
+yang O
+akan O
+dilelang B-status
+ada O
+apa O
+aja O
+
+Ada O
+barang B-item
+yang O
+bakal O
+dilelang B-status
+minggu B-date
+ini O
+
+Info O
+dong O
+barang B-item
+apa O
+saja O
+yang O
+mau O
+dilelang B-status
+
+Tolong O
+beri O
+tau O
+barang B-item
+lelang B-status
+yang O
+tersedia B-status
+
+Barang B-item
+lelang B-status
+apa O
+yang O
+bakal O
+dilelang B-status
+minggu B-date
+ini O
+
+Ada O
+barang B-item
+yang O
+akan O
+lelang B-status
+bulan B-date
+ini O
+nggak O
+
+Tolong O
+tunjukkan O
+barang B-item
+lelang B-status
+yang O
+ada O
+
+Barang B-item
+yang O
+akan O
+dilelang B-status
+apa O
+aja O
+
+Apa O
+aja O
+barang B-item
+yang O
+udah O
+siap O
+dilelang B-status
+
+Cek O
+barang B-item
+yang O
+mau O
+dilelang B-status
+sekarang B-date
+
+List O
+barang B-item
+lelang B-status
+minggu B-date
+ini O
+ada O
+apa O
+
+Barang B-item
+apa O
+yang O
+sudah O
+masuk O
+daftar O
+lelang B-status
+
+Ada O
+daftar O
+barang B-item
+yang O
+mau O
+dilelang B-status
+nggak O
+
+Bisa O
+kasih O
+tau O
+barang B-item
+yang O
+bakal O
+dilelang B-status
+
+Barang B-item
+yang O
+mau O
+di O
+lelang B-status
+apa O
+aja O
+
+Tampilkan O
+barang B-item
+di O
+bawah O
+5 B-price
+juta O
+
+Ada O
+gak O
+barang B-item
+murah O
+di O
+bawah O
+3 B-price
+juta O
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta O
+ada O
+
+Saya O
+cari O
+barang B-item
+harga B-price
+kecil O
+
+Barang B-item
+budget B-price
+rendah O
+apa O
+aja O
+ya O
+
+Tampilin O
+harga B-price
+laptop B-item
+di O
+bawah O
+3 B-price
+juta O
+
+Tampilkan O
+barang B-item
+yang O
+harganya B-price
+di O
+bawah O
+5 B-price
+juta O
+dong O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+3 B-price
+juta O
+nggak O
+
+Coba O
+cari O
+barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta O
+
+Saya O
+lagi O
+cari O
+barang B-item
+yang O
+harganya B-price
+terjangkau O
+
+Ada O
+nggak O
+barang B-item
+budget O
+rendah O
+di O
+bawah O
+4 B-price
+juta O
+
+Cari O
+barang B-item
+harga B-price
+dibawah O
+7 B-price
+juta O
+ada O
+
+Ada O
+barang B-item
+yang O
+harganya B-price
+di O
+bawah O
+2 B-price
+juta O
+
+Tunjukkan O
+barang B-item
+harga B-price
+kurang O
+dari O
+5 B-price
+juta I-price
+dong O
+
+Barang B-item
+dengan O
+harga B-price
+terjangkau O
+apa O
+aja O
+ya O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+6 B-price
+juta I-price
+
+Hai B-sapaan
+
+Halo B-sapaan
+chatbot B-sapaan
+
+Selamat O
+pagi B-sapaan
+
+Assalamualaikum B-sapaan
+
+Apa O
+kabar O
+bot B-sapaan
+
+Hallo O
+gais B-sapaan
+
+Halo O
+chatbot B-sapaan
+apa O
+kabar O
+
+Selamat O
+pagi O
+chatbot B-sapaan
+
+Assalamualaikum B-sapaan
+ada O
+apa O
+
+Apa O
+kabar O
+bot B-sapaan
+bisa O
+bantu O
+saya O
+
+Halo O
+bestie B-sapaan
+
+hai O
+bro B-sapaan
+
+Hi O
+chatbot B-sapaan
+ada O
+yang O
+baru O
+
+Apa O
+kabar B-sapaan
+Siap O
+bantu O
+saya O
+
+Mau O
+nanya O
+dong O
+
+Terimakasih B-terimakasih
+
+Makasih B-terimakasih
+ya O
+bot O
+
+Thanks B-terimakasih
+
+tengs B-terimakasih
+
+tengkyu B-terimakasih
+
+makasih B-terimakasih
+
+Oke O
+sip O
+makasih B-terimakasih
+
+Sangat O
+membantu O
+terimakasih B-terimakasih
+
+Terimakasih B-terimakasih
+banyak O
+
+Makasih B-terimakasih
+ya O
+bot O
+
+Thanks B-terimakasih
+banget O
+
+Oke O
+sip O
+makasih B-terimakasih
+banyak O
+
+Sangat O
+membantu O
+terimakasih B-terimakasih
+ya O
+
+Makasih B-terimakasih
+atas O
+bantuannya O
+
+Thank B-terimakasih
+you O
+so O
+much O
+
+Terimakasih B-terimakasih
+banyak O
+banget O
+
+Makasih B-terimakasih
+banget O
+bot O
+
+Thanks B-terimakasih
+bot O
+you're O
+the O
+best O
+
+Gak O
+ngerti O
+maksudnya O
+
+Aku O
+gak O
+ngerti O
+
+Kamu O
+ngomong O
+apa O
+sih O
+
+Saya O
+bingung O
+dengan O
+jawabanmu O
+
+Bisa O
+jelaskan O
+ulang O
+
+Saya O
+gak O
+paham O
+
+Bingung O
+nih O
+coba O
+jelasin O
+lagi O
+
+Maksudnya O
+apa O
+ya O
+
+Tolong O
+jelasinnya O
+saya O
+gak O
+paham O
+
+Bisa O
+ulangi O
+lagi O
+
+ada O
+berapa B-quantity
+jumlah B-quantity
+printer B-item
+
+ada O
+berapa B-quantity
+meja B-item
+kerja I-item
+
+hai B-sapaan
+helena B-sapaan
+
+Harga B-price
+kursi B-item
+kepala I-item
+cabang I-item
+berapa O
+
+Harga B-price
+printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+l120 I-item
+berapa O
+
+Harga B-price
+layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120x120 I-item
+inch I-item
+berapa O
+
+Harga B-price
+personal B-item
+computer I-item
+hp I-item
+280 I-item
+g4 I-item
+pci I-item
+berapa O
+
+Harga B-price
+scanner B-item
+canon I-item
+lide I-item
+300 I-item
+berapa O
+
+Harga B-price
+cpu B-item
+think I-item
+centre I-item
+lenovo I-item
+berapa O
+
+Siapa B-karyawan  
+pemilik B-karyawan  
+printer B-item  
+warna I-item  
+epson I-item  
+l120 I-item  
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harga B-price
+nya O
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+lemari B-item
+arsip I-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Berapa O
+harga B-price
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+
+Harga B-price
+Printer B-item
+Dotmatrik I-item
+LQ2190 I-item
+berapa O
+
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+PRINTER B-item
+WARNA I-item
+INKJET I-item
+EPSON I-item
+L120 I-item
+
+Tolong O
+kasih O
+tau O
+harga B-price
+PRINTER B-item
+BW I-item
+HP I-item
+LASERJET I-item
+M I-item
+130 I-item
+FW I-item
+
+Saya O
+ingin O
+tahu O
+harga B-price
+Proyektor B-item
+Epson I-item
+EB I-item
+FH52 I-item
+
+Berapa O
+harga B-price
+Layar B-item
+Screen I-item
+Proyektor I-item
+70 I-item
+Inch I-item
+
+Harga B-price
+SCANNER B-item
+CANON I-item
+berapa O
+ya O
+
+Tolong O
+info O
+harga B-price
+MONITOR B-item
+CCTV I-item
+POS I-item
+SATPAM I-item
+
+Bisa O
+kasih O
+tau O
+harga B-price
+MESIN B-item
+SCANNER I-item
+FUJITSU I-item
+Fi8290 I-item
+
+Harga B-price
+SCANNER B-item
+DOSIR I-item
+MERK I-item
+KODAK I-item
+3300 I-item
+berapa O
+
+Proyektor B-item
+Epson I-item
+EB970 I-item
+harganya B-price
+berapa O
+
+MESIN B-item
+SCANJET I-item
+SCANNER I-item
+HP I-item
+SCANJET I-item
+2000 I-item
+S1 I-item
+berapa O
+harganya B-price
+
+Cek O
+harga B-price
+PRINTER B-item
+MULTIFUNCTION I-item
+MOTAS I-item
+
+Harga B-price
+PRINTER B-item
+DOT-MATRIX I-item
+EPSON I-item
+LQ-590 I-item
+MOTAS I-item
+berapa O
+
+LAYAR B-item
+PROYEKTOR I-item
+DATALITE I-item
+MOTORIZED I-item
+120X120 I-item
+INCH I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+Layar B-item
+Proyektor I-item
+otomatis I-item
+
+Tolong O
+kasih O
+tau O
+harga B-price
+LOCKER B-item
+CHARGER I-item
+HP I-item
+
+Harga B-price
+Scanner B-item
+Kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+berapa O
+
+CPU B-item
+THINK I-item
+CENTRE I-item
+LENOVO I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+HP B-item
+LASERJET I-item
+PRO I-item
+M127FN I-item
+
+Berapa O
+harga B-price
+HP B-item
+PAVILION I-item
+14-V043TX I-item
+
+Harga B-price
+PC B-item
+HP I-item
+PAVILION I-item
+SLIMLINE I-item
+400-220D I-item
+MOTAS I-item
+berapa O
+
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-2190 I-item
+harganya B-price
+berapa O
+
+Tolong O
+info O
+harga B-price
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-310 I-item
+
+Berapa O
+harga B-price
+PRINTER B-item
+EPSON I-item
+LX I-item
+310 I-item
+
+Harga B-price
+PRINTER B-item
+LASERJET I-item
+M201N I-item
+LAN I-item
+berapa O
+
+PRINTER B-item
+MULTI I-item
+FUNGSI I-item
+HP I-item
+LJ I-item
+127 I-item
+SN I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+NOTE B-item
+BOOK I-item
+HP I-item
+PAVILION I-item
+14-AB133TX I-item
+
+Berapa O
+harga B-price
+PRINTER B-item
+HP I-item
+LASER I-item
+JET I-item
+1606 I-item
+
+harga B-price
+PRINTER B-item
+LASERJET I-item
+HP I-item
+Laserjet I-item
+1102 I-item
+berapa O
+
+PRINTER B-item
+HP I-item
+LASERJET I-item
+PRO I-item
+M402N I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+PC B-item
+HP I-item
+SLIMLINE I-item
+400-325D I-item
+
+Berapa O
+harga B-price
+PRINTER B-item
+HP I-item
+OFFICE I-item
+JET I-item
+X477DW I-item
+
+harga B-price
+Notebook B-item
+HP I-item
+Paviliun I-item
+14-170tx I-item
+berapa O
+
+HP B-item
+Color I-item
+Laserjet I-item
+Pro I-item
+M452nw I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+HP B-item
+Laserjet I-item
+Pro I-item
+M402n I-item
+
+Berapa O
+harga B-price
+Printer B-item
+Label I-item
+ZEBRA I-item
+GT820 I-item
+
+harga B-price
+PRINTER B-item
+FUJI I-item
+XEROX I-item
+M255Z I-item
+berapa O
+
+KURSI B-item
+RAPAT I-item
+EXE I-item
+55 I-item
+HIGHPOINT I-item
+WARNA I-item
+G01 I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+Kursi B-item
+Ruang I-item
+Rapat I-item
+Datascrip I-item
+CL I-item
+307 I-item
+NY I-item
+
+Berapa O
+harga B-price
+Kursi B-item
+Kerja I-item
+Staff I-item
+Datascrip I-item
+CI-X105 I-item
+A I-item
+400 I-item
+
+harga B-price
+LEMARI B-item
+ES I-item
+berapa O
+
+LEMARI B-item
+BESI I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+MEJA B-item
+RAPAT I-item
+PANJANG I-item
+
+Berapa O
+harga B-price
+Meja B-item
+Kubikal I-item
+Informa I-item
+Siebens I-item
+Iron I-item
+Wood I-item
+4 I-item
+Seater I-item
+
+harga B-price
+Kursi B-item
+Kerja I-item
+Kepala I-item
+Seksi I-item
+berapa O
+
+SOFA B-item
+RUANG I-item
+TAMU I-item
+KANTOR I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+KURSI B-item
+KERJA I-item
+KARYAWAN I-item
+
+Berapa O
+harga B-price
+MEJA B-item
+KUBIKUS I-item
+INDUK I-item
+
+harga B-price
+LEMARI B-item
+PAKAIAN I-item
+berapa O
+
+RAK B-item
+BESI I-item
+harganya B-price
+berapa O
+
+Status O
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+apa O
+ya O
+
+Printer B-item
+Dotmatrik I-item
+LQ2190 I-item
+masih O
+tersedia B-status
+nggak O
+
+PRINTER B-item
+WARNA I-item
+INKJET I-item
+EPSON I-item
+L120 I-item
+udah O
+dilelang B-status
+belum O
+
+Cek O
+status O
+PRINTER B-item
+BW I-item
+HP I-item
+LASERJET I-item
+M I-item
+130 I-item
+FW I-item
+
+Proyektor B-item
+Epson I-item
+EB I-item
+FH52 I-item
+masih O
+ada B-status
+atau O
+udah O
+dijual B-status
+
+Layar B-item
+Screen I-item
+Proyektor I-item
+70 I-item
+Inch I-item
+status O
+nya O
+apa O
+
+SCANNER B-item
+CANON I-item
+masih O
+tersedia B-status
+nggak O
+
+MONITOR B-item
+CCTV I-item
+POS I-item
+SATPAM I-item
+udah O
+laku O
+atau O
+masih O
+ada B-status
+
+Cek O
+status O
+MESIN B-item
+SCANNER I-item
+FUJITSU I-item
+Fi8290 I-item
+
+SCANNER B-item
+DOSIR I-item
+MERK I-item
+KODAK I-item
+3300 I-item
+masih O
+bisa O
+dipakai O
+nggak O
+
+Projektor B-item
+Epson I-item
+EB970 I-item
+status O
+nya O
+apa O
+sekarang O
+
+MESIN B-item
+SCANJET I-item
+SCANNER I-item
+HP I-item
+SCANJET I-item
+2000 I-item
+S1 I-item
+lagi O
+status O
+apa O
+
+Gimana O
+status O
+PRINTER B-item
+MULTIFUNCTION I-item
+MOTAS I-item
+
+PRINTER B-item
+DOT-MATRIX I-item
+EPSON I-item
+LQ-590 I-item
+MOTAS I-item
+masih O
+ada B-status
+atau O
+udah O
+dijual B-status
+
+LAYAR B-item
+PROYEKTOR I-item
+DATALITE I-item
+MOTORIZED I-item
+120X120 I-item
+INCH I-item
+status O
+nya O
+apa O
+
+Layar B-item
+Proyektor I-item
+otomatis I-item
+masih O
+tersedia B-status
+nggak O
+
+LOCKER B-item
+CHARGER I-item
+HP I-item
+udah O
+dilelang B-status
+belum O
+
+Scanner B-item
+Kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+status O
+nya O
+gimana O
+
+CPU B-item
+THINK I-item
+CENTRE I-item
+LENOVO I-item
+masih O
+ada B-status
+nggak O
+
+HP B-item
+LASERJET I-item
+PRO I-item
+M127FN I-item
+masih O
+bisa O
+dipakai O
+
+Status O
+HP B-item
+PAVILION I-item
+14-V043TX I-item
+apa O
+ya O
+
+PC B-item
+HP I-item
+PAVILION I-item
+SLIMLINE I-item
+400-220D I-item
+MOTAS I-item
+udah O
+laku O
+belum O
+
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-2190 I-item
+status O
+nya O
+apa O
+
+Cek O
+status O
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-310 I-item
+
+PRINTER B-item
+EPSON I-item
+LX I-item
+310 I-item
+masih O
+tersedia B-status
+nggak O
+
+Ada O
+berapa B-quantity
+unit O
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+
+Jumlah O
+Printer B-item
+Dotmatrik I-item
+LQ2190 I-item
+masih O
+tersedia O
+berapa B-quantity
+
+Tersisa O
+berapa B-quantity
+PRINTER B-item
+WARNA I-item
+INKJET I-item
+EPSON I-item
+L120 I-item
+
+Total O
+PRINTER B-item
+BW I-item
+HP I-item
+LASERJET I-item
+M I-item
+130 I-item
+FW I-item
+ada O
+berapa B-quantity
+
+Stok O
+Proyektor B-item
+Epson I-item
+EB I-item
+FH52 I-item
+masih O
+berapa B-quantity
+
+Berapa B-quantity
+banyak O
+Layar B-item
+Screen I-item
+Proyektor I-item
+70 I-item
+Inch I-item
+yang O
+masih O
+ada O
+
+SCANNER B-item
+CANON I-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+ya O
+
+Jumlah O
+MONITOR B-item
+CCTV I-item
+POS I-item
+SATPAM I-item
+yang O
+ada O
+sekarang O
+berapa B-quantity
+
+Ada O
+berapa B-quantity
+unit O
+MESIN B-item
+SCANNER I-item
+FUJITSU I-item
+Fi8290 I-item
+yang O
+masih O
+tersedia O
+
+Stok O
+SCANNER B-item
+DOSIR I-item
+MERK I-item
+KODAK I-item
+3300 I-item
+sekarang O
+tinggal O
+berapa B-quantity
+
+Masih O
+ada O
+berapa B-quantity
+unit O
+Proyektor B-item
+Epson I-item
+EB970 I-item
+
+Berapa B-quantity
+banyak O
+stok O
+MESIN B-item
+SCANJET I-item
+SCANNER I-item
+HP I-item
+SCANJET I-item
+2000 I-item
+S1 I-item
+yang O
+tersedia O
+
+Jumlah O
+PRINTER B-item
+MULTIFUNCTION I-item
+MOTAS I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+
+PRINTER B-item
+DOT-MATRIX I-item
+EPSON I-item
+LQ-590 I-item
+MOTAS I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+sih O
+
+Tersisa O
+berapa B-quantity
+LAYAR B-item
+PROYEKTOR I-item
+DATALITE I-item
+MOTORIZED I-item
+120X120 I-item
+INCH I-item
+di O
+lantai B-location
+1 I-location
+
+Stok O
+Layar B-item
+Proyektor I-item
+otomatis I-item
+masih O
+ada O
+berapa B-quantity
+
+Berapa B-quantity
+jumlah O
+LOCKER B-item
+CHARGER I-item
+HP I-item
+yang O
+ada O
+sekarang O
+
+Ada O
+berapa B-quantity
+unit O
+Scanner B-item
+Kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+di O
+lantai B-location
+2 I-location
+
+Jumlah O
+CPU B-item
+THINK I-item
+CENTRE I-item
+LENOVO I-item
+di O
+lantai B-location
+1 I-location
+tinggal O
+berapa B-quantity
+
+HP B-item
+LASERJET I-item
+PRO I-item
+M127FN I-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+unit O
+lagi O
+
+HP B-item
+PAVILION I-item
+14-V043TX I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+ya O
+
+PC B-item
+HP I-item
+PAVILION I-item
+SLIMLINE I-item
+400-220D I-item
+MOTAS I-item
+sekarang O
+tinggal O
+berapa B-quantity
+unit O
+
+Tersisa O
+berapa B-quantity
+unit O
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-2190 I-item
+yang O
+bisa O
+di O
+lelang O
+
+Masih O
+ada O
+berapa B-quantity
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-310 I-item
+kan O
+
+PRINTER B-item
+EPSON I-item
+LX I-item
+310 I-item
+yang O
+tersisa O
+masih O
+berapa B-quantity
+
+Disimpan O
+di O
+mana B-location
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+
+Lokasi O
+penyimpanan O
+Printer B-item
+Dotmatrik I-item
+LQ2190 I-item
+mana O
+ya O
+
+Cari O
+lokasi O
+PRINTER B-item
+WARNA I-item
+INKJET I-item
+EPSON I-item
+L120 I-item
+dong O
+
+PRINTER B-item
+BW I-item
+HP I-item
+LASERJET I-item
+M I-item
+130 I-item
+FW I-item
+ada O
+di O
+mana B-location
+
+Dimana B-location
+lokasi O
+Proyektor B-item
+Epson I-item
+EB I-item
+FH52 I-item
+disimpan O
+
+Dimana B-location
+Layar B-item
+Screen I-item
+Proyektor I-item
+70 I-item
+Inch I-item
+disimpan O
+
+SCANNER B-item
+CANON I-item
+ada O
+di O
+lokasi O
+mana B-location
+
+MONITOR B-item
+CCTV I-item
+POS I-item
+SATPAM I-item
+disimpan O
+di O
+mana B-location
+ya O
+
+MESIN B-item
+SCANNER I-item
+FUJITSU I-item
+Fi8290 I-item
+itu O
+ada O
+di O
+mana B-location
+tempatnya O
+
+Dimana B-location
+SCANNER B-item
+DOSIR I-item
+MERK I-item
+KODAK I-item
+3300 I-item
+ini O
+disimpan O
+
+Tolong O
+cari O
+lokasi O
+Proyektor B-item
+Epson I-item
+EB970 I-item
+
+Lokasi O
+penyimpanan O
+MESIN B-item
+SCANJET I-item
+SCANNER I-item
+HP I-item
+SCANJET I-item
+2000 I-item
+S1 I-item
+ada O
+di O
+mana B-location
+
+PRINTER B-item
+MULTIFUNCTION I-item
+MOTAS I-item
+ada O
+di O
+mana B-location
+ya O
+disimpan O
+
+PRINTER B-item
+DOT-MATRIX I-item
+EPSON I-item
+LQ-590 I-item
+MOTAS I-item
+itu O
+ada O
+di O
+mana B-location
+
+Dimana B-location
+tempat O
+menyimpan O
+LAYAR B-item
+PROYEKTOR I-item
+DATALITE I-item
+MOTORIZED I-item
+120X120 I-item
+INCH I-item
+
+Layar B-item
+Proyektor I-item
+otomatis I-item
+itu O
+disimpan O
+di O
+ruangan B-location
+apa O
+
+Cari O
+tau O
+dong O
+tempat O
+penyimpanan O
+LOCKER B-item
+CHARGER I-item
+HP I-item
+
+Dimana B-location
+tempat O
+Scanner B-item
+Kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+disimpan O
+
+CPU B-item
+THINK I-item
+CENTRE I-item
+LENOVO I-item
+simpan O
+di O
+mana B-location
+ya O
+
+HP B-item
+LASERJET I-item
+PRO I-item
+M127FN I-item
+ada O
+di O
+tempat O
+apa B-location
+
+Tolong O
+cek O
+di O
+mana O
+posisi O
+HP B-item
+PAVILION I-item
+14-V043TX I-item
+
+PC B-item
+HP I-item
+PAVILION I-item
+SLIMLINE I-item
+400-220D I-item
+MOTAS I-item
+disimpan O
+di O
+ruangan B-location
+mana O
+
+Apakah O
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-2190 I-item
+disimpan O
+di O
+ruangan B-location
+IT I-location
+
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-310 I-item
+ada O
+di O
+ruang B-location
+mana O
+
+Siapa B-karyawan
+pemilik O
+Personal B-item
+Computer I-item
+Desktop I-item
+HP I-item
+280 I-item
+Pro I-item
+G5 I-item
+MT I-item
+
+Barang O
+Printer B-item
+Dotmatrik I-item
+LQ2190 I-item
+milik O
+siapa B-karyawan
+
+PRINTER B-item
+WARNA I-item
+INKJET I-item
+EPSON I-item
+L120 I-item
+punya O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+PRINTER B-item
+BW I-item
+HP I-item
+LASERJET I-item
+M I-item
+130 I-item
+FW I-item
+
+Siapa B-karyawan
+yang O
+memiliki O
+Proyektor B-item
+Epson I-item
+EB I-item
+FH52 I-item
+
+Pemilik O
+Layar B-item
+Screen I-item
+Proyektor I-item
+70 I-item
+Inch I-item
+siapa B-karyawan
+
+SCANNER B-item
+CANON I-item
+ini O
+punya O
+siapa B-karyawan
+
+Itu O
+MONITOR B-item
+CCTV I-item
+POS I-item
+SATPAM I-item
+milik O
+siapa B-karyawan
+
+Siapa B-karyawan
+pemilik O
+MESIN B-item
+SCANNER I-item
+FUJITSU I-item
+Fi8290 I-item
+ini O
+
+SCANNER B-item
+DOSIR I-item
+MERK I-item
+KODAK I-item
+3300 I-item
+ini O
+punya O
+siapa B-karyawan
+ya O
+
+Cek O
+nama O
+pemilik O
+Proyektor B-item
+Epson I-item
+EB970 I-item
+
+Barang O
+MESIN B-item
+SCANJET I-item
+SCANNER I-item
+HP I-item
+SCANJET I-item
+2000 I-item
+S1 I-item
+itu O
+punya O
+karyawan O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+PRINTER B-item
+MULTIFUNCTION I-item
+MOTAS I-item
+ini O
+
+PRINTER B-item
+DOT-MATRIX I-item
+EPSON I-item
+LQ-590 I-item
+MOTAS I-item
+ini O
+punya O
+siapa B-karyawan
+sih O
+
+LAYAR B-item
+PROYEKTOR I-item
+DATALITE I-item
+MOTORIZED I-item
+120X120 I-item
+INCH I-item
+dimiliki O
+oleh O
+siapa B-karyawan
+
+Pemilik O
+Layar B-item
+Proyektor I-item
+otomatis I-item
+siapa B-karyawan
+
+LOCKER B-item
+CHARGER I-item
+HP I-item
+itu O
+punya O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+Scanner B-item
+Kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+ini O
+
+Pemilik O
+CPU B-item
+THINK I-item
+CENTRE I-item
+LENOVO I-item
+itu O
+siapa B-karyawan
+
+HP B-item
+LASERJET I-item
+PRO I-item
+M127FN I-item
+ini O
+milik O
+siapa B-karyawan
+ya O
+
+Cek O
+dong O
+siapa B-karyawan
+pemilik O
+HP B-item
+PAVILION I-item
+14-V043TX I-item
+
+PC B-item
+HP I-item
+PAVILION I-item
+SLIMLINE I-item
+400-220D I-item
+MOTAS I-item
+itu O
+milik O
+siapa B-karyawan
+
+Punya O
+siapa B-karyawan
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-2190 I-item
+itu O
+
+PRINTER B-item
+DOT I-item
+MATRIK I-item
+LQ-310 I-item
+ini O
+milik O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+memiliki O
+PRINTER B-item
+EPSON I-item
+LX I-item
+310 I-item
+ini O
+
+Barang O
+PRINTER B-item
+LASERJET I-item
+M201N I-item
+LAN I-item
+ini O
+siapa B-karyawan
+yang O
+punya O
+ya O
+
+Punya O
+siapa B-karyawan
+PRINTER B-item
+MULTI I-item
+FUNGSI I-item
+HP I-item
+LJ I-item
+127 I-item
+SN I-item
+ini O
+
+Pemilik O
+NOTE B-item
+BOOK I-item
+HP I-item
+PAVILION I-item
+14-AB133TX I-item
+siapa B-karyawan
+
+PRINTER B-item
+HP I-item
+LASER I-item
+JET I-item
+1606 I-item
+milik O
+ARDI B-karyawan
+
+PRINTER B-item
+LASERJET I-item
+HP I-item
+Laserjet I-item
+1102 I-item
+punya O
+BUDI B-karyawan
+
+PRINTER B-item
+HP I-item
+LASERJET I-item
+PRO I-item
+M402N I-item
+ini O
+milik O
+BISMO B-karyawan
+
+PC B-item
+HP I-item
+SLIMLINE I-item
+400-325D I-item
+punya O
+EKA B-karyawan
+
+PRINTER B-item
+HP I-item
+OFFICE I-item
+JET I-item
+X477DW I-item
+ini O
+punya O
+HENDRA B-karyawan
+
+Notebook B-item
+HP I-item
+Paviliun I-item
+14-170tx I-item
+milik O
+CITRA B-karyawan
+
+HP B-item
+Color I-item
+Laserjet I-item
+Pro I-item
+M452nw I-item
+punya O
+GITA B-karyawan
+
+HP B-item
+Laserjet I-item
+Pro I-item
+M402n I-item
+ini O
+milik O
+LILA B-karyawan
+
+Printer B-item
+Label I-item
+ZEBRA I-item
+GT820 I-item
+punya O
+JOKO B-karyawan
+
+PRINTER B-item
+FUJI I-item
+XEROX I-item
+M255Z I-item
+milik O
+DANI B-karyawan
+
+KURSI B-item
+RAPAT I-item
+EXE I-item
+55 I-item
+HIGHPOINT I-item
+WARNA I-item
+G01 I-item
+punya O
+KIKI B-karyawan
+
+Kursi B-item
+Ruang I-item
+Rapat I-item
+Datascrip I-item
+CL I-item
+307 I-item
+NY I-item
+ini O
+milik O
+MAYA B-karyawan
+
+Kursi B-item
+Kerja I-item
+Staff I-item
+Datascrip I-item
+CI-X105 I-item
+A I-item
+400 I-item
+punya O
+NOVI B-karyawan
+
+LEMARI B-item
+ES I-item
+milik O
+OKI B-karyawan
+
+LEMARI B-item
+BESI I-item
+ini O
+punya O
+RIZKI B-karyawan
+
+MEJA B-item
+RAPAT I-item
+PANJANG I-item
+milik O
+SARI B-karyawan
+
+Meja B-item
+Kubikal I-item
+Informa I-item
+Siebens I-item
+Iron I-item
+Wood I-item
+4 I-item
+Seater I-item
+punya O
+TIO B-karyawan
+
+Kursi B-item
+Kerja I-item
+Kepala I-item
+Seksi I-item
+ini O
+milik O
+YOGI B-karyawan
+
+SOFA B-item
+RUANG I-item
+TAMU I-item
+KANTOR I-item
+punya O
+VINA B-karyawan
+
+KURSI B-item
+KERJA I-item
+KARYAWAN I-item
+milik O
+BAYU B-karyawan
+
+MEJA B-item
+KUBIKUS I-item
+INDUK I-item
+ini O
+punya O
+DIAN B-karyawan
+
+LEMARI B-item
+PAKAIAN I-item
+milik O
+FARAH B-karyawan
+
+RAK B-item
+BESI I-item
+punya O
+KARTIKA B-karyawan
+
+Siapa B-karyawan
+Branch B-jabatan
+Manager I-jabatan
+di O
+sini O
+
+Siapa B-karyawan
+yang O
+menjabat O
+sebagai O
+SERVICES B-jabatan
+SECTOR I-jabatan
+HEAD I-jabatan
+
+Bisa O
+kasih O
+nomor O
+ID O
+karyawan O
+BISMO B-karyawan
+
+Mohon O
+info O
+jabatan O
+EKA B-karyawan
+
+ada O
+berapa B-quantity
+laptop B-item
+lenovo I-item
+
+ada O
+berapa B-quantity
+laptop B-item
+HP I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+rapat I-item
+
+ada O
+berapa B-quantity
+meja B-item
+kerja I-item
+
+ada O
+berapa B-quantity
+PRINTER B-item
+BW I-item
+
+ada O
+berapa B-quantity
+SCANNER B-item
+
+ada O
+berapa B-quantity
+Proyektor B-item
+
+ada O
+berapa B-quantity
+PRINTER B-item
+EPSON I-item
+
+ada O
+berapa B-quantity
+PRINTER B-item
+
+ada O
+berapa B-quantity
+CPU B-item
+
+ada O
+berapa B-quantity
+Computer B-item
+
+ada O
+berapa B-quantity
+Notebook B-item
+
+ada O
+berapa B-quantity
+lemari B-item
+
+ada O
+berapa B-quantity
+lemari B-item
+besi I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+kerja I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+es I-item
+
+ada O
+berapa B-quantity
+meja B-item
+rapat
+
+ada O
+berapa B-quantity
+kursi B-item
+
+ada O
+berapa B-quantity
+meja B-item
+
+ada O
+berapa B-quantity
+Sofa B-item
+
+ada O
+berapa B-quantity
+kursi B-item
+ruang I-item
+rapat I-item
+
+ada O
+berapa B-quantity
+rak B-item
+besi I-item
+
+ada O
+berapa B-quantity
+rak B-item
+
+ada O
+berapa B-quantity
+kursi B-item
+aula I-item
+
+ada O
+berapa B-quantity
+meja B-item
+lipat I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+rak I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+costum I-item
+
+ada O
+berapa B-quantity
+rak B-item
+dosir I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+tunggu I-item
+tamu I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+tunggu I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+caesar I-item
+
+ada O
+berapa B-quantity
+meja B-item
+kc I-item
+
+ada O
+berapa B-quantity
+meja B-item
+seksi I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+dokumen I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+hadap I-item
+
+ada O
+berapa B-quantity
+meja B-item
+kubikus I-item
+
+ada O
+berapa B-quantity
+meja B-item
+kubikus I-item
+ekst I-item
+
+ada O
+berapa B-quantity
+meja B-item
+kubikus I-item
+INDUK I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+es I-item
+2 I-item
+pintu I-item
+
+ada O
+berapa B-quantity
+meja B-item
+lipat I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+caesar I-item
+n I-item
+chitose I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+berkas I-item
+
+ada O
+berapa B-quantity
+meja B-item
+lokal I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+petugas I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+Sofa I-item
+tamu I-item
+
+ada O
+berapa B-quantity
+kursi B-item
+tunggu I-item
+tamu I-item
+
+ada O
+berapa B-quantity
+lemari B-item
+buku I-item
+
+ada O
+berapa B-quantity
+rak B-item
+besi I-item
+
+ada O
+berapa B-quantity
+personal B-item
+computer I-item
+
+ada O
+berapa B-quantity
+printer B-item
+Dotmatrik I-item
+
+ada O
+berapa B-quantity
+personal B-item
+computer I-item
+HP I-item
+
+ada O
+berapa B-quantity
+printer B-item
+warna I-item
+
+ada O
+berapa B-quantity
+printer B-item
+warna I-item
+INKJET I-item
+
+ada O
+berapa B-quantity
+printer B-item
+BW I-item
+HP I-item
+
+ada O
+berapa B-quantity
+proyektor B-item
+epson I-item
+
+ada O
+berapa B-quantity
+layar B-item
+Screen I-item
+
+ada O
+berapa B-quantity
+scanner B-item
+canon I-item
+
+berapa O
+harga B-price
+personal I-item
+computer I-item
+
+berapa O
+harga B-price
+printer I-item
+
+berapa O
+harga B-price
+printer I-item
+Dotmatrik I-item
+
+berapa O
+harga B-price
+printer I-item
+warna I-item
+
+berapa O
+harga B-price
+printer I-item
+BW I-item
+
+berapa O
+harga B-price
+proyektor I-item
+
+berapa O
+harga B-price
+proyektor I-item
+Epson I-item
+
+berapa O
+harga B-price
+Layar I-item
+Screen I-item
+
+berapa O
+harga B-price
+scanner I-item
+
+berapa O
+harga B-price
+scanner I-item
+canon I-item
+
+berapa O
+harga B-price
+MONITOR I-item
+
+berapa O
+harga B-price
+monitor I-item
+CCTV I-item
+
+berapa O
+harga B-price
+mesin I-item
+scanner I-item
+
+berapa O
+harga B-price
+scanner I-item
+dosir I-item
+
+berapa O
+harga B-price
+mesin I-item
+scanjet I-item
+
+berapa O
+harga B-price
+printer I-item
+multifunction I-item
+
+berapa O
+harga B-price
+printer I-item
+dot-matrix I-item
+
+berapa O
+harga B-price
+layar I-item
+proyektor I-item
+
+berapa O
+harga B-price
+scanner I-item
+kodak I-item
+
+berapa O
+harga B-price
+cpu I-item
+THINK I-item
+
+berapa O
+harga B-price
+HP I-item
+LASERJET I-item
+
+berapa O
+harga B-price
+HP I-item
+PAVILION I-item
+
+berapa O
+harga B-price
+PC I-item
+HP I-item
+PAVILION I-item
+
+berapa O
+harga B-price
+CPU I-item
+THINK I-item
+CENTRE I-item
+
+berapa O
+harga B-price
+Notebook I-item
+
+berapa O
+harga B-price
+Printer I-item
+Fuji I-item
+
+berapa O
+harga B-price
+kursi I-item
+rapat I-item
+
+berapa O
+harga B-price
+kursi I-item
+tunggu I-item
+
+berapa O
+harga B-price 
+kursi I-item
+tunggu I-item
+tamu I-item
+
+berapa O
+harga B-price
+kursi I-item
+kerja I-item
+
+berapa O
+harga B-price
+kursi I-item
+ruang I-item
+rapat I-item
+
+berapa O
+harga B-price
+lemari I-item
+
+berapa O
+harga B-price
+lemari I-item
+es I-item
+
+berapa O
+harga B-price
+lemari I-item
+besi I-item
+
+berapa O
+harga B-price
+meja I-item
+
+berapa O
+harga B-price
+meja I-item
+rapat I-item
+
+berapa O
+harga B-price
+meja I-item
+rapat I-item
+panjang I-item
+
+berapa O
+harga B-price
+kursi I-item
+kerja I-item
+staff I-item
+
+berapa O
+harga B-price
+meja I-item
+kubikal I-item
+
+berapa O
+harga B-price
+Sofa I-item
+
+Berapa O
+harga B-price
+lemari B-item
+besi I-item
+ya O
+
+Harga B-price
+meja B-item
+kantor I-item
+berapa O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+printer B-item
+Canon I-item
+
+Proyektor B-item
+Epson I-item
+harganya B-price
+berapa O
+
+Siapa O
+pemilik B-karyawan
+kursi B-item
+direktur I-item
+itu O
+
+Meja B-item
+rapat I-item
+jumlahnya B-quantity
+berapa O
+unit O
+
+Apakah O
+laptop B-item
+Lenovo I-item
+masih B-status
+tersedia B-status
+
+Cek O
+harga B-price
+lemari B-item
+kayu I-item
+dong O
+
+Ada O
+berapa B-quantity
+proyektor B-item
+di O
+lantai B-location
+2 B-location
+
+Kursi B-item
+tunggu I-item
+disimpan O
+dimana B-location
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Tampilkan O
+barang B-item
+yang O
+akan O
+dilelang B-status
+minggu B-date
+ini O
+
+Barang B-item
+apa O
+saja O
+yang O
+dimiliki O
+oleh B-karyawan
+Budi I-karyawan
+
+Laptop B-item
+Asus I-item
+harganya B-price
+di O
+bawah O
+5 B-price
+juta I-price
+
+Berapa O
+jumlah B-quantity
+scanner B-item
+yang O
+tersedia B-status
+
+Dimana O
+meja B-item
+resepsionis I-item
+disimpan O
+
+Siapa O
+pemilik B-karyawan
+lemari B-item
+besi I-item
+itu O
+
+Tersisa O
+berapa B-quantity
+unit O
+layar B-item
+proyektor I-item
+
+Proyektor B-item
+yang O
+akan O
+dilelang B-status
+kapan B-date
+
+Cek O
+lokasi B-location
+kursi B-item
+kerja I-item
+dong O
+
+Apakah O
+printer B-item
+HP I-item
+sudah O
+dilelang B-status
+
+Laptop B-item
+Acer I-item
+harganya B-price
+berapa O
+
+Meja B-item
+kerja I-item
+itu O
+statusnya B-status
+apa O
+
+Ada O
+barang B-item
+murah O
+di O
+bawah O
+2 B-price
+juta I-price
+nggak O
+
+Siapa O
+pemilik B-karyawan
+proyektor B-item
+Epson I-item
+
+Barang B-item
+dengan O
+harga B-price
+kurang O
+dari O
+10 B-price
+juta I-price
+ada O
+
+Dimana O
+kursi B-item
+tunggu I-item
+disimpan O
+
+Laptop B-item
+Lenovo I-item
+masih O
+ada B-status
+ggak O
+
+Barang B-item
+punya O
+siapa B-karyawan
+
+Jumlah B-quantity
+printer B-item
+Canon I-item
+sekarang B-date
+berapa O
+
+Ada O
+kursi B-item
+direktur I-item
+di O
+lantai B-location
+1 B-location
+
+Tampilkan O
+daftar O
+barang B-item
+yang O
+tersedia B-status
+
+Kursi B-item
+rapat I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+meja B-item
+direktur I-item
+
+Barang B-item
+milik O
+siapa B-karyawan
+ya O
+
+Dimana O
+lokasi B-location
+penyimpanan O
+laptop B-item
+kerja I-item
+
+Tersedia B-status
+berapa B-quantity
+printer B-item
+Epson I-item
+
+Lemari B-item
+rak I-item
+dokumen I-item
+disimpan O
+dimana B-location
+
+Status B-status
+meja B-item
+kantor I-item
+apa O
+
+Jumlah B-quantity
+kursi B-item
+tunggu I-item
+tinggal O
+berapa O
+
+Laptop B-item
+Asus I-item
+ini O
+milik B-karyawan
+siapa O
+
+Apakah O
+meja B-item
+kerja I-item
+masih B-status
+ada B-status
+
+Berapa B-quantity
+unit O
+yang O
+tersisa B-status
+untuk O
+printer B-item
+
+Tampilkan O
+barang B-item
+harga B-price
+murah O
+dong O
+
+Barang B-item
+untuk O
+dilelang B-status
+bulan B-date
+ini O
+apa O
+
+Ada O
+meja B-item
+kerja I-item
+yang O
+sudah O
+dilelang B-status
+
+Kursi B-item
+tunggu I-item
+tersedia B-status
+berapa B-quantity
+unit O
+
+Laptop B-item
+Acer I-item
+ini O
+disimpan O
+dimana B-location
+
+Apa O
+status B-status
+lemari B-item
+besi I-item
+itu O
+
+Printer B-item
+Canon I-item
+harga B-price
+berapa O
+ya O
+
+Barang B-item
+milik O
+Budi B-karyawan
+ada O
+apa O
+aja O
+
+Berapa O
+harga B-price
+personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+
+Harga B-price
+printer B-item
+dotmatrik I-item
+LQ2190 I-item
+berapa O
+
+Personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+L120 I-item
+
+Tolong O
+kasih O
+tau O
+harga B-price
+printer B-item
+BW I-item
+HP I-item
+laserjet I-item
+M I-item
+130 I-item
+FW I-item
+
+Saya O
+ingin O
+tahu O
+harga B-price
+proyektor B-item
+epson I-item
+EB I-item
+FH52 I-item
+
+Berapa O
+harga B-price
+layar B-item
+screen I-item
+proyektor I-item
+70 I-item
+inch I-item
+
+Harga B-price
+scanner B-item
+canon I-item
+berapa O
+ya O
+
+Tolong O
+info O
+harga B-price
+monitor B-item
+CCTV I-item
+pos I-item
+satpam I-item
+
+Bisa O
+kasih O
+tau O
+harga B-price
+mesin B-item
+scanner I-item
+fujitsu I-item
+Fi8290 I-item
+
+Harga B-price
+scanner B-item
+dosir I-item
+merk I-item
+kodak I-item
+3300 I-item
+berapa O
+
+Proyektor B-item
+epson I-item
+EB970 I-item
+harganya B-price
+berapa O
+
+Mesin B-item
+scanjet I-item
+scanner I-item
+HP I-item
+scanjet I-item
+2000 I-item
+S1 I-item
+berapa O
+harganya B-price
+
+Cek O
+harga B-price
+printer B-item
+multifunction I-item
+motas I-item
+
+Harga B-price
+printer B-item
+dot-matrix I-item
+epson I-item
+LQ-590 I-item
+motas I-item
+berapa O
+
+Layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120X120 I-item
+inch I-item
+harganya B-price
+berapa O
+
+Berapa O
+harga B-price
+layar B-item
+proyektor I-item
+otomatis I-item
+
+Tolong O
+kasih O
+tau O
+harga B-price
+locker B-item
+charger I-item
+HP I-item
+
+Harga B-price
+scanner B-item
+kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+berapa O
+
+CPU B-item
+think I-item
+centre I-item
+lenovo I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+HP B-item
+laserjet I-item
+pro I-item
+M127FN I-item
+
+Berapa O
+harga B-price
+HP B-item
+pavilion I-item
+14-V043TX I-item
+
+Harga B-price
+PC B-item
+HP I-item
+pavilion I-item
+slimline I-item
+400-220D I-item
+motas I-item
+berapa O
+
+Printer B-item
+dot I-item
+matrik I-item
+LQ-2190 I-item
+harganya B-price
+berapa O
+
+Tolong O
+info O
+harga B-price
+printer B-item
+dot I-item
+matrik I-item
+LQ-310 I-item
+
+Berapa O
+harga B-price
+printer B-item
+epson I-item
+LX I-item
+310 I-item
+
+Harga B-price
+printer B-item
+laserjet I-item
+M201N I-item
+LAN I-item
+berapa O
+
+Printer B-item
+multi I-item
+fungsi I-item
+HP I-item
+LJ I-item
+127 I-item
+SN I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+note B-item
+book I-item
+HP I-item
+pavilion I-item
+14-AB133TX I-item
+
+Berapa O
+harga B-price
+printer B-item
+HP I-item
+laser I-item
+jet I-item
+1606 I-item
+
+Harga B-price
+printer B-item
+laserjet I-item
+HP I-item
+laserjet I-item
+1102 I-item
+berapa O
+
+Printer B-item
+HP I-item
+laserjet I-item
+pro I-item
+M402N I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+PC B-item
+HP I-item
+slimline I-item
+400-325D I-item
+
+Berapa O
+harga B-price
+printer B-item
+HP I-item
+office I-item
+jet I-item
+X477DW I-item
+
+Harga B-price
+notebook B-item
+HP I-item
+paviliun I-item
+14-170tx I-item
+berapa O
+
+HP B-item
+color I-item
+laserjet I-item
+pro I-item
+M452nw I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+HP B-item
+laserjet I-item
+pro I-item
+M402n I-item
+
+Berapa O
+harga B-price
+printer B-item
+label I-item
+zebra I-item
+GT820 I-item
+
+Harga B-price
+printer B-item
+fuji I-item
+xerox I-item
+M255Z I-item
+berapa O
+
+Kursi B-item
+rapat I-item
+exe I-item
+55 I-item
+highpoint I-item
+warna I-item
+G01 I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+kursi B-item
+ruang I-item
+rapat I-item
+datascrip I-item
+CL I-item
+307 I-item
+NY I-item
+
+Berapa O
+harga B-price
+kursi B-item
+kerja I-item
+staff I-item
+datascrip I-item
+CI-X105 I-item
+A I-item
+400 I-item
+
+Harga B-price
+lemari B-item
+es I-item
+berapa O
+
+Lemari B-item
+besi I-item
+harganya B-price
+berapa O
+
+Cek O
+harga B-price
+meja B-item
+rapat I-item
+panjang I-item
+
+Berapa O
+harga B-price
+meja B-item
+kubikal I-item
+informa I-item
+siebens I-item
+iron I-item
+wood I-item
+4 I-item
+seater I-item
+
+Harga B-price
+kursi B-item
+kerja I-item
+kepala I-item
+seksi I-item
+berapa O
+
+Sofa B-item
+ruang I-item
+tamu I-item
+kantor I-item
+harganya B-price
+berapa O
+
+Tolong O
+kasih O
+tau O
+harga B-price
+kursi B-item
+kerja I-item
+karyawan I-item
+
+Berapa O
+harga B-price
+meja B-item
+kubikus I-item
+induk I-item
+
+Harga B-price
+lemari B-item
+pakaian I-item
+berapa O
+
+Rak B-item
+besi I-item
+harganya B-price
+berapa O
+
+Status O
+personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+apa O
+ya O
+
+Printer B-item
+dotmatrik I-item
+LQ2190 I-item
+masih O
+tersedia B-status
+nggak O
+
+Printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+L120 I-item
+udah O
+dilelang B-status
+belum O
+
+Cek O
+status O
+printer B-item
+BW I-item
+HP I-item
+laserjet I-item
+M I-item
+130 I-item
+FW I-item
+
+Proyektor B-item
+epson I-item
+EB I-item
+FH52 I-item
+masih O
+ada B-status
+atau O
+udah O
+dijual B-status
+
+Layar B-item
+screen I-item
+proyektor I-item
+70 I-item
+inch I-item
+status O
+nya O
+apa O
+
+Scanner B-item
+canon I-item
+masih O
+tersedia B-status
+nggak O
+
+Monitor B-item
+CCTV I-item
+pos I-item
+satpam I-item
+udah O
+laku O
+atau O
+masih O
+ada B-status
+
+Cek O
+status O
+mesin B-item
+scanner I-item
+fujitsu I-item
+Fi8290 I-item
+
+Scanner B-item
+dosir I-item
+merk I-item
+kodak I-item
+3300 I-item
+masih O
+bisa O
+dipakai O
+nggak O
+
+Proyektor B-item
+epson I-item
+EB970 I-item
+status O
+nya O
+apa O
+sekarang O
+
+Mesin B-item
+scanjet I-item
+scanner I-item
+HP I-item
+scanjet I-item
+2000 I-item
+S1 I-item
+lagi O
+status O
+apa O
+
+Gimana O
+status O
+printer B-item
+multifunction I-item
+motas I-item
+
+Printer B-item
+dot-matrix I-item
+epson I-item
+LQ-590 I-item
+motas I-item
+masih O
+ada B-status
+atau O
+udah O
+dijual B-status
+
+Layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120X120 I-item
+inch I-item
+status O
+nya O
+apa O
+
+Layar B-item
+proyektor I-item
+otomatis I-item
+masih O
+tersedia B-status
+nggak O
+
+Locker B-item
+charger I-item
+HP I-item
+udah O
+dilelang B-status
+belum O
+
+Scanner B-item
+kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+status O
+nya O
+gimana O
+
+CPU B-item
+think I-item
+centre I-item
+lenovo I-item
+masih O
+ada B-status
+nggak O
+
+HP B-item
+laserjet I-item
+pro I-item
+M127FN I-item
+masih O
+bisa O
+dipakai O
+
+Status O
+HP B-item
+pavilion I-item
+14-V043TX I-item
+apa O
+ya O
+
+PC B-item
+HP I-item
+pavilion I-item
+slimline I-item
+400-220D I-item
+motas I-item
+udah O
+laku O
+belum O
+
+Printer B-item
+dot I-item
+matrik I-item
+LQ-2190 I-item
+status O
+nya O
+apa O
+
+Cek O
+status O
+printer B-item
+dot I-item
+matrik I-item
+LQ-310 I-item
+
+Printer B-item
+epson I-item
+LX I-item
+310 I-item
+masih O
+tersedia B-status
+nggak O
+
+Ada O
+berapa B-quantity
+unit O
+personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+
+Jumlah O
+printer B-item
+dotmatrik I-item
+LQ2190 I-item
+masih O
+tersedia O
+berapa B-quantity
+
+Tersisa O
+berapa B-quantity
+printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+L120 I-item
+
+Total O
+printer B-item
+BW I-item
+HP I-item
+laserjet I-item
+M I-item
+130 I-item
+FW I-item
+ada O
+berapa B-quantity
+
+Stok O
+proyektor B-item
+epson I-item
+EB I-item
+FH52 I-item
+masih O
+berapa B-quantity
+
+Berapa B-quantity
+banyak O
+layar B-item
+screen I-item
+proyektor I-item
+70 I-item
+inch I-item
+yang O
+masih O
+ada O
+
+Scanner B-item
+canon I-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+ya O
+
+Jumlah O
+monitor B-item
+CCTV I-item
+pos I-item
+satpam I-item
+yang O
+ada O
+sekarang O
+berapa B-quantity
+
+Ada O
+berapa B-quantity
+unit O
+mesin B-item
+scanner I-item
+fujitsu I-item
+Fi8290 I-item
+yang O
+masih O
+tersedia O
+
+Stok O
+scanner B-item
+dosir I-item
+merk I-item
+kodak I-item
+3300 I-item
+sekarang O
+tinggal O
+berapa B-quantity
+
+Masih O
+ada O
+berapa B-quantity
+unit O
+proyektor B-item
+epson I-item
+EB970 I-item
+
+Berapa B-quantity
+banyak O
+stok O
+mesin B-item
+scanjet I-item
+scanner I-item
+HP I-item
+scanjet I-item
+2000 I-item
+S1 I-item
+yang O
+tersedia O
+
+Jumlah O
+printer B-item
+multifunction I-item
+motas I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+
+Printer B-item
+dot-matrix I-item
+epson I-item
+LQ-590 I-item
+motas I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+sih O
+
+Tersisa O
+berapa B-quantity
+layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120X120 I-item
+inch I-item
+di O
+lantai B-location
+1 I-location
+
+Stok O
+layar B-item
+proyektor I-item
+otomatis I-item
+masih O
+ada O
+berapa B-quantity
+
+Berapa B-quantity
+jumlah O
+locker B-item
+charger I-item
+HP I-item
+yang O
+ada O
+sekarang O
+
+Ada O
+berapa B-quantity
+unit O
+scanner B-item
+kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+di O
+lantai B-location
+2 I-location
+
+Jumlah O
+CPU B-item
+think I-item
+centre I-item
+lenovo I-item
+di O
+lantai B-location
+1 I-location
+tinggal O
+berapa B-quantity
+
+HP B-item
+laserjet I-item
+pro I-item
+M127FN I-item
+yang O
+tersisa O
+ada O
+berapa B-quantity
+unit O
+lagi O
+
+HP B-item
+pavilion I-item
+14-V043TX I-item
+masih O
+ada O
+berapa B-quantity
+unit O
+ya O
+
+PC B-item
+HP I-item
+pavilion I-item
+slimline I-item
+400-220D I-item
+motas I-item
+sekarang O
+tinggal O
+berapa B-quantity
+unit O
+
+Tersisa O
+berapa B-quantity
+unit O
+printer B-item
+dot I-item
+matrik I-item
+LQ-2190 I-item
+yang O
+bisa O
+di O
+lelang O
+
+Masih O
+ada O
+berapa B-quantity
+printer B-item
+dot I-item
+matrik I-item
+LQ-310 I-item
+kan O
+
+Printer B-item
+epson I-item
+LX I-item
+310 I-item
+yang O
+tersisa O
+masih O
+berapa B-quantity
+
+Disimpan O
+di O
+mana B-location
+personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+
+Lokasi O
+penyimpanan O
+printer B-item
+dotmatrik I-item
+LQ2190 I-item
+mana O
+ya O
+
+Cari O
+lokasi O
+printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+L120 I-item
+dong O
+
+Printer B-item
+BW I-item
+HP I-item
+laserjet I-item
+M I-item
+130 I-item
+FW I-item
+ada O
+di O
+mana B-location
+
+Dimana B-location
+lokasi O
+proyektor B-item
+epson I-item
+EB I-item
+FH52 I-item
+disimpan O
+
+Dimana B-location
+layar B-item
+screen I-item
+proyektor I-item
+70 I-item
+inch I-item
+disimpan O
+
+Scanner B-item
+canon I-item
+ada O
+di O
+lokasi O
+mana B-location
+
+Monitor B-item
+CCTV I-item
+pos I-item
+satpam I-item
+disimpan O
+di O
+mana B-location
+ya O
+
+Mesin B-item
+scanner I-item
+fujitsu I-item
+Fi8290 I-item
+itu O
+ada O
+di O
+mana B-location
+tempatnya O
+
+Dimana B-location
+scanner B-item
+dosir I-item
+merk I-item
+kodak I-item
+3300 I-item
+ini O
+disimpan O
+
+Tolong O
+cari O
+lokasi O
+proyektor B-item
+epson I-item
+EB970 I-item
+
+Lokasi O
+penyimpanan O
+mesin B-item
+scanjet I-item
+scanner I-item
+HP I-item
+scanjet I-item
+2000 I-item
+S1 I-item
+ada O
+di O
+mana B-location
+
+Printer B-item
+multifunction I-item
+motas I-item
+ada O
+di O
+mana B-location
+ya O
+disimpan O
+
+Printer B-item
+dot-matrix I-item
+epson I-item
+LQ-590 I-item
+motas I-item
+itu O
+ada O
+di O
+mana B-location
+
+Dimana B-location
+tempat O
+menyimpan O
+layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120X120 I-item
+inch I-item
+
+Layar B-item
+proyektor I-item
+otomatis I-item
+itu O
+disimpan O
+di O
+ruangan B-location
+apa O
+
+Cari O
+tau O
+dong O
+tempat O
+penyimpanan O
+locker B-item
+charger I-item
+HP I-item
+
+Dimana B-location
+tempat O
+scanner B-item
+kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+disimpan O
+
+CPU B-item
+think I-item
+centre I-item
+lenovo I-item
+simpan O
+di O
+mana B-location
+ya O
+
+HP B-item
+laserjet I-item
+pro I-item
+M127FN I-item
+ada O
+di O
+tempat O
+apa B-location
+
+Tolong O
+cek O
+di O
+mana O
+posisi O
+HP B-item
+pavilion I-item
+14-V043TX I-item
+
+PC B-item
+HP I-item
+pavilion I-item
+slimline I-item
+400-220D I-item
+motas I-item
+disimpan O
+di O
+ruangan B-location
+mana O
+
+Apakah O
+printer B-item
+dot I-item
+matrik I-item
+LQ-2190 I-item
+disimpan O
+di O
+ruangan B-location
+IT I-location
+
+Printer B-item
+dot I-item
+matrik I-item
+LQ-310 I-item
+ada O
+di O
+ruang B-location
+mana O
+
+Siapa B-karyawan
+pemilik O
+personal B-item
+computer I-item
+desktop I-item
+HP I-item
+280 I-item
+pro I-item
+G5 I-item
+MT I-item
+
+Barang O
+printer B-item
+dotmatrik I-item
+LQ2190 I-item
+milik O
+siapa B-karyawan
+
+Printer B-item
+warna I-item
+inkjet I-item
+epson I-item
+L120 I-item
+punya O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+printer B-item
+BW I-item
+HP I-item
+laserjet I-item
+M I-item
+130 I-item
+FW I-item
+
+Siapa B-karyawan
+yang O
+memiliki O
+proyektor B-item
+epson I-item
+EB I-item
+FH52 I-item
+
+Pemilik O
+layar B-item
+screen I-item
+proyektor I-item
+70 I-item
+inch I-item
+siapa B-karyawan
+
+Scanner B-item
+canon I-item
+ini O
+punya O
+siapa B-karyawan
+
+Itu O
+monitor B-item
+CCTV I-item
+pos I-item
+satpam I-item
+milik O
+siapa B-karyawan
+
+Siapa B-karyawan
+pemilik O
+mesin B-item
+scanner I-item
+fujitsu I-item
+Fi8290 I-item
+ini O
+
+Scanner B-item
+dosir I-item
+merk I-item
+kodak I-item
+3300 I-item
+ini O
+punya O
+siapa B-karyawan
+ya O
+
+Cek O
+nama O
+pemilik O
+proyektor B-item
+epson I-item
+EB970 I-item
+
+Barang O
+mesin B-item
+scanjet I-item
+scanner I-item
+HP I-item
+scanjet I-item
+2000 I-item
+S1 I-item
+itu O
+punya O
+karyawan O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+printer B-item
+multifunction I-item
+motas I-item
+ini O
+
+Printer B-item
+dot-matrix I-item
+epson I-item
+LQ-590 I-item
+motas I-item
+ini O
+punya O
+siapa B-karyawan
+sih O
+
+Layar B-item
+proyektor I-item
+datalite I-item
+motorized I-item
+120X120 I-item
+inch I-item
+dimiliki O
+oleh O
+siapa B-karyawan
+
+Pemilik O
+layar B-item
+proyektor I-item
+otomatis I-item
+siapa B-karyawan
+
+Locker B-item
+charger I-item
+HP I-item
+itu O
+punya O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+punya O
+scanner B-item
+kodak I-item
+i3300 I-item
+with I-item
+A3 I-item
+flatbed I-item
+ini O
+
+Pemilik O
+CPU B-item
+think I-item
+centre I-item
+lenovo I-item
+itu O
+siapa B-karyawan
+
+HP B-item
+laserjet I-item
+pro I-item
+M127FN I-item
+ini O
+milik O
+siapa B-karyawan
+ya O
+
+Cek O
+dong O
+siapa B-karyawan
+pemilik O
+HP B-item
+pavilion I-item
+14-V043TX I-item
+
+PC B-item
+HP I-item
+pavilion I-item
+slimline I-item
+400-220D I-item
+motas I-item
+itu O
+milik O
+siapa B-karyawan
+
+Punya O
+siapa B-karyawan
+printer B-item
+dot I-item
+matrik I-item
+LQ-2190 I-item
+itu O
+
+Printer B-item
+dot I-item
+matrik I-item
+LQ-310 I-item
+ini O
+milik O
+siapa B-karyawan
+
+Siapa B-karyawan
+yang O
+memiliki O
+printer B-item
+epson I-item
+LX I-item
+310 I-item
+ini O
+
+Barang O
+printer B-item
+laserjet I-item
+M201N I-item
+LAN I-item
+ini O
+siapa B-karyawan
+yang O
+punya O
+ya O
+
+Punya O
+siapa B-karyawan
+printer B-item
+multi I-item
+fungsi I-item
+HP I-item
+LJ I-item
+127 I-item
+SN I-item
+ini O
+
+Pemilik O
+note B-item
+book I-item
+HP I-item
+pavilion I-item
+14-AB133TX I-item
+siapa B-karyawan
+
+Printer B-item
+HP I-item
+laser I-item
+jet I-item
+1606 I-item
+milik O
+ARDI B-karyawan
+
+Printer B-item
+laserjet I-item
+HP I-item
+laserjet I-item
+1102 I-item
+punya O
+BUDI B-karyawan
+
+Printer B-item
+HP I-item
+laserjet I-item
+pro I-item
+M402N I-item
+ini O
+milik O
+BISMO B-karyawan
+
+PC B-item
+HP I-item
+slimline I-item
+400-325D I-item
+punya O
+EKA B-karyawan
+
+Printer B-item
+HP I-item
+office I-item
+jet I-item
+X477DW I-item
+ini O
+punya O
+HENDRA B-karyawan
+
+Notebook B-item
+HP I-item
+paviliun I-item
+14-170tx I-item
+milik O
+CITRA B-karyawan
+
+HP B-item
+color I-item
+laserjet I-item
+pro I-item
+M452nw I-item
+punya O
+GITA B-karyawan
+
+HP B-item
+laserjet I-item
+pro I-item
+M402n I-item
+ini O
+milik O
+LILA B-karyawan
+
+Printer B-item
+label I-item
+zebra I-item
+GT820 I-item
+punya O
+JOKO B-karyawan
+
+Printer B-item
+fuji I-item
+xerox I-item
+M255Z I-item
+milik O
+DANI B-karyawan
+
+Kursi B-item
+rapat I-item
+exe I-item
+55 I-item
+highpoint I-item
+warna I-item
+G01 I-item
+punya O
+KIKI B-karyawan
+
+Kursi B-item
+ruang I-item
+rapat I-item
+datascrip I-item
+CL I-item
+307 I-item
+NY I-item
+ini O
+milik O
+MAYA B-karyawan
+
+Kursi B-item
+kerja I-item
+staff I-item
+datascrip I-item
+CI-X105 I-item
+A I-item
+400 I-item
+punya O
+NOVI B-karyawan
+
+Lemari B-item
+es I-item
+milik O
+OKI B-karyawan
+
+Lemari B-item
+besi I-item
+ini O
+punya O
+RIZKI B-karyawan
+
+Meja B-item
+rapat I-item
+panjang I-item
+milik O
+SARI B-karyawan
+
+Meja B-item
+kubikal I-item
+informa I-item
+siebens I-item
+iron I-item
+wood I-item
+4 I-item
+seater I-item
+punya O
+TIO B-karyawan
+
+Kursi B-item
+kerja I-item
+kepala I-item
+seksi I-item
+ini O
+milik O
+YOGI B-karyawan
+
+Sofa B-item
+ruang I-item
+tamu I-item
+kantor I-item
+punya O
+VINA B-karyawan
+
+Kursi B-item
+kerja I-item
+karyawan I-item
+milik O
+BAYU B-karyawan
+
+Meja B-item
+kubikus I-item
+induk I-item
+ini O
+punya O
+DIAN B-karyawan
+
+Lemari B-item
+pakaian I-item
+milik O
+FARAH B-karyawan
+
+Rak B-item
+besi I-item
+punya O
+KARTIKA B-karyawan
+
+Siapa B-karyawan
+branch B-jabatan
+manager I-jabatan
+di O
+sini O
+
+Siapa B-karyawan
+yang O
+menjabat O
+sebagai O
+services B-jabatan
+sector I-jabatan
+head I-jabatan
+
+Bisa O
+kasih O
+nomor O
+ID O
+karyawan O
+BISMO B-karyawan
+
+Mohon O
+info O
+jabatan O
+EKA B-karyawan
+
+Ada O
+berapa B-quantity
+laptop B-item
+lenovo I-item
+
+Ada O
+berapa B-quantity
+laptop B-item
+HP I-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+rapat I-item
+
+Ada O
+berapa B-quantity
+meja B-item
+kerja I-item
+
+Ada O
+berapa B-quantity
+printer B-item
+BW I-item
+
+Ada O
+berapa B-quantity
+scanner B-item
+
+Ada O
+berapa B-quantity
+proyektor B-item
+
+Ada O
+berapa B-quantity
+printer B-item
+epson I-item
+
+Ada O
+berapa B-quantity
+printer B-item
+
+Ada O
+berapa B-quantity
+CPU B-item
+
+Ada O
+berapa B-quantity
+computer B-item
+
+Ada O
+berapa B-quantity
+notebook B-item
+
+Ada O
+berapa B-quantity
+lemari B-item
+
+Ada O
+berapa B-quantity
+lemari B-item
+besi I-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+kerja I-item
+
+Ada O
+berapa B-quantity
+lemari B-item
+es I-item
+
+Ada O
+berapa B-quantity
+meja B-item
+rapat I-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+
+Ada O
+berapa B-quantity
+meja B-item
+
+Ada O
+berapa B-quantity
+sofa B-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+ruang I-item
+rapat I-item
+
+Ada O
+berapa B-quantity
+rak B-item
+besi I-item
+
+Ada O
+berapa B-quantity
+rak B-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+aula I-item
+
+Ada O
+berapa B-quantity
+meja B-item
+lipat I-item
+
+Ada O
+berapa B-quantity
+lemari B-item
+rak I-item
+
+Ada O
+berapa B-quantity
+lemari B-item
+costum I-item
+
+Ada O
+berapa B-quantity
+rak B-item
+dosir I-item
+
+Ada O
+berapa B-quantity
+kursi B-item
+tunggu I-item
+
+Harga B-price
+laptop B-item
+Dell I-item
+XPS I-item
+15 I-item
+berapa O
+
+Status B-status
+monitor B-item
+ultrawide I-item
+LG I-item
+34 I-item
+inch I-item
+apa O
+
+Ada O
+berapa B-quantity
+meja B-item
+standing I-item
+desk I-item
+ergonomis I-item
+
+Dimana B-location
+penyimpanan O
+server B-item
+HP I-item
+ProLiant I-item
+DL380 I-item
+
+Siapa B-karyawan
+pemilik O
+kamera B-item
+Canon I-item
+EOS I-item
+5D I-item
+Mark I-item
+IV I-item
+
+Barang B-item
+apa O
+yang O
+akan O
+masuk O
+lelang B-status
+minggu B-date
+depan O
+
+Jadwal O
+lelang B-status
+untuk O
+laptop B-item
+bekas I-item
+kapan B-date
+
+Ada O
+daftar O
+barang B-item
+lelang B-status
+bulan B-date
+ini O
+nggak O
+
+Kapan O
+lelang B-status
+untuk O
+printer B-item
+itu O
+dilaksanakan O
+
+Boleh O
+lihat O
+list O
+barang B-item
+lelang B-status
+yang O
+akan O
+datang O
+
+Selamat O
+siang B-sapaan
+admin O
+
+Permisi O
+mau O
+bertanya O
+
+Mohon O
+bantuannya O
+ya O
+
+Terima B-terimakasih
+kasih O
+atas O
+bantuannya O
+
+Salam O
+hangat B-sapaan
+
+Atas O
+nama O
+siapa B-karyawan
+terdaftar O
+laptop B-item
+ini O
+
+Departemen O
+mana O
+yang O
+memiliki O
+printer B-item
+itu O
+
+Bisa O
+diberitahu O
+divisi O
+pemilik B-karyawan
+meja B-item
+ini O
+
+Kepemilikan O
+terakhir O
+proyektor B-item
+itu O
+siapa B-karyawan
+
+Milik O
+cabang O
+mana O
+barang B-item
+ini O
+
+Di O
+ruangan B-location
+mana O
+biasanya O
+disimpan O
+proyektor B-item
+
+Bisa O
+diberitahu O
+letak B-location
+penyimpanan O
+printer B-item
+warna I-item
+
+Tempat B-location
+penyimpanan O
+utama O
+untuk O
+lemari B-item
+besi I-item
+di O
+mana O
+
+Lokasi B-location
+terakhir O
+dilihat O
+meja B-item
+rapat I-item
+di O
+mana O
+
+Di O
+gedung B-location
+mana O
+biasanya O
+disimpan O
+kursi B-item
+direktur I-item
+
+Total O
+inventaris O
+kursi B-item
+kerja I-item
+berapa B-quantity
+
+Berapa O
+banyak O
+stok O
+terakhir O
+printer B-item
+warna I-item
+
+Ada O
+berapa B-quantity
+tersedia O
+untuk O
+lemari B-item
+arsip I-item
+
+Jumlah O
+persediaan O
+meja B-item
+kantor I-item
+berapa B-quantity
+
+Kapasitas O
+tersisa B-quantity
+untuk O
+laptop B-item
+berapa O
+unit O
+
+Bagaimana O
+kondisi B-status
+printer B-item
+itu O
+sekarang O
+
+Apakah O
+barang B-item
+ini O
+ready B-status
+stok O
+
+Status B-status
+terakhir O
+meja B-item
+rapat I-item
+apa O
+
+Barang B-item
+ini O
+masih O
+aktif B-status
+pakai O
+nggak O
+
+Sudah O
+tidak O
+berfungsi B-status
+kah O
+proyektor B-item
+itu O
+
+Berapa O
+nilai B-price
+kursi B-item
+direktur I-item
+itu O
+
+Bisa O
+diberitahu O
+range B-price
+untuk O
+laptop B-item
+gaming I-item
+
+Mohon O
+informasikan O
+harga B-price
+terbaru O
+printer B-item
+multifungsi I-item
+
+Range B-price
+meja B-item
+kantor I-item
+berapa O
+ya O
+
+Apa O
+harga B-price
+paling O
+murah O
+untuk O
+scanner B-item
+
+Boleh O
+tau O
+harga B-price
+terendah O
+proyektor B-item
+
+
+

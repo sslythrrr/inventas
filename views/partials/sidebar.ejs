@@ -1,0 +1,67 @@
+<nav class="navbar align-items-start sidebar sidebar-dark accordion">
+    <div class="container-fluid d-flex flex-column p-0">
+        <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <img src="/img/inventas.png" style="width: 150px; padding: 0px; margin-right: 30px;margin-top: 50px;">
+        </a>
+        <hr class="sidebar-divider my-3">
+        <ul class="navbar-nav text-light" id="accordionSidebar" style="margin-top: 20px;">
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/dashboard')) ? 'active' : '' %>" href="/dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/barang')) ? 'active' : '' %>" href="/barang">
+                    <i class="fas fa-database"></i>
+                    <span>Data Barang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/pemilik')) ? 'active' : '' %>" href="/pemilik">
+                    <i class="fas fa-users"></i>
+                    <span>Pemilik Barang</span>
+                </a>
+            </li>
+            <% if (role === 'atasan') { %>
+                <li class="nav-item">
+                    <a class="nav-link <%= (locals.url && url.includes('/atasan/lelang')) ? 'active' : '' %>" href="/atasan/lelang">
+                        <i class="fa fa-gavel"></i>
+                        <span>Manajemen Lelang</span>
+                    </a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link <%= (locals.url && url.includes('/lelang')) ? 'active' : '' %>" href="/lelang">
+                        <i class="fa fa-gavel"></i>
+                        <span>Manajemen Lelang</span>
+                    </a>
+                </li>
+            <% } %>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/jual')) ? 'active' : '' %>" href="/jual">
+                    <i class="fas fa-tags"></i>
+                    <span>Jual Barang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/karyawan')) ? 'active' : '' %>" href="/karyawan">
+                    <i class="fas fa-id-badge"></i>
+                    <span>Daftar Karyawan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/penjualan')) ? 'active' : '' %>" href="/penjualan">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data Penjualan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= (locals.url && url.includes('/chatbot')) ? 'active' : '' %>" href="/chatbot">
+                    <i class="fas fa-robot"></i>
+                    <span>Chatbot</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

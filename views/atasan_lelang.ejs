@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Manajemen Lelang Atasan</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="/fonts/material-icons.min.css" />
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <%- include('partials/sidebar') %>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+
+          <!-- Modal Konfirmasi Lelang -->
+          <div class="modal fade" id="konfirmasiLelangModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Konfirmasi Lelang</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+                <form id="formKonfirmasiLelang">
+                  <div class="modal-body">
+                    <input type="hidden" id="idBarangKonfirmasi" />
+                    <div class="mb-2">
+                      <strong>Waktu Mulai:</strong> <span id="modalWaktuMulai"></span>
+                    </div>
+                    <div class="mb-2">
+                      <strong>Waktu Selesai:</strong> <span id="modalWaktuSelesai"></span>
+                    </div>
+                    <div class="mb-2">
+                      <strong>Harga Lelang:</strong> <span id="modalHargaLelang"></span>
+                    </div>
+                    <p>Apakah Anda yakin ingin mengkonfirmasi barang ini untuk dilelang?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Konfirmasi
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barang Akan Dilelang (Konfirmasi Atasan) -->
+          <div class="card mb-4 shadow-sm border-0" style="margin-top: 10px">
+            <div
+              class="card-header text-white bg-warning py-3"
+              id="headerlelang"
+            >
+              <div class="d-flex align-items-center">
+                <i class="fas fa-gavel fa-2x me-3"></i>
+                <h5 class="mb-0 flex-grow-1">Barang Akan Dilelang</h5>
+                <span class="badge bg-light text-warning">
+                  <%= akanLelang.length %> Barang
+                </span>
+              </div>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <div class="table-responsive">
+                <table
+                  class="table table-hover align-middle text-center"
+                  style="margin: 0"
+                  id="tabellelang"
+                >
+                  <thead class="table-light">
+                    <tr>
+                      <th>ID Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Harga Awal</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (akanLelang.length === 0) { %>
+                    <tr>
+                      <td colspan="4" class="text-muted">
+                        Tidak ada barang yang menunggu konfirmasi.
+                      </td>
+                    </tr>
+                    <% } else { %> <% akanLelang.forEach(item=> { %>
+                    <tr>
+                      <td><%= item.id_barang %></td>
+                      <td><%= item.nama_barang %></td>
+                      <td>Rp <%= item.harga_barang.toLocaleString() %></td>
+                      <td>
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-primary btn-sm konfirmasi-lelang"
+                            data-id="<%= item.id_barang %>"
+                            data-harga="<%= item.harga_barang %>"
+                            data-waktu-mulai="<%= item.waktu_mulai ? new Date(item.waktu_mulai).toISOString().slice(0, 16) : '' %>"
+                            data-waktu-selesai="<%= item.waktu_selesai ? new Date(item.waktu_selesai).toISOString().slice(0, 16) : '' %>"
+                          >
+                            Konfirmasi
+                          </button>
+                          <button
+                            class="btn btn-danger btn-sm batal-lelang"
+                            data-id="<%= item.id_barang %>"
+                          >
+                            Tolak
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <% }); %> <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dalam Proses Lelang (Hanya Lihat, Tidak Ada Aksi) -->
+          <div class="card mb-4 shadow-sm border-0">
+            <div class="card-header text-white bg-info py-3" id="headerlelang">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-clock fa-2x me-3"></i>
+                <h5 class="mb-0 flex-grow-1">Dalam Proses Lelang</h5>
+                <span class="badge bg-light text-info">
+                  <%= prosesLelang.length %> Proses
+                </span>
+              </div>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <div class="table-responsive">
+                <table
+                  class="table table-hover align-middle text-center"
+                  id="tabellelang"
+                >
+                  <thead class="table-light">
+                    <tr>
+                      <th>ID Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Harga Lelang</th>
+                      <th>Sisa Waktu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (prosesLelang.length === 0) { %>
+                    <tr>
+                      <td colspan="4" class="text-muted">
+                        Tidak ada lelang yang sedang berlangsung.
+                      </td>
+                    </tr>
+                    <% } else { %> <% prosesLelang.forEach(item=> { %>
+                    <tr>
+                      <td><%= item.id_barang %></td>
+                      <td><%= item.nama_barang %></td>
+                      <td>Rp <%= item.harga_lelang.toLocaleString() %></td>
+                      <td>
+                        <span
+                          id="timer-<%= item.id_barang %>"
+                          data-start-time="<%= item.waktu_mulai %>"
+                          data-end-time="<%= item.waktu_selesai %>"
+                        >
+                        </span>
+                      </td>
+                    </tr>
+                    <% }); %> <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%- include('partials/footer') %>
+      </div>
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+      <%- include('partials/scripts') %>
+    </div>
+  </body>
+</html>

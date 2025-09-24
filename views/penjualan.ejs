@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Data Penjualan</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amethysta&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <%- include('partials/sidebar') %>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+                        <div class="container-fluid">
+                            <div class="card" style="border: 0px; margin-top:-20px">
+                                <div class="card-body" style="width: 105%;margin-left:-30px">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-8 text-nowrap d-flex align-items-center">
+                                            <div id="dataTable_length" class="d-flex align-items-center" aria-controls="dataTable">
+                                                <select class="form-select-sm me-3" id="entriesSelect" onchange="changeEntries(this.value)" style="width: auto;">
+                                                    <option value="10" <%= limit == 10 ? 'selected' : '' %>>10</option>
+                                                    <option value="25" <%= limit == 25 ? 'selected' : '' %>>25</option>
+                                                    <option value="50" <%= limit == 50 ? 'selected' : '' %>>50</option>
+                                                    <option value="100" <%= limit == 100 ? 'selected' : '' %>>100</option>
+                                                </select>
+                                                <select class="form-select-sm" id="sortSelect" onchange="sortByDate(this.value)" style="width: auto;">
+                                                    <option value="DESC" <%= sortField === 'waktu_masuk' && sortOrder === 'DESC' ? 'selected' : '' %>>Terbaru</option>
+                                                    <option value="ASC" <%= sortField === 'waktu_masuk' && sortOrder === 'ASC' ? 'selected' : '' %>>Terlama</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-secondary" id="printBtn">
+                                                <i class="fas fa-print me-2"></i>Cetak
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                        <% if (searchQuery) { %>
+                                          <div class="search-info">
+                                            <p>Menampilkan hasil pencarian untuk: "<%= searchQuery %>"</p>
+                                            <a href="/penjualan" class="clear-search">Tampilkan Semua</a>
+                                          </div>
+                                        <% } %>
+                                        <table class="table table-hover align-middle border-separate" id="dataTable">
+                                          <thead>
+                                            <tr class="bg-light">
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">ID Barang</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">Nama Barang</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">Kategori</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">Harga Jual</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">Tanggal Penjualan</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-left">Status Penjualan</th>
+                                              <th class="px-4 py-3 text-sm font-semibold tracking-wide text-center">Opsi</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody class="bg-white divide-y">
+                                            <% if(penjualan.length> 0) { %>
+                                              <% penjualan.forEach(item=> { %>
+                                                <tr class="hover:bg-gray-50 transition-colors duration-200" data-id="<%= item.id_penjualan %>">
+                                                  <td class="px-4 py-3 text-center">
+                                                    <%= item.id_barang %>
+                                                  </td>
+                                                  <td class="px-4 py-3 text-sm font-medium">
+                                                    <%= item.nama_barang %>
+                                                  </td>
+                                                  <td class="px-4 py-3 text-sm">
+                                                    <%= item.kategori %>
+                                                  </td>
+                                                  <td class="px-4 py-3 text-sm">
+                                                    <%= `Rp ${item.harga_jual.toLocaleString('id-ID')}` %>
+                                                  </td>
+                                                  <td class="px-4 py-3 text-sm">
+                                                    <%= tanggal.formatDate(item.tanggal_keluar) %>
+                                                  </td>
+                                                  <td class="px-4 py-3 text-center">
+                                                    <%= item.status_penjualan %>
+                                                  </td>
+                                                  <td class="text-center">
+                                                        <button class="btn btn-primary" onclick="loadDetail('<%= item.id_penjualan %>')" data-bs-toggle="modal" data-bs-target="#detailModal">
+                                                            Detail
+                                                        </button>
+                                                </td>
+                                                </tr>
+                                              <% }); %>
+                                            <% } else { %>
+                                              <tr>
+                                                <td colspan="6" class="px-4 py-8 text-center text-gray-500">
+                                                  <i class="fas fa-box-open fa-2x mb-2"></i>
+                                                  <p>Tidak ada data tersedia</p>
+                                                </td>
+                                              </tr>
+                                            <% } %>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                      <div class="row" style="margin-top: 20px;">
+                                        <div class="col-md-6 align-self-center">
+                                          <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                            Menampilkan <%= (currentPage - 1) * limit + 1 %> - <%= Math.min(currentPage * limit, totalData) %> dari <%= totalData %>
+                                          </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                            <ul class="pagination">
+                                              <% if (currentPage> 1) { %>
+                                                <li class="page-item">
+                                                  <a class="page-link" href="/penjualan?page=<%= currentPage - 1 %>" aria-label="Previous">
+                                                    <span aria-hidden="true">«</span>
+                                                  </a>
+                                                </li>
+                                              <% } else { %>
+                                                <li class="page-item disabled">
+                                                  <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">«</span>
+                                                  </a>
+                                                </li>
+                                              <% } %>
+                                      
+                                              <% for (let i=1; i <=totalPages; i++) { %>
+                                                <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                                  <a class="page-link" href="/penjualan?page=<%= i %>">
+                                                    <%= i %>
+                                                  </a>
+                                                </li>
+                                              <% } %>
+                                      
+                                              <% if (currentPage < totalPages) { %>
+                                                <li class="page-item">
+                                                  <a class="page-link" href="/penjualan?page=<%= currentPage + 1 %>" aria-label="Next">
+                                                    <span aria-hidden="true">»</span>
+                                                  </a>
+                                                </li>
+                                              <% } else { %>
+                                                <li class="page-item disabled">
+                                                  <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">»</span>
+                                                  </a>
+                                                </li>
+                                              <% } %>
+                                            </ul>
+                                          </nav>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="detailModal" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Detail Barang</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="detailGambar"  class="mb-3 d-flex justify-content-center"></div>
+                                        <p><strong>ID Penjualan:</strong> <span id="detailIdPenjualan"></span></p>
+                                        <p><strong>ID Barang:</strong> <span id="detailIdBarang"></span></p>
+                                        <p><strong>Nama Barang:</strong> <span id="detailNamaBarang"></span></p>
+                                        <p><strong>Kategori:</strong> <span id="detailKategori"></span></p>
+                                        <p><strong>Harga Jual:</strong> <span id="detailHargaJual"></span></p>
+                                        <p><strong>Tanggal Keluar:</strong> <span id="detailTanggalKeluar"></span></p>
+                                        <p><strong>Status Penjualan:</strong> <span id="detailStatusPenjualan"></span></p>
+                                        <p><strong>Deskripsi:</strong> <span id="detailDeskripsi"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </div>
+                <%- include('partials/footer') %>
+            </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <%- include('partials/scripts') %>
+</body>
+
+</html>

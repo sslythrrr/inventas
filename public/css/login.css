@@ -1,0 +1,71 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    margin: 0px;
+    padding: 0;
+    padding-bottom: 100px;
+}
+
+.login-container {
+    width: 420px;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo {
+    width: 300px;
+    margin-bottom: -50px;
+}
+
+h4 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-control {
+    background: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+}
+
+.checkbox-wrapper {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-check-label {
+    color: white;
+}
+
+.btn-login {
+    background: #4e73df;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    width: 50%;
+    color: white;
+    font-weight: 500;
+}
+
+#loginMessage {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.message-success {
+    background-color: rgba(40, 167, 69, 0.8);
+    color: white;
+}
+
+.message-error {
+    background-color: rgba(220, 53, 69, 0.8);
+    color: white;
+}

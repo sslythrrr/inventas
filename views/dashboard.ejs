@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almarai&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amethysta&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+  <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="/fonts/material-icons.min.css">
+  <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <%- include('partials/sidebar') %>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%- include('partials/topbar', { searchQuery: locals.searchQuery }) %>
+            <div class="container-fluid p-4">
+              <div class="col-12">
+                <div
+                  style="background: #fff3cd; border-radius: 12px; border-left: 4px solid #f6c23e; padding: 16px; color: #856404;margin-bottom:20px;margin-top:-30px">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Peringatan: <%= peringatan %></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-4 mb-4">
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div
+                    style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-left: 4px solid #4e73df; transition: transform 0.2s;">
+                    <div class="p-4">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <div
+                            style="font-size: 0.8rem; font-weight: 600; color: #4e73df; text-transform: uppercase; margin-bottom: 8px;">
+                            Barang Terdaftar
+                          </div>
+                          <div style="font-size: 1.5rem; font-weight: 700; color: #2c3e50;">
+                            <%= totalBarang %>
+                          </div>
+                        </div>
+                        <i class="fas fa-clipboard-check" style="font-size: 2rem; color: #e9ecef;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div
+                    style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-left: 4px solid #1cc88a; transition: transform 0.2s;">
+                    <div class="p-4">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <div
+                            style="font-size: 0.8rem; font-weight: 600; color: #1cc88a; text-transform: uppercase; margin-bottom: 8px;">
+                            Akan Dilelang
+                          </div>
+                          <div style="font-size: 1.5rem; font-weight: 700; color: #2c3e50;">
+                            <%= akanLelang %>
+                          </div>
+                        </div>
+                        <i class="fas fa-gavel" style="font-size: 2rem; color: #e9ecef;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div
+                    style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-left: 4px solid #36b9cc; transition: transform 0.2s;">
+                    <div class="p-4">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <div
+                            style="font-size: 0.8rem; font-weight: 600; color: #36b9cc; text-transform: uppercase; margin-bottom: 8px;">
+                            Dalam Lelang
+                          </div>
+                          <div style="font-size: 1.5rem; font-weight: 700; color: #2c3e50;">
+                            <%= barangLelang %>
+                          </div>
+                        </div>
+                        <i class="fas fa-hourglass-half" style="font-size: 2rem; color: #e9ecef;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div
+                    style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-left: 4px solid #f6c23e; transition: transform 0.2s;">
+                    <div class="p-4">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <div
+                            style="font-size: 0.8rem; font-weight: 600; color: #f6c23e; text-transform: uppercase; margin-bottom: 8px;">
+                            Notifikasi Penting
+                          </div>
+                          <div style="font-size: 1.5rem; font-weight: 700; color: #2c3e50;">
+                            <%= notif %>
+                          </div>
+                        </div>
+                        <i class="fas fa-bell" style="font-size: 2rem; color: #e9ecef;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-4">
+                <div class="col-12 col-xl-8">
+                  <div style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+                    <div class="p-4">
+                      <div class="table-responsive" style="margin-top: -20px;">
+                        <table class="table" style="margin-bottom: 0;">
+                          <thead>
+                            <tr style="background: #f8f9fc;">
+                              <th style="padding: 12px 16px; color: #4e73df; font-weight: 600; border: none;">ID BARANG</th>
+                              <th style="padding: 12px 16px; color: #4e73df; font-weight: 600; border: none;">Nama</th>
+                              <th style="padding: 12px 16px; color: #4e73df; font-weight: 600; border: none;">Kategori
+                              </th>
+                              <th style="padding: 12px 16px; color: #4e73df; font-weight: 600; border: none;">Lokasi
+                              </th>
+                              <th style="padding: 12px 16px; color: #4e73df; font-weight: 600; border: none;">Pemilik
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% latestItems.forEach(item=> { %>
+                              <tr style="border-bottom: 1px solid #e3e6f0;">
+                                <td style="padding: 16px; color: #5a5c69;">
+                                  <%= item.id_barang %>
+                                </td>
+                                <td style="padding: 16px; color: #5a5c69;">
+                                  <%= item.nama_barang %>
+                                </td>
+                                <td style="padding: 16px; color: #5a5c69;">
+                                  <%= item.kategori %>
+                                </td>
+                                <td style="padding: 16px; color: #5a5c69;">
+                                  <%= item.lokasi_barang %>
+                                </td>
+                                <td style="padding: 16px; color: #5a5c69;">
+                                  <%= item.pemilik %>
+                                </td>
+                              </tr>
+                              <% }); %>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="d-flex justify-content-end mt-3">
+                        <a style="background: #4e73df; color: white; border: none; padding: 8px 16px; border-radius: 6px; display: block; margin: 0 auto; width: fit-content;"
+                          href="/barang" class="btn">Lainnya</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-4">
+                  <div style="background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+                    <div class="p-4">
+                      <h6 style="color: #2c3e50; font-weight: 600; margin-bottom: 20px;">Diagram Barang</h6>
+                      <div style="position: relative; height: 300px;">
+                        <canvas data-bss-chart="{
+                                &quot;type&quot;:&quot;doughnut&quot;,
+                                &quot;data&quot;:{
+                                  &quot;labels&quot;:[&quot;Tersedia&quot;,&quot;Akan Lelang&quot;,&quot;Sedang Lelang&quot;,&quot;Jual&quot;],
+                                  &quot;datasets&quot;:[{
+                                    &quot;label&quot;:&quot;&quot;,
+                                    &quot;backgroundColor&quot;:[&quot;#02ad16&quot;,&quot;#ace307&quot;,&quot;#152bed&quot;,&quot;#e30707&quot;],
+                                    &quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],
+                                    &quot;data&quot;:[&quot;<%= barangTersedia %>&quot;,&quot;<%= akanLelang %>&quot;,&quot;<%= barangLelang %>&quot;,&quot;<%= barangJual %>&quot;]
+                                  }]
+                                },
+                                &quot;options&quot;:{
+                                  &quot;maintainAspectRatio&quot;:false,
+                                  &quot;legend&quot;:{&quot;display&quot;:false},
+                                  &quot;title&quot;:{&quot;display&quot;:false}
+                                }
+                              }"></canvas>
+                      </div>
+                      <div class="d-flex justify-content-center gap-3 mt-4">
+                        <span class="d-flex align-items-center gap-2">
+                          <i class="fas fa-circle" style="color: #02ad16;"></i>
+                          <span style="color: #5a5c69; font-size: 0.68rem;font-weight: 800;">Tersedia</span>
+                        </span>
+                        <span class="d-flex align-items-center gap-2">
+                          <i class="fas fa-circle" style="color: #ace307;"></i>
+                          <span style="color: #5a5c69; font-size: 0.68rem;font-weight: 800;">Akan Lelang</span>
+                        </span>
+                        <span class="d-flex align-items-center gap-2">
+                          <i class="fas fa-circle" style="color: #152bed;"></i>
+                          <span style="color: #5a5c69; font-size: 0.68rem;font-weight: 800;">Sedang Lelang</span>
+                        </span>
+                        <span class="d-flex align-items-center gap-2">
+                          <i class="fas fa-circle" style="color: #e30707;"></i>
+                          <span style="color: #5a5c69; font-size: 0.68rem; font-weight: 800;">Jual</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+              </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
+      </div>
+  </div>
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  <%- include('partials/scripts') %>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+  "label2id": {
+    "B-date": 0,
+    "B-item": 1,
+    "B-jabatan": 2,
+    "B-karyawan": 3,
+    "B-location": 4,
+    "B-price": 5,
+    "B-quantity": 6,
+    "B-sapaan": 7,
+    "B-status": 8,
+    "B-terimakasih": 9,
+    "I-item": 10,
+    "I-jabatan": 11,
+    "I-karyawan": 12,
+    "I-location": 13,
+    "I-price": 14,
+    "O": 15,
+    "O-item": 16
+  },
+  "id2label": {
+    "0": "B-date",
+    "1": "B-item",
+    "2": "B-jabatan",
+    "3": "B-karyawan",
+    "4": "B-location",
+    "5": "B-price",
+    "6": "B-quantity",
+    "7": "B-sapaan",
+    "8": "B-status",
+    "9": "B-terimakasih",
+    "10": "I-item",
+    "11": "I-jabatan",
+    "12": "I-karyawan",
+    "13": "I-location",
+    "14": "I-price",
+    "15": "O",
+    "16": "O-item"
+  }
+}
