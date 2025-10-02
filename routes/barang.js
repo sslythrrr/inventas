@@ -1,18 +1,44 @@
-const express = require('express');
+const express = require('express'); //rvk
 const router = express.Router();
 const db = require('../db.js');
 const multer = require('multer');
 const sharp = require('sharp');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-const { requireLogin } = require('../routes/auth.js');
+const path = require('path');
+const fs = require('fs');
 
-async function compressImage(buffer, { format = 'jpeg', quality = 80, width = 500 }) {
-  return await sharp(buffer)
-    .resize({ width })
-    .toFormat(format, { quality })
-    .toBuffer();
+// Pastikan folder uploads ada
+const uploadDir = path.join(__dirname, '../public/uploads/barang');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // max 5MB
+  fileFilter: function (req, file, cb) {
+    const allowedTypes = /jpeg|jpg|png|gif/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb(new Error('Hanya file gambar yang diizinkan!'));
+    }
+  }
+});
+const { requireLogin } = require('../routes/auth.js');
+const fetch = require('node-fetch');
 
 async function logAdminActivity(connection, req, jenis_aktivitas, detail_perubahan) {
   try {
@@ -25,6 +51,30 @@ async function logAdminActivity(connection, req, jenis_aktivitas, detail_perubah
     console.error('Error logging admin activity:', error);
     throw error;
   }
+}
+
+async function rebuildSearchIndex() {
+    try {
+        console.log('🔄 Rebuilding search index...');
+        const pythonApiUrl = 'http://localhost:5000/rebuild-index';
+
+        const indexResponse = await fetch(pythonApiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (indexResponse.ok) {
+            const indexData = await indexResponse.json();
+            console.log('✅ Search index rebuilt:', indexData.message);
+            return true;
+        } else {
+            console.error('⚠️ Failed to rebuild index:', await indexResponse.text());
+            return false;
+        }
+    } catch (indexError) {
+        console.error('⚠️ Error rebuilding index:', indexError.message);
+        return false;
+    }
 }
 
 router.post('/', requireLogin, upload.single('gambar_barang'), async (req, res) => {
@@ -44,29 +94,38 @@ router.post('/', requireLogin, upload.single('gambar_barang'), async (req, res) 
     } = req.body;
 
     const format_harga_barang = parseInt(harga_barang.replace(/[^0-9]/g, ''), 10);
-    let gambar_barang = null;
+  let gambar_path = null;
 
-    if (req.file) {
-      gambar_barang = await compressImage(req.file.buffer, {
-        format: 'jpeg',
-        quality: 80,
-        width: 500
-      });
-    }
+if (req.file) {
+  // Kompres gambar yang udah disimpan di folder
+  const inputPath = req.file.path;
+  const outputFilename = `inventas-${req.file.filename}`;
+  const outputPath = path.join(uploadDir, outputFilename);
+  
+  await sharp(inputPath)
+    .resize({ width: 500 })
+    .jpeg({ quality: 80 })
+    .toFile(outputPath);
+  
+  // Hapus file original, pakai yang compressed
+  fs.unlinkSync(inputPath);
+  
+  gambar_path = `/uploads/barang/${outputFilename}`;
+}
 
     await connection.beginTransaction();
 
     const query = `
-      INSERT INTO barang (
-        id_barang, nama_barang, kategori, lokasi_barang, harga_barang,
-        kondisi_barang, status_barang, deskripsi_barang, gambar_barang, waktu_masuk
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+  INSERT INTO barang (
+    id_barang, nama_barang, kategori, lokasi_barang, harga_barang,
+    kondisi_barang, status_barang, deskripsi_barang, gambar_barang, waktu_masuk
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+`;
 
-    await connection.query(query, [
-      id_barang, nama_barang, kategori, lokasi_barang, format_harga_barang,
-      kondisi_barang, status_barang, deskripsi_barang, gambar_barang, waktu_masuk
-    ]);
+await connection.query(query, [
+  id_barang, nama_barang, kategori, lokasi_barang, format_harga_barang,
+  kondisi_barang, status_barang, deskripsi_barang, gambar_path, waktu_masuk
+]);
 
     const kepemilikanQuery = `
       INSERT INTO kepemilikan (id_barang, id_karyawan, tanggal_perolehan, status_kepemilikan)
@@ -92,6 +151,9 @@ router.post('/', requireLogin, upload.single('gambar_barang'), async (req, res) 
     }
 
     await connection.commit();
+
+    await rebuildSearchIndex();
+
     res.json({
       success: true,
       message: status_barang === 'lelang' ?
@@ -133,10 +195,6 @@ router.get('/detail/:id', requireLogin, async (req, res) => {
         success: false,
         message: 'Barang tidak ditemukan'
       });
-    }
-
-    if (result[0].gambar_barang) {
-      result[0].gambar_barang = result[0].gambar_barang.toString('base64');
     }
 
     res.json({
@@ -195,15 +253,36 @@ router.post('/edit', requireLogin, upload.single('gambar_barang'), async (req, r
         message: 'Format harga tidak valid'
       });
     }
+let gambar_path = null;
 
-    let gambar_barang = null;
-    if (req.file) {
-      gambar_barang = await compressImage(req.file.buffer, {
-        format: 'jpeg',
-        quality: 80,
-        width: 500
-      });
+if (req.file) {
+  // Hapus gambar lama kalau ada
+  const [oldData] = await connection.query(
+    'SELECT gambar_barang FROM barang WHERE id_barang = ?',
+    [id_barang]
+  );
+  
+  if (oldData[0]?.gambar_barang) {
+    const oldPath = path.join(__dirname, '..', 'public', oldData[0].gambar_barang);
+    if (fs.existsSync(oldPath)) {
+      fs.unlinkSync(oldPath);
     }
+  }
+  
+  // Kompres gambar baru
+  const inputPath = req.file.path;
+  const outputFilename = `inventas-${req.file.filename}`;
+  const outputPath = path.join(uploadDir, outputFilename);
+  
+  await sharp(inputPath)
+    .resize({ width: 500 })
+    .jpeg({ quality: 80 })
+    .toFile(outputPath);
+  
+  fs.unlinkSync(inputPath);
+  
+  gambar_path = `/uploads/barang/${outputFilename}`;
+}
 
     await connection.beginTransaction();
 
@@ -228,10 +307,10 @@ router.post('/edit', requireLogin, upload.single('gambar_barang'), async (req, r
       kondisi_barang
     ];
 
-    if (gambar_barang) {
-      updateBarangQuery += ', gambar_barang = ?';
-      updateBarangValues.push(gambar_barang);
-    }
+if (gambar_path) {
+  updateBarangQuery += ', gambar_barang = ?';
+  updateBarangValues.push(gambar_path);
+}
 
     updateBarangQuery += ' WHERE id_barang = ?';
     updateBarangValues.push(id_barang);
@@ -271,7 +350,7 @@ router.post('/edit', requireLogin, upload.single('gambar_barang'), async (req, r
       changes.push(`Kondisi: ${original.kondisi_barang} → ${kondisi_barang}`);
     }
 
-    if (gambar_barang) {
+    if (gambar_path) {
       changes.push('Gambar diperbarui');
     }
     if (original.id_karyawan !== id_karyawan) {
@@ -312,6 +391,7 @@ router.post('/edit', requireLogin, upload.single('gambar_barang'), async (req, r
     }
 
     await connection.commit();
+    await rebuildSearchIndex();
     res.json({
       success: true,
       message: 'Barang berhasil diperbarui',
@@ -550,6 +630,19 @@ router.get('/delete/:id_barang', requireLogin, async (req, res) => {
 
     const nama_barang = barangResult[0].nama_barang;
 
+    // Hapus file gambar fisik
+const [barangData] = await connection.query(
+  'SELECT gambar_barang FROM barang WHERE id_barang = ?',
+  [id_barang]
+);
+
+if (barangData[0]?.gambar_barang) {
+  const imagePath = path.join(__dirname, '..', 'public', barangData[0].gambar_barang);
+  if (fs.existsSync(imagePath)) {
+    fs.unlinkSync(imagePath);
+  }
+}
+
     await connection.query('DELETE FROM notifikasi WHERE id_barang = ?', [id_barang]);
     await connection.query('DELETE FROM lelang WHERE id_barang = ?', [id_barang]);
     await connection.query('DELETE FROM kepemilikan WHERE id_barang = ?', [id_barang]);
@@ -563,6 +656,7 @@ router.get('/delete/:id_barang', requireLogin, async (req, res) => {
     );
 
     await connection.commit();
+    await rebuildSearchIndex();
     res.json({
       success: true,
       message: 'Barang berhasil dihapus'

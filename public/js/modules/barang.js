@@ -53,41 +53,41 @@ if (window.location.pathname === "/barang") {
         inputHarga.value = cleanValue;
     });
     function confirmDelete(idBarang) {
-    Swal.fire({
-        title: 'Hapus Barang?',
-        text: "Data barang dihapus permanen",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Ya, Hapus',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: '/barang/delete/' + idBarang,
-                type: 'GET',
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire(
-                            'Terhapus!',
-                            'Barang berhasil dihapus.',
-                            'success'
-                        ).then(() => {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire(
-                            'Gagal!',
-                            response.message || 'Terjadi kesalahan saat menghapus.',
-                            'error'
-                        );
+        Swal.fire({
+            title: 'Hapus Barang?',
+            text: "Data barang dihapus permanen",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/barang/delete/' + idBarang,
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Barang berhasil dihapus.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                response.message || 'Terjadi kesalahan saat menghapus.',
+                                'error'
+                            );
+                        }
                     }
-                }
-            });
-        }
-    });
-}
+                });
+            }
+        });
+    }
     const CONFIG = {
         MAX_IMAGE_SIZE: 10 * 1024 * 1024,
         DEFAULT_IMAGE_PATH: '/path/to/default-image.jpg',
@@ -194,24 +194,14 @@ if (window.location.pathname === "/barang") {
             reader.readAsDataURL(file);
         }
 
-        setPreviewImage(base64Image) {
-            if (!base64Image) {
-                this.preview.attr('src', CONFIG.DEFAULT_IMAGE_PATH);
+        setPreviewImage(imagePath) {
+            if (!imagePath) {
+                this.preview.attr('src', '/img/no-image.svg');
                 return;
             }
 
-            const img = new Image();
-            img.onload = () => {
-                this.preview
-                    .attr('src', img.src)
-                    .addClass('preview-image');
-            };
-            img.onerror = () => {
-                this.preview
-                    .attr('src', CONFIG.DEFAULT_IMAGE_PATH)
-                    .addClass('preview-image');
-            };
-            img.src = `data:image/jpeg;base64,${base64Image}`;
+            // Langsung set path, bukan base64
+            this.preview.attr('src', imagePath).addClass('preview-image');
         }
     }
 
@@ -278,7 +268,7 @@ if (window.location.pathname === "/barang") {
                 if (response.success) {
                     toastr.success('Barang berhasil diperbarui!');
                     $('#editBarangModal').modal('hide');
-                    
+
                     // Refresh the table
                     setTimeout(() => {
                         location.reload();
@@ -336,7 +326,7 @@ if (window.location.pathname === "/barang") {
 
     const role = "<%= role %>";
     if (role === 'atasan') {
-      document.querySelectorAll('.btn-edit, .btn-delete').forEach(el => el.remove());
+        document.querySelectorAll('.btn-edit, .btn-delete').forEach(el => el.remove());
     }
 
     function getBarangDetail(id_barang) {
@@ -375,7 +365,9 @@ if (window.location.pathname === "/barang") {
                     }
 
                     if (barang.gambar_barang) {
-                        $('#previewImage').attr('src', `data:image/jpeg;base64,${barang.gambar_barang}`);
+                        $('#previewImage').attr('src', barang.gambar_barang);
+                    } else {
+                        $('#previewImage').attr('src', '/img/no-image.svg');
                     }
                     setupCleave();
 
@@ -392,7 +384,7 @@ if (window.location.pathname === "/barang") {
             }
         });
     }
-    
+
     function formatTimeRemaining(startTime, endTime) {
         if (!startTime || !endTime) return '-';
 
@@ -512,8 +504,8 @@ if (window.location.pathname === "/barang") {
                     }
                     initializeTimers();
                     updateSortingIndicators(sort, order);
-                    if (response.pagination) {
-                        updatePagination(response.pagination);
+                    if (res.pagination) {
+                        updatePagination(res.pagination);
                     }
                 }
             },
@@ -649,44 +641,87 @@ if (window.location.pathname === "/barang") {
     });
 
     function updatePagination(paginationData) {
-        const paginationContainer = document.querySelector('.pagination');
-        if (!paginationContainer) return;
-        let paginationHtml = '';
+        if (!paginationData) return;
+        const containers = document.querySelectorAll('.pagination');
+        if (!containers || containers.length === 0) return;
 
-        paginationHtml += `
-            <li class="page-item ${paginationData.currentPage === 1 ? 'disabled' : ''}">
-                <a class="page-link" href="#" data-page="${paginationData.currentPage - 1}">Previous</a>
-            </li>
-        `;
+        const currentPage = parseInt(paginationData.currentPage) || 1;
+        const totalPages = Math.max(1, parseInt(paginationData.totalPages) || 1);
+        const delta = 2; // range kiri/kanan current page
 
-        for (let i = 1; i <= paginationData.totalPages; i++) {
-            paginationHtml += `
-                <li class="page-item ${i === paginationData.currentPage ? 'active' : ''}">
-                    <a class="page-link" href="#" data-page="${i}">${i}</a>
-                </li>
-            `;
+        // build compact range with ellipsis
+        const range = [];
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= currentPage - delta && i <= currentPage + delta)) {
+                range.push(i);
+            }
+        }
+        const rangeWithDots = [];
+        let last = null;
+        for (const i of range) {
+            if (last !== null) {
+                if (i - last === 2) rangeWithDots.push(last + 1);
+                else if (i - last > 2) rangeWithDots.push('...');
+            }
+            rangeWithDots.push(i);
+            last = i;
         }
 
-        paginationHtml += `
-            <li class="page-item ${paginationData.currentPage === paginationData.totalPages ? 'disabled' : ''}">
-                <a class="page-link" href="#" data-page="${paginationData.currentPage + 1}">Next</a>
-            </li>
-        `;
-        paginationContainer.innerHTML = paginationHtml;
+        containers.forEach(paginationContainer => {
+            // build HTML
+            let html = '';
 
-        paginationContainer.querySelectorAll('.page-link').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                const page = this.dataset.page;
-                if (page) {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    urlParams.set('page', page);
-                    history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
-                    updateTable();
+            html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+                 </li>`;
+
+            for (const p of rangeWithDots) {
+                if (p === '...') {
+                    html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                } else {
+                    html += `<li class="page-item ${p === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" data-page="${p}">${p}</a>
+                         </li>`;
                 }
-            });
+            }
+
+            html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+                 </li>`;
+
+            // replace markup
+            paginationContainer.innerHTML = html;
+
+            // remove any previous onclick handlers to avoid duplicates, then attach one delegated handler
+            paginationContainer.onclick = function (e) {
+                const a = e.target.closest('a.page-link');
+                if (!a) return;
+                e.preventDefault();
+
+                const page = parseInt(a.dataset.page);
+                if (isNaN(page) || page < 1 || page > totalPages) return;
+
+                // visual feedback: update active immediately
+                paginationContainer.querySelectorAll('.page-item').forEach(li => li.classList.remove('active'));
+                const parentLi = a.closest('.page-item');
+                if (parentLi) parentLi.classList.add('active');
+
+                // update URL and reload table
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', page);
+                history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+
+                // call table refresh (your existing function)
+                if (typeof updateTable === 'function') {
+                    updateTable();
+                } else {
+                    // fallback: force a reload if updateTable not present
+                    window.location.href = `${window.location.pathname}?${urlParams.toString()}`;
+                }
+            };
         });
     }
+
 
     $('#editBarangForm').on('submit', function (e) {
         e.preventDefault();
@@ -819,30 +854,10 @@ if (window.location.pathname === "/barang") {
         sortTable('waktu_masuk', order);
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const paginationLinks = document.querySelectorAll('.pagination .page-link');
-
-        paginationLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                if (this.href && !this.href.includes('#')) {
-                    const url = new URL(this.href);
-                    const urlParams = new URLSearchParams(url.search);
-
-                    history.pushState({}, '', `${url.pathname}?${urlParams.toString()}`);
-
-                    updateTable();
-                }
-            });
-        });
-
-    });
-
     // Handler untuk tombol detail (khusus atasan)
-    $(document).on('click', '.detail-barang-btn', function() {
+    $(document).on('click', '.detail-barang-btn', function () {
         const idBarang = $(this).data('id');
-        $.get(`/barang/detail/${idBarang}`, function(data) {
+        $.get(`/barang/detail/${idBarang}`, function (data) {
             if (data.success && data.data) {
                 const b = data.data;
                 $('#detailBarangModalLabel').text('Detail Barang #' + b.id_barang);
@@ -851,26 +866,26 @@ if (window.location.pathname === "/barang") {
                 $('#detailLokasi').text(b.lokasi_barang || '-');
                 $('#detailPemilik').text(b.nama_karyawan || '-');
                 $('#detailStatus').text(b.status_barang || '-');
-    
+
                 // Jika ingin hapus masa lelang karena tidak relevan:
                 $('#detailMasaLelang').text('-');
-    
+
                 $('#detailHarga').text(
                     b.harga_barang
                         ? b.harga_barang.toLocaleString('id-ID', {
-                              style: 'currency',
-                              currency: 'IDR'
-                          })
+                            style: 'currency',
+                            currency: 'IDR'
+                        })
                         : '-'
                 );
-    
+
                 $('#detailBarangModal').modal('show');
             } else {
                 toastr.error('Gagal mengambil detail barang');
             }
         });
     });
-    
+
     // $(document).on('click', '.detail-barang-btn', function() {
     //     const idBarang = $(this).data('id');
     //     $.get(`/barang/detail/${idBarang}`, function(data) {
@@ -905,7 +920,7 @@ if (window.location.pathname === "/barang") {
                 console.log('DEBUG DETAIL BARANG:', response);
                 if (response.success && response.data) {
                     const barang = response.data;
-    
+
                     $('#detailNamaBarang').text(barang.nama_barang || '-');
                     $('#detailKategori').text(barang.kategori || '-');
                     $('#detailLokasi').text(barang.lokasi_barang || '-');
@@ -914,14 +929,14 @@ if (window.location.pathname === "/barang") {
                     $('#detailHarga').text(
                         barang.harga_barang
                             ? barang.harga_barang.toLocaleString('id-ID', {
-                                  style: 'currency',
-                                  currency: 'IDR'
-                              })
+                                style: 'currency',
+                                currency: 'IDR'
+                            })
                             : '-'
                     );
-    
+
                     // ❌ Bagian waktu lelang DIHAPUS
-    
+
                     $('#detailBarangModal').modal('show');
                 } else {
                     toastr.error('Gagal mengambil detail barang: ' + (response.message || 'Data tidak ditemukan'));
@@ -933,7 +948,7 @@ if (window.location.pathname === "/barang") {
             }
         });
     }
-    
+
 
     // function showDetailBarang(id_barang) {
     //     $.ajax({
