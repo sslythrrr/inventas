@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Data Barang</title>
+    <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
@@ -191,10 +192,8 @@
                                                                         <td>
                                                                             <div class="btn-group" role="group">
                                                                                 <button class="btn btn-white btn-sm"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#editBarangModal"
                                                                                     title="Edit"
-                                                                                    onclick="getBarangDetail('<%= item.id_barang %>')">
+                                                                                    onclick="openEditModal('<%= item.id_barang %>')">
                                                                                     <i class="fas fa-ellipsis-v"></i>
                                                                                 </button>
                                                                                 <button class="btn btn-danger btn-sm"
@@ -625,6 +624,43 @@ justify-content: center;">
     </a>
     <%- include('partials/scripts') %>
         <script>window.role = '<%= role %>';</script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const idBarang = urlParams.get('id');
+                const action = urlParams.get('action');
+
+                if (idBarang && action === 'edit') {
+                    // Load barang detail and open modal
+                    getBarangDetail(idBarang);
+
+                    // Wait a bit for modal to be ready, then show it
+                    setTimeout(() => {
+                        const editModal = new bootstrap.Modal(document.getElementById('editBarangModal'));
+                        editModal.show();
+                    }, 300);
+                }
+            });
+            function openEditModal(idBarang) {
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.set('id', idBarang);
+                newUrl.searchParams.set('action', 'edit');
+                window.history.pushState({}, '', newUrl);
+
+                // Load detail and show modal
+                getBarangDetail(idBarang);
+                const editModal = new bootstrap.Modal(document.getElementById('editBarangModal'));
+                editModal.show();
+            }
+
+            document.getElementById('editBarangModal').addEventListener('hidden.bs.modal', function () {
+                // Remove id parameter from URL when modal is closed
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.delete('id');
+                newUrl.searchParams.delete('action');
+                window.history.pushState({}, '', newUrl);
+            });
+        </script>
 </body>
 
 </html>

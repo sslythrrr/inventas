@@ -39,7 +39,7 @@ router.get('/', requireLogin, async (req, res) => {
             FROM (
                 SELECT b.id_barang
                 FROM Barang b
-                LEFT JOIN (
+                INNER JOIN (
                     SELECT id_barang, id_karyawan
                     FROM Kepemilikan
                     WHERE status_kepemilikan = 'aktif'
@@ -78,11 +78,12 @@ router.get('/', requireLogin, async (req, res) => {
                 k1.id_karyawan AS id_pemilik_sekarang,
                 k2.nama_karyawan AS pemilik_sebelumnya
             FROM Barang b
-            LEFT JOIN (
-                SELECT id_barang, id_karyawan, tanggal_perolehan
-                FROM Kepemilikan
-                WHERE status_kepemilikan = 'aktif'
-            ) current_own ON b.id_barang = current_own.id_barang
+            INNER JOIN (
+    SELECT id_barang, id_karyawan, tanggal_perolehan
+    FROM Kepemilikan
+    WHERE status_kepemilikan = 'aktif'
+) current_own ON b.id_barang = current_own.id_barang
+
             LEFT JOIN Karyawan k1 ON current_own.id_karyawan = k1.id_karyawan
             LEFT JOIN (
                 SELECT k.id_barang, k.id_karyawan
