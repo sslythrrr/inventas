@@ -5,7 +5,7 @@ const db = require('../db');
 const fuzz = require('fuzzball');
 
 const CHATBOT_API_URL = 'http://localhost:5000';
-const SEMANTIC_THRESHOLD = 0.48;
+const SEMANTIC_THRESHOLD = 0.20;
 
 function formatImageData(gambar_barang) {
     if (gambar_barang) {
@@ -193,7 +193,7 @@ const intentStopwords = {
     ],
     'lokasi_barang': [
         'di', 'mana', 'dimana', 'dmn', 'lokasi', 'ada', 'berada',
-        'tempat', 'letak', 'posisi', 'lokasinya', 'tempatnya',
+         'letak', 'posisi', 'lokasinya',
         'letaknya', 'adanya', 'keberadaan', 'untuk', 'dari',
         'nya', 'kah', 'sih', 'dong', 'yak', 'itu', 'ini',
         'yang', 'apa', 'ya', 'deh', 'gan', 'bos', 'min',
@@ -223,6 +223,75 @@ const intentStopwords = {
         'gan', 'bos', 'min', 'kak', 'bang', 'mas', 'mbak',
         'pak', 'bu', 'oleh'
     ]
+};
+
+// Log terminal
+const logger = {
+    input(message) {
+        console.log(`\nInput: "${message}"`);
+    },
+    detect(intent, confidence, entity) {
+        const entityStr = entity ? `| Entity: ${entity}` : '| No entity';
+        console.log(`Deteksi: ${intent} (${(confidence * 100).toFixed(0)}%) ${entityStr}`);
+    },
+    searchDirect(count) {
+        console.log(`Pencarian: Direct → ${count} hasil`);
+    },
+    searchNoResults() {
+        console.log(`Pencarian: Direct → 0 hasil`);
+    },
+    fuzzyAttempt() {
+        console.log(`Menjalankan fuzzy matching`);
+    },
+    fuzzyResults(matches) {
+        if (matches.length === 0) {
+            console.log(`Fuzzy: Tidak ada (threshold: 65)`);
+        } else {
+            console.log(`Fuzzy: ${matches.length} ditemukan`);
+            matches.slice(0, 3).forEach(m => {
+                console.log(`   • ${m.nama} (score: ${m.score})`);
+            });
+        }
+    },
+    semanticAttempt() {
+        console.log(`Menjalankan model semantik`);
+    },
+    semanticResults(matches) {
+        if (matches.length === 0) {
+            console.log(`Semantik: Tidak ada (threshold: ${SEMANTIC_THRESHOLD})`);
+        } else {
+            console.log(`Semantik: ${matches.length} ditemukan`);
+            matches.slice(0, 3).forEach(m => {
+                console.log(`   • ${m.nama} (similarity: ${m.score.toFixed(2)})`);
+            });
+        }
+    },
+    dbResults(rows, intent) {
+        console.log(`Hasil: ${rows.length} items total`);
+        if (rows.length > 0) {
+            const displayCount = Math.min(5, rows.length);
+            rows.slice(0, displayCount).forEach(row => {
+                if (intent === 'kepemilikan_barang') {
+                    console.log(`   • ${row.nama_barang} - ${row.nama_karyawan} (${row.jabatan})`);
+                } else {
+                    const price = row.harga_barang ? `(Rp ${row.harga_barang.toLocaleString('id-ID')})` : '';
+                    console.log(`   • ${row.nama_barang} ${price}`);
+                }
+            });
+            if (rows.length > displayCount) {
+                console.log(`   ... dan ${rows.length - displayCount} item lainnya`);
+            }
+        }
+    },
+    output(response) {
+        console.log(`Output: "${response}"\n`);
+    },
+    error(message) {
+        console.log(`\nError: ${message}\n`);
+    },
+    helpRequest() {
+        console.log(`Bantuan`);
+    }
 };
 
 // Extract item dari message
@@ -408,6 +477,9 @@ router.post('/chat', async (req, res) => {
     try {
         const { message } = req.body;
 
+        // Log input user
+        logger.input(message);
+
         // Hardcoded help intent
         const lowerMessage = message.toLowerCase();
         const isHelpRequest = lowerMessage.includes('bantu') ||
@@ -416,6 +488,9 @@ router.post('/chat', async (req, res) => {
             lowerMessage.includes('help');
 
         if (isHelpRequest) {
+            logger.helpRequest();
+            logger.output(responses.helpResponse);
+
             return res.json({
                 intent: 'bantuan',
                 confidence: 1.0,
@@ -440,6 +515,10 @@ router.post('/chat', async (req, res) => {
         let finalResponse = botResponse;
         let suggestions = [];
 
+        // Log detection
+        const entityName = entities.item ? entities.item[0] : null;
+        logger.detect(intent, confidence, entityName);
+
         // Intent: kepemilikan_barang
         if (intent === 'kepemilikan_barang') {
             let itemName = entities.item ? entities.item[0] : null;
@@ -460,27 +539,33 @@ router.post('/chat', async (req, res) => {
             if (itemName) {
                 const [rows] = await db.query(
                     `SELECT k.nama_karyawan, k.jabatan, b.id_barang, b.nama_barang, b.gambar_barang, b.harga_barang, b.lokasi_barang, b.status_barang, b.kondisi_barang,
-                    CASE 
-                        WHEN LOWER(b.nama_barang) = LOWER(?) THEN 3
-                        WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 2
-                        WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 1
-                        ELSE 0
-                    END as relevance_score
-                    FROM kepemilikan kp
-                    JOIN barang b ON kp.id_barang = b.id_barang
-                    JOIN karyawan k ON kp.id_karyawan = k.id_karyawan
-                    WHERE (LOWER(b.nama_barang) LIKE LOWER(?) OR LOWER(b.nama_barang) LIKE LOWER(?)) 
-                    AND kp.status_kepemilikan = 'aktif'
-                    ORDER BY relevance_score DESC, k.nama_karyawan, b.nama_barang`,
+            CASE 
+                WHEN LOWER(b.nama_barang) = LOWER(?) THEN 3
+                WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 2
+                WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 1
+                ELSE 0
+            END as relevance_score
+            FROM kepemilikan kp
+            JOIN barang b ON kp.id_barang = b.id_barang
+            JOIN karyawan k ON kp.id_karyawan = k.id_karyawan
+            WHERE (LOWER(b.nama_barang) LIKE LOWER(?) OR LOWER(b.nama_barang) LIKE LOWER(?)) 
+            AND kp.status_kepemilikan = 'aktif'
+            ORDER BY relevance_score DESC, k.nama_karyawan, b.nama_barang`,
                     [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
                 );
 
                 if (rows.length > 0) {
+                    logger.searchDirect(rows.length);
+                    logger.dbResults(rows, 'kepemilikan_barang');
                     finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
                     responseData = formatCardData(rows, 'pemilik', 'kepemilikan_barang');
                 } else {
+                    logger.searchNoResults();
+                    logger.fuzzyAttempt();
+
                     // Fuzzy matching
                     const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
                         const suggestionText = fuzzyResults.length > 1
@@ -496,11 +581,15 @@ router.post('/chat', async (req, res) => {
                         }
 
                         if (allRows.length > 0) {
+                            logger.dbResults(allRows, 'kepemilikan_barang');
                             responseData = formatCardData(allRows, 'pemilik', 'kepemilikan_barang');
                         }
                     } else {
+                        logger.semanticAttempt();
+
                         // Kemiripan semantik
                         const semanticResults = await semanticSearchBarang(itemName);
+                        logger.semanticResults(semanticResults);
 
                         if (semanticResults.length > 0) {
                             const suggestionText = semanticResults.length > 1
@@ -516,6 +605,7 @@ router.post('/chat', async (req, res) => {
                             }
 
                             if (allRows.length > 0) {
+                                logger.dbResults(allRows, 'kepemilikan_barang');
                                 responseData = formatCardData(allRows, 'pemilik', 'kepemilikan_barang');
                             }
                         } else {
@@ -550,24 +640,30 @@ router.post('/chat', async (req, res) => {
             if (itemName) {
                 const [rows] = await db.query(
                     `SELECT id_barang, nama_barang, harga_barang, lokasi_barang, status_barang, kondisi_barang, gambar_barang,
-                    CASE 
-                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                        ELSE 0
-                    END as relevance_score
-                    FROM barang 
-                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                    ORDER BY relevance_score DESC, harga_barang ASC`,
+            CASE 
+                WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                ELSE 0
+            END as relevance_score
+            FROM barang 
+            WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+            ORDER BY relevance_score DESC, harga_barang ASC`,
                     [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
                 );
 
                 if (rows.length > 0) {
+                    logger.searchDirect(rows.length);
+                    logger.dbResults(rows, 'harga_barang');
                     finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
                     responseData = formatCardData(rows, 'nama', 'harga_barang');
                 } else {
+                    logger.searchNoResults();
+                    logger.fuzzyAttempt();
+
                     // Fuzzy matching
                     const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
                         const suggestionText = fuzzyResults.length > 1
@@ -583,11 +679,15 @@ router.post('/chat', async (req, res) => {
                         }
 
                         if (allRows.length > 0) {
+                            logger.dbResults(allRows, 'harga_barang');
                             responseData = formatCardData(allRows, 'nama', 'harga_barang');
                         }
                     } else {
+                        logger.semanticAttempt();
+
                         // Kemiripan semantik
                         const semanticResults = await semanticSearchBarang(itemName);
+                        logger.semanticResults(semanticResults);
 
                         if (semanticResults.length > 0) {
                             const suggestionText = semanticResults.length > 1
@@ -603,6 +703,7 @@ router.post('/chat', async (req, res) => {
                             }
 
                             if (allRows.length > 0) {
+                                logger.dbResults(allRows, 'harga_barang');
                                 responseData = formatCardData(allRows, 'nama', 'harga_barang');
                             }
                         } else {
@@ -666,16 +767,18 @@ router.post('/chat', async (req, res) => {
             }
 
             const { maxPrice, displayStr } = parsePrice(entities.price[0], message);
+            console.log(`💰 RANGE: Mencari barang dengan harga ≤ Rp ${maxPrice.toLocaleString('id-ID')} (${displayStr})`);
 
             const [rows] = await db.query(
                 `SELECT id_barang, nama_barang, harga_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang 
-                FROM barang 
-                WHERE harga_barang <= ? 
-                ORDER BY harga_barang ASC`,
+        FROM barang 
+        WHERE harga_barang <= ? 
+        ORDER BY harga_barang ASC`,
                 [maxPrice]
             );
 
             if (rows.length > 0) {
+                logger.dbResults(rows, 'range_harga');
                 finalResponse = `Ditemukan ${rows.length} barang dengan harga di bawah ${displayStr}:`;
                 responseData = formatCardData(rows, 'nama', 'range_harga');
             } else {
@@ -703,25 +806,31 @@ router.post('/chat', async (req, res) => {
             if (itemName) {
                 const [rows] = await db.query(
                     `SELECT id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang, COUNT(*) as jumlah,
-                    CASE 
-                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                        ELSE 0
-                    END as relevance_score
-                    FROM barang 
-                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                    GROUP BY id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang
-                    ORDER BY relevance_score DESC, nama_barang, status_barang`,
+            CASE 
+                WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                ELSE 0
+            END as relevance_score
+            FROM barang 
+            WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+            GROUP BY id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang
+            ORDER BY relevance_score DESC, nama_barang, status_barang`,
                     [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
                 );
 
                 if (rows.length > 0) {
+                    logger.searchDirect(rows.length);
+                    logger.dbResults(rows, 'jumlah_barang');
                     finalResponse = `Ditemukan ${rows.length} ${itemName}:`;
                     responseData = formatCardData(rows, 'nama', 'jumlah_barang');
                 } else {
+                    logger.searchNoResults();
+                    logger.fuzzyAttempt();
+
                     // Fuzzy matching
                     const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
                         const suggestionText = fuzzyResults.length > 1
@@ -737,11 +846,15 @@ router.post('/chat', async (req, res) => {
                         }
 
                         if (allRows.length > 0) {
+                            logger.dbResults(allRows, 'jumlah_barang');
                             responseData = formatCardData(allRows, 'nama', 'jumlah_barang');
                         }
                     } else {
+                        logger.semanticAttempt();
+
                         // Kemiripan semantik
                         const semanticResults = await semanticSearchBarang(itemName);
+                        logger.semanticResults(semanticResults);
 
                         if (semanticResults.length > 0) {
                             const suggestionText = semanticResults.length > 1
@@ -757,6 +870,7 @@ router.post('/chat', async (req, res) => {
                             }
 
                             if (allRows.length > 0) {
+                                logger.dbResults(allRows, 'jumlah_barang');
                                 responseData = formatCardData(allRows, 'nama', 'jumlah_barang');
                             }
                         } else {
@@ -791,24 +905,30 @@ router.post('/chat', async (req, res) => {
             if (itemName) {
                 const [rows] = await db.query(
                     `SELECT id_barang, nama_barang, lokasi_barang, status_barang, kondisi_barang, harga_barang, gambar_barang,
-                    CASE 
-                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                        ELSE 0
-                    END as relevance_score
-                    FROM barang 
-                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                    ORDER BY relevance_score DESC, lokasi_barang, nama_barang`,
+            CASE 
+                WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                ELSE 0
+            END as relevance_score
+            FROM barang 
+            WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+            ORDER BY relevance_score DESC, lokasi_barang, nama_barang`,
                     [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
                 );
 
                 if (rows.length > 0) {
+                    logger.searchDirect(rows.length);
+                    logger.dbResults(rows, 'lokasi_barang');
                     finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
                     responseData = formatCardData(rows, 'lokasi', 'lokasi_barang');
                 } else {
+                    logger.searchNoResults();
+                    logger.fuzzyAttempt();
+
                     // Fuzzy matching
                     const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
                         const suggestionText = fuzzyResults.length > 1
@@ -824,11 +944,15 @@ router.post('/chat', async (req, res) => {
                         }
 
                         if (allRows.length > 0) {
+                            logger.dbResults(allRows, 'lokasi_barang');
                             responseData = formatCardData(allRows, 'lokasi', 'lokasi_barang');
                         }
                     } else {
+                        logger.semanticAttempt();
+
                         // Kemiripan semantik
                         const semanticResults = await semanticSearchBarang(itemName);
+                        logger.semanticResults(semanticResults);
 
                         if (semanticResults.length > 0) {
                             const suggestionText = semanticResults.length > 1
@@ -844,6 +968,7 @@ router.post('/chat', async (req, res) => {
                             }
 
                             if (allRows.length > 0) {
+                                logger.dbResults(allRows, 'lokasi_barang');
                                 responseData = formatCardData(allRows, 'lokasi', 'lokasi_barang');
                             }
                         } else {
@@ -878,24 +1003,30 @@ router.post('/chat', async (req, res) => {
             if (itemName) {
                 const [rows] = await db.query(
                     `SELECT id_barang, nama_barang, status_barang, kondisi_barang, lokasi_barang, harga_barang, gambar_barang,
-                    CASE 
-                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                        ELSE 0
-                    END as relevance_score
-                    FROM barang 
-                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                    ORDER BY relevance_score DESC, status_barang, nama_barang`,
+            CASE 
+                WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                ELSE 0
+            END as relevance_score
+            FROM barang 
+            WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+            ORDER BY relevance_score DESC, status_barang, nama_barang`,
                     [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
                 );
 
                 if (rows.length > 0) {
+                    logger.searchDirect(rows.length);
+                    logger.dbResults(rows, 'status_barang');
                     finalResponse = `Status barang ${itemName} (${rows.length} item):`;
                     responseData = formatCardData(rows, 'status', 'status_barang');
                 } else {
+                    logger.searchNoResults();
+                    logger.fuzzyAttempt();
+
                     // Fuzzy matching
                     const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
                         const suggestionText = fuzzyResults.length > 1
@@ -911,11 +1042,15 @@ router.post('/chat', async (req, res) => {
                         }
 
                         if (allRows.length > 0) {
+                            logger.dbResults(allRows, 'status_barang');
                             responseData = formatCardData(allRows, 'status', 'status_barang');
                         }
                     } else {
+                        logger.semanticAttempt();
+
                         // Kemiripan semantik
                         const semanticResults = await semanticSearchBarang(itemName);
+                        logger.semanticResults(semanticResults);
 
                         if (semanticResults.length > 0) {
                             const suggestionText = semanticResults.length > 1
@@ -931,6 +1066,7 @@ router.post('/chat', async (req, res) => {
                             }
 
                             if (allRows.length > 0) {
+                                logger.dbResults(allRows, 'status_barang');
                                 responseData = formatCardData(allRows, 'status', 'status_barang');
                             }
                         } else {
@@ -945,20 +1081,24 @@ router.post('/chat', async (req, res) => {
             }
         }
 
-        // Intent: lelang_barang
+        /// Intent: lelang_barang
         else if (intent === 'lelang_barang') {
+            console.log(`Lelang: Mencari barang yang dilelang`);
+
             const [rows] = await db.query(
                 `SELECT b.id_barang, b.nama_barang, b.kondisi_barang, b.status_barang, b.lokasi_barang, b.gambar_barang, l.harga_lelang as harga_barang, l.status_lelang, l.waktu_mulai, l.waktu_selesai
-                FROM lelang l 
-                JOIN barang b ON l.id_barang = b.id_barang 
-                WHERE l.status_lelang IN ('sedang lelang', 'akan dimulai')
-                ORDER BY l.waktu_mulai ASC`
+        FROM lelang l 
+        JOIN barang b ON l.id_barang = b.id_barang 
+        WHERE l.status_lelang IN ('sedang lelang', 'akan dimulai')
+        ORDER BY l.waktu_mulai ASC`
             );
 
             if (rows.length > 0) {
+                logger.dbResults(rows, 'lelang_barang');
                 finalResponse = `Informasi Lelang Barang (${rows.length} item):`;
                 responseData = formatCardData(rows, 'nama', 'lelang_barang');
             } else {
+                console.log(`Hasil: 0 items`);
                 finalResponse = `Tidak ada barang yang sedang atau akan dilelang saat ini.`;
             }
         }
@@ -978,18 +1118,24 @@ router.post('/chat', async (req, res) => {
             else if (lowerMessage.includes('p')) sapa = 'yoi';
             else if (lowerMessage.includes('punten')) sapa = 'Mangga!';
 
+            console.log(`HALO: ${sapa}`);
             finalResponse = `${sapa} ${responses.greetingResponse}`;
         }
 
         // Intent: ucapan_terima_kasih
         else if (intent === 'ucapan_terima_kasih') {
+            console.log(`MAKASIH`);
             finalResponse = responses.thanksResponse;
         }
 
         // Intent: fallback
         else if (intent === 'fallback') {
+            console.log(`Fallback: Intent tidak dikenali, mencoba fallback search`);
+
             try {
+                logger.fuzzyAttempt();
                 const fuzzyResults = await fuzzySearchBarang(message, 50);
+                logger.fuzzyResults(fuzzyResults);
 
                 if (fuzzyResults.length > 0) {
                     const suggestionText = fuzzyResults.length > 1
@@ -1011,13 +1157,14 @@ router.post('/chat', async (req, res) => {
                     }
 
                     if (allRows.length > 0) {
+                        logger.dbResults(allRows, 'fallback');
                         responseData = formatCardData(allRows, 'nama', 'fallback');
                     } else {
                         finalResponse = `${suggestionText} Namun data tidak ditemukan.`;
                     }
                 }
             } catch (fallbackError) {
-                console.error('Fallback fuzzy search error:', fallbackError);
+                console.error('Fallback fuzzy error:', fallbackError);
                 finalResponse = responses.fallbackGeneral;
                 suggestions = [{ icon: 'guide', text: 'Panduan', query: 'bantuan' }];
             }
@@ -1043,6 +1190,9 @@ router.post('/chat', async (req, res) => {
             suggestions = generateSuggestions(intent, entities);
         }
 
+        // Log final output
+        logger.output(finalResponse);
+
         res.json({
             intent,
             confidence: parseFloat(confidence) || 0,
@@ -1058,6 +1208,7 @@ router.post('/chat', async (req, res) => {
 
     } catch (error) {
         console.error('Chatbot error:', error);
+        logger.error(error.message);
 
         if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
             res.status(503).json({
