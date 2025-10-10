@@ -184,7 +184,7 @@ const initNotificationSystem = (db) => {
   const notificationService = new NotificationService(db);
 
   const job = schedule.scheduleJob('*/1 * * * *', async () => {
-    console.log('Running notification check...');
+    //console.log('Running notification check...');
     await notificationService.checkAndCreateNotifications();
   });
 
