@@ -86,7 +86,7 @@ class NotificationService {
         const masukDate = new Date(item.waktu_masuk);
         const ageInMonths = Math.floor((now - masukDate) / (1000 * 60 * 60 * 24 * 30));
 
-        console.log(`Checking item ${item.nama_barang}: Age = ${ageInMonths} months`);
+        //console.log(`Checking item ${item.nama_barang}: Age = ${ageInMonths} months`);
         if (ageInMonths >= 36) {
           const hasAutoAuction = await this.hasExistingNotification(item.id_barang, 'lelang otomatis');
           if (!hasAutoAuction) {

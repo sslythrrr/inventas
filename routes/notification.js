@@ -6,7 +6,7 @@ module.exports = (notificationService) => {
     router.get('/',requireLogin, async (req, res) => {
         try {
             const notifications = await notificationService.getUnreadNotifications();
-            console.log('Sending notifications:', notifications);
+            //console.log('Sending notifications:', notifications);
             res.json(notifications);
         } catch (error) {
             console.error('Error fetching notifications:', error);
