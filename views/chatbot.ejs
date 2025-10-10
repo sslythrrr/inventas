@@ -10,655 +10,7 @@
     <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/fonts/material-icons.min.css">
-    <style>
-        /* Tambahkan style baru ini */
-        .bot-response-wrapper {
-            display: inline-flex;
-            flex-direction: column;
-            background: #e9ecef;
-            border-radius: 15px;
-            padding: 12px;
-            max-width: 85%;
-        }
-
-        .bot-response-wrapper .message-text-above {
-            background: transparent;
-            padding: 0 0 8px 0;
-            margin-bottom: 8px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-        }
-
-        .bot-response-wrapper .card-container {
-            background: transparent;
-        }
-
-        .message-with-cards {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            width: 100%;
-            background: #f2f6f2;
-            color: #333;
-            padding: 10px 14px;
-            border-radius: 30px 30px 30px 4px;
-        }
-
-
-        .message-text-above {
-            color: #333;
-            padding: 10px 14px;
-            border-radius: 15px;
-            font-size: 15px;
-            line-height: 1.4;
-            margin-bottom: 8px;
-            display: inline-block;
-            max-width: fit-content;
-            align-self: flex-start;
-        }
-
-        .bot-message.has-cards {
-            background: transparent;
-            padding: 0;
-            max-width: 100%;
-        }
-
-        .quick-replies {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-            max-width: fit-content;
-        }
-
-        .message-container.bot .quick-replies {
-            display: flex;
-            width: auto;
-            max-width: fit-content;
-        }
-
-        .quick-reply-chip {
-            background: #042e5b91;
-            border: none;
-            color: white;
-            margin-left: 10px;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 10px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .quick-reply-chip:hover {
-            background: #0056b3;
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        .quick-reply-chip:active {
-            transform: translateY(0);
-            box-shadow: 0 1px 4px rgba(0, 123, 255, 0.25);
-        }
-
-
-        /* Card Layout */
-        .card-container {
-            margin: 0;
-            width: 100%;
-            align-self: flex-start;
-        }
-
-        .card-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-
-        .card-group-header {
-            display: inline-block;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: #5d5959;
-            position: relative;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card-group-header::after {
-            content: "";
-            display: block;
-            height: 1px;
-            background: #007bff;
-            margin-top: 2px;
-        }
-
-
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            padding: 0 35px;
-        }
-
-        .cards-wrapper {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 4px 2px;
-            scroll-snap-type: x mandatory;
-        }
-
-        /* Hide scrollbar tapi tetap bisa scroll */
-        .cards-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .cards-wrapper {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .cards-wrapper:not([id^="group-"]) {
-            justify-content: flex-start;
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            color: #007bff;
-            border: 1px solid #dee2e6;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-            transition: all 0.2s ease;
-            font-size: 12px;
-        }
-
-        .carousel-arrow:hover {
-            background: #007bff;
-            color: white;
-            transform: translateY(-50%) scale(1.05);
-            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
-        }
-
-        .carousel-arrow.left {
-            left: -10px;
-        }
-
-        .carousel-arrow.right {
-            right: -10px;
-        }
-
-        .carousel-arrow:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-arrow:disabled:hover {
-            transform: translateY(-50%) scale(1);
-            background: rgba(255, 255, 255, 0.5);
-            color: #007bff;
-        }
-
-        .item-card {
-    min-width: 160px;
-    max-width: 160px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    background: rgba(255, 255, 255, 0.512);
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.item-card:hover {
-    transform: translateY(-6px);
-}
-
-.card-image {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 10px;
-    position: relative;
-    margin-top: -4px;
-}
-
-.card-title {
-    font-weight: 600;
-    font-size: 13px;
-    color: #1a1a1a;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 1.3;
-}
-
-.card-info {
-    font-size: 12px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-}
-
-.card-info i {
-    color: #007bff;
-    font-size: 11px;
-    min-width: 14px;
-}
-        .card-footer {
-    background: transparent;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-.view-detail-btn {
-    background: none;
-    border: none;
-    color: #00020369;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 8px 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.view-detail-btn:hover {
-    color: #0056b3;
-}
-
-        /* Modal */
-        .detail-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .detail-modal.show {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content-custom {
-            background: white;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 450px;
-            max-height: 90vh;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            animation: slideUp 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header-custom {
-            padding: 20px;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header-custom h5 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #999;
-            cursor: pointer;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-
-        .close-modal:hover {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .modal-body-custom {
-            padding: 16px 20px;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .modal-image {
-            width: 100%;
-            max-height: 200px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            background: #f8f9fa;
-        }
-
-        /* Ganti .modal-info-group */
-        .modal-info-group {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-
-        .modal-info-group:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        /* Ganti .modal-info-label */
-        .modal-info-label {
-            font-size: 12px;
-            color: #999;
-            font-weight: 500;
-            min-width: 100px;
-        }
-
-        /* Ganti .modal-info-value */
-        .modal-info-value {
-            font-size: 14px;
-            color: #333;
-            font-weight: 600;
-            text-align: right;
-            flex: 1;
-        }
-
-        /* Ganti .modal-footer-custom */
-        .modal-footer-custom {
-            padding: 12px 20px;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 8px;
-            justify-content: flex-end;
-            flex-shrink: 0;
-        }
-
-        /* Ganti .btn-modal */
-        .btn-modal {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-modal-secondary {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .btn-modal-secondary:hover {
-            background: #e0e0e0;
-        }
-
-        .btn-modal-primary {
-            background: #007bff;
-            color: white;
-        }
-
-        .btn-modal-primary:hover {
-            background: #0056b3;
-        }
-
-        /* Single card (no carousel) */
-        .single-card-wrapper {
-            display: inline-block;
-        }
-
-        /* Chatbot Container */
-        .chatbot-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            padding: 20px;
-            max-height: calc(100vh - 4px);
-            overflow: hidden;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            background: #f8f9fa;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #e0e0e0;
-            scroll-behavior: smooth;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Message Bubbles */
-        .message-bubble {
-            max-width: 80%;
-            word-wrap: break-word;
-            word-break: break-word;
-            white-space: pre-wrap;
-            display: inline-block;
-            padding: 8px 12px;
-            border-radius: 15px;
-            line-height: 1.4;
-            font-size: 15px;
-        }
-
-        .user-message {
-            background: #007bff;
-            color: white;
-            margin-left: auto;
-        }
-
-        .bot-message {
-            background: #f2f6f2;
-            color: #333;
-            margin-right: auto;
-        }
-
-        .bot-message img {
-            max-width: 200px;
-            max-height: 200px;
-            border-radius: 8px;
-            margin: 8px 0;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .bot-message strong {
-            color: #007bff;
-            font-weight: 600;
-        }
-
-        /* Expandable Items */
-        .expandable-item {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 8px 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .item-summary {
-            padding: 12px;
-            cursor: pointer;
-            background: #f8f9fa;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.2s ease;
-        }
-
-        .item-summary:hover {
-            background: #e9ecef;
-        }
-
-        .item-details {
-            padding: 15px;
-            background: white;
-            border-top: 1px solid #eee;
-        }
-
-        .item-details img {
-            max-width: 180px;
-            max-height: 180px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .item-details p {
-            margin: 5px 0;
-            line-height: 1.4;
-        }
-
-        /* Message Container */
-        .message-container {
-            display: flex;
-        }
-
-        .message-container.user {
-            justify-content: flex-end;
-            margin-bottom: 24px;
-        }
-
-        .message-container.bot {
-            justify-content: flex-start;
-        }
-
-        /* Help Button Styles */
-        .help-button-compact {
-            background: #042e5b91;
-            border: none;
-            border-radius: 16px;
-            padding: 4px 12px;
-            margin-left: 10px;
-            font-size: 10px;
-            font-weight: 500;
-            color: white;
-            transition: all 0.2s ease;
-        }
-
-        .help-button-compact:hover {
-            background: #0056b3;
-            transform: translateY(-1px);
-            color: white;
-        }
-
-        .help-button-compact:active {
-            transform: translateY(0);
-            box-shadow: 0 1px 4px rgba(0, 123, 255, 0.25);
-        }
-
-        /* Initial Message */
-        .initial-message-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: fit-content;
-            text-align: left;
-        }
-
-        .initial-bot-bubble {
-            background: #f2f6f2;
-            color: #333;
-            padding: 10px 14px;
-            border-radius: 18px 18px 18px 4px;
-            /* konsisten dengan bot messages */
-            font-size: 14px;
-            line-height: 1.3;
-            margin-bottom: 6px;
-            max-width: fit-content;
-            word-wrap: normal;
-            text-align: left;
-            display: inline-block;
-        }
-
-        .bot-message {
-            background: #f2f6f2;
-            color: #333;
-            margin-right: auto;
-            border-radius: 18px 18px 18px 4px;
-            /* kiri atas - kanan atas - kanan bawah - kiri bawah */
-        }
-
-        /* Tambahkan style baru untuk user messages */
-        .user-message {
-            background: #007bff;
-            color: white;
-            margin-left: auto;
-            border-radius: 18px 18px 4px 18px;
-            /* kiri atas - kanan atas - kanan bawah - kiri bawah */
-        }
-    </style>
+    <link rel="stylesheet" href="/css/chatbot.css">
 </head>
 
 <body>
@@ -673,9 +25,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="chat-messages" id="chatbotMessages">
-                    <!-- Initial message will be added via JavaScript -->
-                </div>
+                <div class="chat-messages" id="chatbotMessages"></div>
                 <form id="chatbotForm" class="d-flex">
                     <input type="text" class="form-control me-2" id="chatbotInput" placeholder="Ketik pesan...">
                     <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
@@ -683,15 +33,14 @@
             </div>
     </div>
     <script>
-        // 3. Ganti semua JavaScript di chatbot.ejs dengan ini:
-
         const currentUser = '<%= locals.currentUser %>';
         const userType = '<%= locals.userType %>';
+        let carouselCounter = 0;
 
         const texts = {
             greeting: 'Hi! Saya Helena 👋, Ada yang bisa saya bantu?',
             helpButton: 'Panduan',
-            typing: 'Bot sedang mengetik...',
+            typing: 'Sedang mengetik...',
             error: 'Maaf, terjadi kesalahan.',
             serverError: 'Maaf, server tidak merespon.',
             clearConfirm: 'Yakin ingin menghapus semua percakapan?',
@@ -732,7 +81,6 @@
         function renderQuickReplies(suggestions) {
             if (!suggestions || suggestions.length === 0) return '';
 
-            // Mapping identifier ke FontAwesome icon - TERPUSAT DI SINI
             const iconMap = {
                 'location': { icon: 'fa-map-marker-alt', style: 'fas' },
                 'price': { icon: 'fa-money-bill-wave', style: 'fas' },
@@ -759,21 +107,20 @@
 
             data.groups.forEach((group, groupIndex) => {
                 const itemCount = group.items.length;
-                const visibleCount = 3; // Hanya tampilkan 3 card
+                const visibleCount = 3;
+                const uniqueId = `carousel-${carouselCounter++}-${groupIndex}`;
 
                 html += `<div class="card-group">`;
                 html += `<div class="card-group-header">${group.groupName}</div>`;
 
-                // Jika item lebih dari visibleCount, gunakan carousel
                 if (itemCount > visibleCount) {
-                    html += `<div class="carousel-container" style="padding: 0 40px;">`;
-                    html += `<button class="carousel-arrow left" onclick="scrollCarousel('group-${groupIndex}', -1)" id="prev-group-${groupIndex}">
+                    html += `<div class="carousel-container">`;
+                    html += `<button class="carousel-arrow left" onclick="scrollCarousel('${uniqueId}', -1)" id="prev-${uniqueId}">
                         <i class="fas fa-chevron-left"></i>
                      </button>`;
-                    html += `<div class="cards-wrapper" id="group-${groupIndex}" style="overflow-x: hidden;">`;
+                    html += `<div class="cards-wrapper" id="${uniqueId}">`;
                 } else {
-                    // Jika item sedikit, tampilkan biasa (rata kiri)
-                    html += `<div class="cards-wrapper" style="display: flex; gap: 10px; flex-wrap: wrap;">`;
+                    html += `<div class="cards-wrapper">`;
                 }
 
                 group.items.forEach(item => {
@@ -783,7 +130,7 @@
                 html += `</div>`;
 
                 if (itemCount > visibleCount) {
-                    html += `<button class="carousel-arrow right" onclick="scrollCarousel('group-${groupIndex}', 1)" id="next-group-${groupIndex}">
+                    html += `<button class="carousel-arrow right" onclick="scrollCarousel('${uniqueId}', 1)" id="next-${uniqueId}">
                         <i class="fas fa-chevron-right"></i>
                      </button>`;
                     html += `</div>`;
@@ -798,8 +145,8 @@
 
         function scrollCarousel(groupId, direction) {
             const wrapper = document.getElementById(groupId);
-            const cardWidth = 150; // 180px card + 10px gap
-            const scrollAmount = cardWidth * 3; // Geser 3 card sekaligus
+            const cardWidth = 170;
+            const scrollAmount = cardWidth * 3;
 
             wrapper.scrollBy({
                 left: direction * scrollAmount,
@@ -816,8 +163,9 @@
 
             if (!wrapper || !prevBtn || !nextBtn) return;
 
-            const isAtStart = wrapper.scrollLeft <= 0;
-            const isAtEnd = wrapper.scrollLeft >= (wrapper.scrollWidth - wrapper.clientWidth - 10);
+            const tolerance = 5;
+            const isAtStart = wrapper.scrollLeft <= tolerance;
+            const isAtEnd = wrapper.scrollLeft >= (wrapper.scrollWidth - wrapper.clientWidth - tolerance);
 
             prevBtn.disabled = isAtStart;
             nextBtn.disabled = isAtEnd;
@@ -844,83 +192,76 @@
         }
 
         function getMainInfo(item) {
-    let html = '';
-    
-    // Deteksi intent dari context (akan kita set nanti)
-    const currentIntent = window.lastIntent || 'harga_barang';
-    
-    if (currentIntent === 'harga_barang') {
-        // Fokus harga + lokasi
-        if (item.harga_barang) {
-            html += `<div class="card-info" style="font-size: 15px; font-weight: 700; color: #007bff;">
+            let html = '';
+
+            const currentIntent = window.lastIntent || 'harga_barang';
+
+            if (currentIntent === 'harga_barang') {
+                if (item.harga_barang) {
+                    html += `<div class="card-info" style="font-size: 15px; font-weight: 700; color: #007bff;">
                 <i class="fas fa-tag"></i> Rp ${item.harga_barang.toLocaleString()}
             </div>`;
-        }
-        if (item.lokasi_barang) {
-            html += `<div class="card-info" style="font-size: 11px; color: #666;">
+                }
+                if (item.lokasi_barang) {
+                    html += `<div class="card-info" style="font-size: 11px; color: #666;">
                 <i class="fas fa-map-marker-alt"></i> ${item.lokasi_barang}
             </div>`;
-        }
-    } else if (currentIntent === 'lokasi_barang') {
-        // Fokus lokasi + status
-        if (item.lokasi_barang) {
-            html += `<div class="card-info" style="font-size: 14px; font-weight: 700; color: #28a745;">
+                }
+            } else if (currentIntent === 'lokasi_barang') {
+                if (item.lokasi_barang) {
+                    html += `<div class="card-info" style="font-size: 14px; font-weight: 700; color: #28a745;">
                 <i class="fas fa-map-marker-alt"></i> ${item.lokasi_barang}
             </div>`;
-        }
-        if (item.status_barang) {
-            html += `<div class="card-info" style="font-size: 11px; color: #666;">
+                }
+                if (item.status_barang) {
+                    html += `<div class="card-info" style="font-size: 11px; color: #666;">
                 <i class="fas fa-info-circle"></i> ${item.status_barang}
             </div>`;
-        }
-    } else if (currentIntent === 'kepemilikan_barang') {
-        // Fokus pemilik
-        if (item.pemilik) {
-            html += `<div class="card-info" style="font-size: 13px; font-weight: 700; color: #6f42c1;">
+                }
+            } else if (currentIntent === 'kepemilikan_barang') {
+                if (item.pemilik) {
+                    html += `<div class="card-info" style="font-size: 13px; font-weight: 700; color: #6f42c1;">
                 <i class="fas fa-user"></i> ${item.pemilik}
             </div>`;
-        }
-        if (item.jabatan) {
-            html += `<div class="card-info" style="font-size: 11px; color: #666;">
+                }
+                if (item.jabatan) {
+                    html += `<div class="card-info" style="font-size: 11px; color: #666;">
                 ${item.jabatan}
             </div>`;
-        }
-    } else if (currentIntent === 'status_barang') {
-        // Fokus status + kondisi
-        if (item.status_barang) {
-            html += `<div class="card-info" style="font-size: 14px; font-weight: 700; color: #17a2b8;">
+                }
+            } else if (currentIntent === 'status_barang') {
+                if (item.status_barang) {
+                    html += `<div class="card-info" style="font-size: 14px; font-weight: 700; color: #17a2b8;">
                 <i class="fas fa-clipboard"></i> ${item.status_barang}
             </div>`;
-        }
-        if (item.kondisi_barang) {
-            html += `<div class="card-info" style="font-size: 11px; color: #666;">
+                }
+                if (item.kondisi_barang) {
+                    html += `<div class="card-info" style="font-size: 11px; color: #666;">
                 Kondisi: ${item.kondisi_barang}
             </div>`;
-        }
-    } else if (currentIntent === 'jumlah_barang') {
-        // Fokus jumlah
-        if (item.jumlah) {
-            html += `<div class="card-info" style="font-size: 15px; font-weight: 700; color: #fd7e14;">
+                }
+            } else if (currentIntent === 'jumlah_barang') {
+                if (item.jumlah) {
+                    html += `<div class="card-info" style="font-size: 15px; font-weight: 700; color: #fd7e14;">
                 <i class="fas fa-box"></i> ${item.jumlah} unit
             </div>`;
-        }
-        if (item.lokasi_barang) {
-            html += `<div class="card-info" style="font-size: 11px; color: #666;">
+                }
+                if (item.lokasi_barang) {
+                    html += `<div class="card-info" style="font-size: 11px; color: #666;">
                 <i class="fas fa-map-marker-alt"></i> ${item.lokasi_barang}
             </div>`;
+                }
+            } else {
+                if (item.harga_barang) {
+                    html += `<div class="card-info"><i class="fas fa-tag"></i> Rp ${item.harga_barang.toLocaleString()}</div>`;
+                }
+                if (item.lokasi_barang) {
+                    html += `<div class="card-info"><i class="fas fa-map-marker-alt"></i> ${item.lokasi_barang}</div>`;
+                }
+            }
+
+            return html;
         }
-    } else {
-        // Default: harga + lokasi
-        if (item.harga_barang) {
-            html += `<div class="card-info"><i class="fas fa-tag"></i> Rp ${item.harga_barang.toLocaleString()}</div>`;
-        }
-        if (item.lokasi_barang) {
-            html += `<div class="card-info"><i class="fas fa-map-marker-alt"></i> ${item.lokasi_barang}</div>`;
-        }
-    }
-    
-    return html;
-}
 
         function openModal(item) {
             const modal = document.createElement('div');
@@ -989,7 +330,6 @@
             document.body.appendChild(modal);
             setTimeout(() => modal.classList.add('show'), 10);
 
-            // Close on backdrop click
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) closeModal();
             });
@@ -1032,6 +372,7 @@
                 if (currentChatKey) {
                     sessionStorage.removeItem(currentChatKey);
                 }
+                carouselCounter = 0;
                 saveChatToSession();
             }
         }
@@ -1071,8 +412,8 @@
                 const data = await response.json();
 
                 if (data.intent) {
-    window.lastIntent = data.intent;
-}
+                    window.lastIntent = data.intent;
+                }
 
                 var loading = document.getElementById('loading-bot');
                 if (loading) loading.remove();
@@ -1083,38 +424,40 @@
 
                     let messageContent = '';
 
-                    // Check if has structured data (cards)
-                    if (data.data && data.data.groups) {
+                    // ✅ FIX: Validasi lebih ketat - cek apakah ada item yang valid
+                    const hasValidData = data.data &&
+                        data.data.groups &&
+                        data.data.groups.length > 0 &&
+                        data.data.groups.some(g => g.items && g.items.length > 0);
+
+                    if (hasValidData) {
                         messageContent = '<div class="message-with-cards">';
                         messageContent += `<div class="message-text-above">${data.response}</div>`;
                         messageContent += renderCards(data.data);
                         messageContent += '</div>';
                     } else {
-                        // Plain text/HTML response
+                        // ✅ Render text biasa (termasuk pesan fuzzy fallback)
                         const hasImages = data.response.includes('<img') || data.response.includes('<strong>') || data.response.includes('<br>');
                         const formattedResponse = hasImages ? data.response : data.response.replace(/\n/g, '<br>');
 
                         messageContent += '<div class="message-bubble bot-message">';
                         messageContent += formattedResponse;
                         messageContent += '</div>';
-
-                        // HAPUS bagian quick replies dari sini - jangan tambahkan di messageContent
                     }
 
                     messageContainer.innerHTML = messageContent;
                     chat.appendChild(messageContainer);
 
-                    // Initialize carousel buttons
                     if (data.data && data.data.groups) {
                         data.data.groups.forEach((group, idx) => {
                             if (group.items.length > 3) {
-                                updateCarouselButtons(`group-${idx}`);
+                                const uniqueId = `carousel-${carouselCounter - data.data.groups.length + idx}-${idx}`;
+                                updateCarouselButtons(uniqueId);
                             }
                         });
                     }
 
-                    // Quick replies hanya ditampilkan jika ada data barang atau bukan pesan "tidak ditemukan"
-                    const isNotFoundMessage = data.response.toLowerCase().includes('tidak ditemukan')
+                    const isNotFoundMessage = data.response.toLowerCase().includes('tidak ditemukan');
 
                     if (data.suggestions && data.suggestions.length > 0 && !isNotFoundMessage) {
                         const quickReplyContainer = document.createElement('div');

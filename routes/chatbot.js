@@ -1,20 +1,25 @@
 const express = require('express');
-const router = express.Router();//rvk2
+const router = express.Router();
 const axios = require('axios');
-const db = require('../db'); // Import koneksi pool dari db.js
-//rvk
-const CHATBOT_API_URL = 'https://8a4451e8dbad.ngrok-free.app';
+const db = require('../db');
+const fuzz = require('fuzzball');
 
-// Helper function untuk menghandle gambar barang
-function formatImageData(gambar_barang, nama_barang) {
+const CHATBOT_API_URL = 'http://localhost:5000';
+const SEMANTIC_THRESHOLD = 0.48;
+
+function formatImageData(gambar_barang) {
     if (gambar_barang) {
-        return gambar_barang; // langsung return path
+        return gambar_barang;
     } else {
         return '/img/no-image.svg';
     }
 }
 
 function formatCardData(rows, groupByField, intent) {
+    if (!rows || rows.length === 0) {
+        return null;
+    }
+
     const grouped = {};
 
     rows.forEach(row => {
@@ -124,10 +129,8 @@ function generateSuggestions(intent, entities) {
     }
 }
 
-// Terjemahan untuk semua respon chatbot
-const translations = {
-    id: {
-        helpResponse: `🤖 Panduan Penggunaan Chatbot Helena 🤖
+const responses = {
+    helpResponse: `🤖 Panduan Penggunaan Chatbot Helena 🤖
 
 Saya dapat membantu Anda dengan berbagai informasi inventaris barang:
 
@@ -151,116 +154,273 @@ Contoh: "Barang apa yang sedang dilelang?"
 - Saya akan mencari barang yang mirip jika tidak ditemukan yang persis
 
 Silakan coba salah satu contoh di atas! 😊`,
-        greetingResponse: "Saya Helena👋. Ada yang bisa saya bantu? Silakan tanyakan tentang harga, jumlah, lokasi, status, atau kepemilikan barang.",
-        thanksResponse: "Sama-sama! Senang bisa membantu. Ada yang lain yang ingin ditanyakan?",
-        fallbackGeneral: "Maaf, saya tidak mengerti pertanyaan Anda. Coba tanyakan tentang harga, jumlah, lokasi, status, atau kepemilikan barang.",
-        fallbackSpecific: {
-            harga_barang: "Untuk mengecek harga barang, silakan sebutkan nama barangnya. Contoh: 'Berapa harga laptop?'",
-            jumlah_barang: "Untuk mengecek jumlah barang, silakan sebutkan nama barangnya. Contoh: 'Ada berapa unit printer?'",
-            lokasi_barang: "Untuk mengecek lokasi barang, silakan sebutkan nama barangnya. Contoh: 'Di mana lokasi lemari?'",
-            status_barang: "Untuk mengecek status barang, silakan sebutkan nama barangnya. Contoh: 'Status laptop apa?'",
-            kepemilikan_barang: "Untuk mengecek kepemilikan barang, silakan sebutkan nama barangnya. Contoh: 'Siapa pemilik laptop?'"
-        },
-        noDataFound: "Maaf, data yang Anda cari tidak ditemukan.",
-        owned_by: "dimiliki oleh",
-        position: "jabatan",
-        price: "harga",
-        currency: "Rp",
-        quantity: "jumlah",
-        units: "unit",
-        location: "lokasi",
-        status: "status",
-        available_for_auction: "Barang yang tersedia untuk lelang",
-        no_auction_items: "Saat ini tidak ada barang yang sedang dilelang.",
-        items_found: "Berikut barang yang ditemukan",
-        below: "di bawah",
-        above: "di atas",
-        between: "antara",
-        and: "dan"
+    greetingResponse: "Saya Helena👋. Ada yang bisa saya bantu? Silakan tanyakan tentang harga, jumlah, lokasi, status, atau kepemilikan barang.",
+    thanksResponse: "Sama-sama! Senang bisa membantu. Ada yang lain yang ingin ditanyakan?",
+    fallbackGeneral: "Maaf, saya tidak mengerti pertanyaan Anda. Coba tanyakan tentang harga, jumlah, lokasi, status, atau kepemilikan barang.",
+    fallbackSpecific: {
+        harga_barang: "Untuk mengecek harga barang, silakan sebutkan nama barangnya. Contoh: 'Berapa harga laptop?'",
+        jumlah_barang: "Untuk mengecek jumlah barang, silakan sebutkan nama barangnya. Contoh: 'Ada berapa unit printer?'",
+        lokasi_barang: "Untuk mengecek lokasi barang, silakan sebutkan nama barangnya. Contoh: 'Di mana lokasi lemari?'",
+        status_barang: "Untuk mengecek status barang, silakan sebutkan nama barangnya. Contoh: 'Status laptop apa?'",
+        kepemilikan_barang: "Untuk mengecek kepemilikan barang, silakan sebutkan nama barangnya. Contoh: 'Siapa pemilik laptop?'"
     },
-    en: {
-        helpResponse: `🤖 Helena Chatbot Usage Guide 🤖
-
-I can help you with various inventory information:
-
-📍 Item Location
-Example: "Where is the laptop located?" or "Where can I find the printer?"
-💰 Item Price
-Example: "How much is the chair?" or "What's the desk price?"
-📊 Item Quantity
-Example: "How many computers are there?" or "How many cabinets do we have?"
-📋 Item Status
-Example: "What's the laptop status?" or "How's the printer condition?"
-👤 Item Ownership
-Example: "Who owns the laptop?" or "Who is the computer owner?"
-🏷️ Price Range
-Example: "Items under 5 million" or "Maximum price 2 million"
-🏛️ Item Auction
-Example: "What items are being auctioned?"
-💬 Tips:
-- Mention specific item names for more accurate results
-- Use natural English language
-- I will search for similar items if exact match not found
-
-Please try one of the examples above! 😊`,
-        greetingResponse: "I'm Helena👋. How can I help you? Please ask about price, quantity, location, status, or ownership of items.",
-        thanksResponse: "You're welcome! Happy to help. Anything else you'd like to ask?",
-        fallbackGeneral: "Sorry, I don't understand your question. Try asking about price, quantity, location, status, or ownership of items.",
-        fallbackSpecific: {
-            harga_barang: "To check item prices, please mention the item name. Example: 'How much is the laptop?'",
-            jumlah_barang: "To check item quantity, please mention the item name. Example: 'How many printers are there?'",
-            lokasi_barang: "To check item location, please mention the item name. Example: 'Where is the cabinet located?'",
-            status_barang: "To check item status, please mention the item name. Example: 'What is the laptop status?'",
-            kepemilikan_barang: "To check item ownership, please mention the item name. Example: 'Who owns the laptop?'"
-        },
-        noDataFound: "Sorry, the data you're looking for was not found.",
-        owned_by: "owned by",
-        position: "position",
-        price: "price",
-        currency: "Rp",
-        quantity: "quantity",
-        units: "units",
-        location: "location",
-        status: "status",
-        available_for_auction: "Items available for auction",
-        no_auction_items: "Currently there are no items being auctioned.",
-        items_found: "Here are the items found",
-        below: "below",
-        above: "above",
-        between: "between",
-        and: "and"
-    }
+    noDataFound: "Maaf, data yang Anda cari tidak ditemukan.",
+    owned_by: "dimiliki oleh",
+    position: "jabatan",
+    price: "harga",
+    currency: "Rp",
+    quantity: "jumlah",
+    units: "unit",
+    location: "lokasi",
+    status: "status",
+    available_for_auction: "Barang yang tersedia untuk lelang",
+    no_auction_items: "Saat ini tidak ada barang yang sedang dilelang.",
+    items_found: "Berikut barang yang ditemukan",
+    below: "di bawah",
+    above: "di atas",
+    between: "antara",
+    and: "dan"
 };
 
-function getTranslation(language, key, fallbackKey = null) {
-    const lang = language === 'en' ? 'en' : 'id';
-    if (translations[lang][key]) {
-        return translations[lang][key];
-    } else if (fallbackKey && translations[lang][fallbackKey]) {
-        return translations[lang][fallbackKey];
+// Stopwords per intent
+const intentStopwords = {
+    'harga_barang': [
+        'berapa', 'harga', 'brp', 'hrga', 'harganya', 'hargane',
+        'rp', 'rupiah', 'biaya', 'ongkos', 'tarif', 'nilai',
+        'untuk', 'dari', 'nya', 'kah', 'sih', 'dong', 'yak',
+        'itu', 'ini', 'yang', 'apa', 'ya', 'deh', 'gan',
+        'bos', 'min', 'kak', 'bang', 'mas', 'mbak', 'pak', 'bu'
+    ],
+    'lokasi_barang': [
+        'di', 'mana', 'dimana', 'dmn', 'lokasi', 'ada', 'berada',
+        'tempat', 'letak', 'posisi', 'lokasinya', 'tempatnya',
+        'letaknya', 'adanya', 'keberadaan', 'untuk', 'dari',
+        'nya', 'kah', 'sih', 'dong', 'yak', 'itu', 'ini',
+        'yang', 'apa', 'ya', 'deh', 'gan', 'bos', 'min',
+        'kak', 'bang', 'mas', 'mbak', 'pak', 'bu'
+    ],
+    'jumlah_barang': [
+        'ada', 'berapa', 'brp', 'jumlah', 'banyak', 'byk',
+        'total', 'unit', 'jumlahnya', 'banyaknya', 'totalnya',
+        'qty', 'quantity', 'stock', 'stok', 'tersedia',
+        'untuk', 'dari', 'nya', 'kah', 'sih', 'dong', 'yak',
+        'itu', 'ini', 'yang', 'apa', 'ya', 'deh', 'gan',
+        'bos', 'min', 'kak', 'bang', 'mas', 'mbak', 'pak', 'bu'
+    ],
+    'status_barang': [
+        'status', 'kondisi', 'apa', 'bagaimana', 'gmn', 'gimana',
+        'statusnya', 'kondisinya', 'keadaan', 'keadaannya',
+        'situasi', 'situasinya', 'untuk', 'dari', 'nya',
+        'kah', 'sih', 'dong', 'yak', 'itu', 'ini', 'yang',
+        'ya', 'deh', 'gan', 'bos', 'min', 'kak', 'bang',
+        'mas', 'mbak', 'pak', 'bu'
+    ],
+    'kepemilikan_barang': [
+        'siapa', 'pemilik', 'dimiliki', 'punya', 'yang', 'milik',
+        'pemiliknya', 'punyanya', 'miliknya', 'empunya',
+        'kepunyaan', 'untuk', 'dari', 'nya', 'kah', 'sih',
+        'dong', 'yak', 'itu', 'ini', 'apa', 'ya', 'deh',
+        'gan', 'bos', 'min', 'kak', 'bang', 'mas', 'mbak',
+        'pak', 'bu', 'oleh'
+    ]
+};
+
+// Extract item dari message
+function extractItemFromMessage(message, intent) {
+    const stopwords = intentStopwords[intent] || [];
+
+    let tokens = message.toLowerCase()
+        .split(/\s+/)
+        .filter(t => t.length > 0);
+
+    let cleanTokens = tokens.filter(token => {
+        const cleanToken = token.replace(/[^\w]/g, '');
+        return cleanToken.length >= 2 && !stopwords.includes(cleanToken);
+    });
+
+    const extracted = cleanTokens.join(' ').trim();
+    return extracted;
+}
+
+function normalizeText(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function tokenize(text) {
+    const normalized = normalizeText(text);
+    return normalized.split(' ').filter(token => token.length > 1);
+}
+
+// Fuzzy search
+async function fuzzySearchBarang(searchTerm, threshold = 100) {
+    try {
+        const searchPattern = `%${searchTerm.substring(0, Math.min(4, searchTerm.length))}%`;
+
+        const [rows] = await db.query(
+            `SELECT DISTINCT nama_barang 
+             FROM barang 
+             WHERE LOWER(nama_barang) LIKE LOWER(?)
+             LIMIT 100`,
+            [searchPattern]
+        );
+
+        if (rows.length === 0) {
+            const [allRows] = await db.query('SELECT DISTINCT nama_barang FROM barang LIMIT 100');
+            return fuzzyMatchResults(allRows, searchTerm, threshold);
+        }
+
+        return fuzzyMatchResults(rows, searchTerm, threshold);
+    } catch (error) {
+        console.error('Fuzzy search error:', error);
+        return [];
     }
-    return translations['id'][key] || key; // Fallback to Indonesian
+}
+
+function fuzzyMatchResults(rows, searchTerm, threshold) {
+    const normalizedSearch = normalizeText(searchTerm);
+
+    const matches = rows.map(row => {
+        const normalizedItem = normalizeText(row.nama_barang);
+        const tokens = tokenize(row.nama_barang);
+
+        let bestTokenScore = 0;
+        if (tokens.length > 0) {
+            bestTokenScore = Math.max(...tokens.map(token =>
+                fuzz.ratio(normalizedSearch, token)
+            ));
+        }
+
+        const fullStringScore = fuzz.token_sort_ratio(normalizedSearch, normalizedItem);
+        const partialScore = fuzz.partial_ratio(normalizedSearch, normalizedItem);
+
+        // Weighted scoring: token 50%, full 30%, partial 20%
+        const finalScore = Math.round(
+            (bestTokenScore * 0.5) +
+            (fullStringScore * 0.3) +
+            (partialScore * 0.2)
+        );
+
+        return {
+            nama: row.nama_barang,
+            score: finalScore
+        };
+    });
+
+    const results = matches
+        .filter(m => m.score >= threshold)
+        .sort((a, b) => {
+            if (b.score !== a.score) return b.score - a.score;
+            return a.nama.localeCompare(b.nama, 'id');
+        })
+        .slice(0, 5);
+
+    return results;
+}
+
+// Semantic search
+async function semanticSearchBarang(searchTerm, threshold = SEMANTIC_THRESHOLD) {
+    try {
+        const [rows] = await db.query(
+            'SELECT DISTINCT nama_barang FROM barang LIMIT 500'
+        );
+
+        if (rows.length === 0) {
+            return [];
+        }
+
+        const itemNames = rows.map(r => r.nama_barang);
+
+        const response = await axios.post(`${CHATBOT_API_URL}/semantic-search`, {
+            query: searchTerm,
+            items: itemNames,
+            threshold: threshold,
+            top_k: 5
+        }, {
+            headers: { 'Content-Type': 'application/json' },
+            timeout: 15000
+        });
+
+        if (response.data.status === 'success' && response.data.results.length > 0) {
+            return response.data.results;
+        }
+
+        return [];
+
+    } catch (error) {
+        if (error.response) {
+            console.error('Semantic search API error:', error.response.status);
+        } else {
+            console.error('Semantic search error:', error.message);
+        }
+        return [];
+    }
+}
+
+// Query barang by name
+async function queryBarangByName(namaBarang, intent) {
+    const queries = {
+        'harga_barang': `SELECT id_barang, nama_barang, harga_barang, lokasi_barang, status_barang, kondisi_barang, gambar_barang
+                         FROM barang 
+                         WHERE LOWER(nama_barang) = LOWER(?)
+                         ORDER BY harga_barang ASC`,
+
+        'lokasi_barang': `SELECT id_barang, nama_barang, lokasi_barang, status_barang, kondisi_barang, harga_barang, gambar_barang
+                          FROM barang 
+                          WHERE LOWER(nama_barang) = LOWER(?)
+                          ORDER BY lokasi_barang, nama_barang`,
+
+        'jumlah_barang': `SELECT id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang, COUNT(*) as jumlah
+                          FROM barang 
+                          WHERE LOWER(nama_barang) = LOWER(?)
+                          GROUP BY id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang
+                          ORDER BY nama_barang, status_barang`,
+
+        'status_barang': `SELECT id_barang, nama_barang, status_barang, kondisi_barang, lokasi_barang, harga_barang, gambar_barang
+                          FROM barang 
+                          WHERE LOWER(nama_barang) = LOWER(?)
+                          ORDER BY status_barang, nama_barang`,
+
+        'kepemilikan_barang': `SELECT k.nama_karyawan, k.jabatan, b.id_barang, b.nama_barang, b.gambar_barang, b.harga_barang, b.lokasi_barang, b.status_barang, b.kondisi_barang
+                               FROM kepemilikan kp
+                               JOIN barang b ON kp.id_barang = b.id_barang
+                               JOIN karyawan k ON kp.id_karyawan = k.id_karyawan
+                               WHERE LOWER(b.nama_barang) = LOWER(?)
+                               AND kp.status_kepemilikan = 'aktif'
+                               ORDER BY k.nama_karyawan, b.nama_barang`,
+
+        'fallback': `SELECT id_barang, nama_barang, harga_barang, lokasi_barang, status_barang, kondisi_barang, gambar_barang
+                     FROM barang 
+                     WHERE LOWER(nama_barang) = LOWER(?)
+                     ORDER BY nama_barang`
+    };
+
+    const query = queries[intent] || queries['fallback'];
+    const [rows] = await db.query(query, [namaBarang]);
+    return rows;
 }
 
 router.post('/chat', async (req, res) => {
     try {
-        const { message, language = 'id' } = req.body;
-        console.log('� Received message:', message, 'Language:', language);
+        const { message } = req.body;
 
-        // Check for hardcoded bantuan/help intent FIRST - before API call
+        // Hardcoded help intent
         const lowerMessage = message.toLowerCase();
-        const isHelpRequest = language === 'en' ?
-            (lowerMessage.includes('help') || lowerMessage.includes('guide') || lowerMessage.includes('assist')) :
-            (lowerMessage.includes('bantu') || lowerMessage.includes('bantuan') || lowerMessage.includes('tolong') || lowerMessage.includes('help'));
+        const isHelpRequest = lowerMessage.includes('bantu') ||
+            lowerMessage.includes('bantuan') ||
+            lowerMessage.includes('tolong') ||
+            lowerMessage.includes('help');
 
         if (isHelpRequest) {
-            const helpResponse = getTranslation(language, 'helpResponse');
-            console.log('💬 Hardcoded help response sent in', language);
             return res.json({
                 intent: 'bantuan',
                 confidence: 1.0,
                 entities: {},
-                response: helpResponse,
+                response: responses.helpResponse,
                 ner_tokens: [],
                 status: 'success'
             });
@@ -268,7 +428,7 @@ router.post('/chat', async (req, res) => {
 
         let responseData = null;
 
-        // Continue with ML model for other intents
+        // Call ML model
         const response = await axios.post(`${CHATBOT_API_URL}/predict`, {
             text: message
         }, {
@@ -278,86 +438,197 @@ router.post('/chat', async (req, res) => {
 
         let { intent, entities, response: botResponse, ner_tokens, confidence = 0 } = response.data;
         let finalResponse = botResponse;
-
-        console.log('🤖 Chatbot response:', { intent, confidence, entities, response: botResponse });
-        console.log(`📊 Intent confidence: ${((confidence || 0) * 100).toFixed(2)}%`);
-
         let suggestions = [];
 
-        // === INTENT: kepemilikan_barang ===
-        if (intent === 'kepemilikan_barang' && entities.item) {
-            const [rows] = await db.query(
-                `SELECT k.nama_karyawan, k.jabatan, b.id_barang, b.nama_barang, b.gambar_barang, b.harga_barang, b.lokasi_barang, b.status_barang, b.kondisi_barang,
-                CASE 
-                    WHEN LOWER(b.nama_barang) = LOWER(?) THEN 3
-                    WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 2
-                    WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 1
-                    ELSE 0
-                END as relevance_score
-                FROM kepemilikan kp
-                JOIN barang b ON kp.id_barang = b.id_barang
-                JOIN karyawan k ON kp.id_karyawan = k.id_karyawan
-                WHERE (LOWER(b.nama_barang) LIKE LOWER(?) OR LOWER(b.nama_barang) LIKE LOWER(?)) 
-                AND kp.status_kepemilikan = 'aktif'
-                ORDER BY relevance_score DESC, k.nama_karyawan, b.nama_barang`,
-                [
-                    entities.item[0],
-                    `${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`
-                ]
-            );
+        // Intent: kepemilikan_barang
+        if (intent === 'kepemilikan_barang') {
+            let itemName = entities.item ? entities.item[0] : null;
 
-            if (rows.length > 0) {
-                finalResponse = `Ditemukan ${rows.length} barang ${entities.item[0]}:`;
-                responseData = formatCardData(rows, 'pemilik', 'kepemilikan_barang');
+            // Fallback extraction
+            if (!itemName) {
+                const extracted = extractItemFromMessage(message, 'kepemilikan_barang');
+
+                if (extracted.length >= 3) {
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        itemName = fuzzyResults[0].nama;
+                    }
+                }
+            }
+
+            if (itemName) {
+                const [rows] = await db.query(
+                    `SELECT k.nama_karyawan, k.jabatan, b.id_barang, b.nama_barang, b.gambar_barang, b.harga_barang, b.lokasi_barang, b.status_barang, b.kondisi_barang,
+                    CASE 
+                        WHEN LOWER(b.nama_barang) = LOWER(?) THEN 3
+                        WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 2
+                        WHEN LOWER(b.nama_barang) LIKE LOWER(?) THEN 1
+                        ELSE 0
+                    END as relevance_score
+                    FROM kepemilikan kp
+                    JOIN barang b ON kp.id_barang = b.id_barang
+                    JOIN karyawan k ON kp.id_karyawan = k.id_karyawan
+                    WHERE (LOWER(b.nama_barang) LIKE LOWER(?) OR LOWER(b.nama_barang) LIKE LOWER(?)) 
+                    AND kp.status_kepemilikan = 'aktif'
+                    ORDER BY relevance_score DESC, k.nama_karyawan, b.nama_barang`,
+                    [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
+                );
+
+                if (rows.length > 0) {
+                    finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
+                    responseData = formatCardData(rows, 'pemilik', 'kepemilikan_barang');
+                } else {
+                    // Fuzzy matching
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        const suggestionText = fuzzyResults.length > 1
+                            ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}? `
+                            : `Mungkin yang Anda maksud ${fuzzyResults[0].nama}? `;
+
+                        finalResponse = `Tidak menemukan "${itemName}". ${suggestionText}Menampilkan semua hasil...`;
+
+                        let allRows = [];
+                        for (const match of fuzzyResults) {
+                            const fuzzyRows = await queryBarangByName(match.nama, 'kepemilikan_barang');
+                            allRows = allRows.concat(fuzzyRows);
+                        }
+
+                        if (allRows.length > 0) {
+                            responseData = formatCardData(allRows, 'pemilik', 'kepemilikan_barang');
+                        }
+                    } else {
+                        // Kemiripan semantik
+                        const semanticResults = await semanticSearchBarang(itemName);
+
+                        if (semanticResults.length > 0) {
+                            const suggestionText = semanticResults.length > 1
+                                ? `Berdasarkan kemiripan makna, mungkin Anda mencari: ${semanticResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                                : `Berdasarkan kemiripan makna, mungkin Anda mencari "${semanticResults[0].nama}"?`;
+
+                            finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                            let allRows = [];
+                            for (const match of semanticResults) {
+                                const semanticRows = await queryBarangByName(match.nama, 'kepemilikan_barang');
+                                allRows = allRows.concat(semanticRows);
+                            }
+
+                            if (allRows.length > 0) {
+                                responseData = formatCardData(allRows, 'pemilik', 'kepemilikan_barang');
+                            }
+                        } else {
+                            finalResponse = `Maaf, data kepemilikan untuk "${itemName}" tidak ditemukan.`;
+                            suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
+                        }
+                    }
+                }
             } else {
-                finalResponse = `Maaf, data kepemilikan untuk "${entities.item[0]}" tidak ditemukan.`;
-                responseData = null;
+                finalResponse = responses.fallbackSpecific.kepemilikan_barang;
+                suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
             }
         }
 
-        // === INTENT: harga_barang ===
-        else if (intent === 'harga_barang' && entities.item) {
-            const [rows] = await db.query(
-                `SELECT id_barang, nama_barang, harga_barang, lokasi_barang, status_barang, kondisi_barang, gambar_barang,
-                CASE 
-                    WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                    ELSE 0
-                END as relevance_score
-                FROM barang 
-                WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                ORDER BY relevance_score DESC, harga_barang ASC`,
-                [
-                    entities.item[0],
-                    `${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`
-                ]
-            );
+        // Intent: harga_barang
+        else if (intent === 'harga_barang') {
+            let itemName = entities.item ? entities.item[0] : null;
 
-            if (rows.length > 0) {
-                finalResponse = `Ditemukan ${rows.length} barang ${entities.item[0]}:`;
-                responseData = formatCardData(rows, 'nama', 'harga_barang');
+            // Fallback extraction
+            if (!itemName) {
+                const extracted = extractItemFromMessage(message, 'harga_barang');
+
+                if (extracted.length >= 3) {
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        itemName = fuzzyResults[0].nama;
+                    }
+                }
+            }
+
+            if (itemName) {
+                const [rows] = await db.query(
+                    `SELECT id_barang, nama_barang, harga_barang, lokasi_barang, status_barang, kondisi_barang, gambar_barang,
+                    CASE 
+                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                        ELSE 0
+                    END as relevance_score
+                    FROM barang 
+                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+                    ORDER BY relevance_score DESC, harga_barang ASC`,
+                    [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
+                );
+
+                if (rows.length > 0) {
+                    finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
+                    responseData = formatCardData(rows, 'nama', 'harga_barang');
+                } else {
+                    // Fuzzy matching
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        const suggestionText = fuzzyResults.length > 1
+                            ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                            : `Mungkin yang Anda maksud "${fuzzyResults[0].nama}"?`;
+
+                        finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                        let allRows = [];
+                        for (const match of fuzzyResults) {
+                            const fuzzyRows = await queryBarangByName(match.nama, 'harga_barang');
+                            allRows = allRows.concat(fuzzyRows);
+                        }
+
+                        if (allRows.length > 0) {
+                            responseData = formatCardData(allRows, 'nama', 'harga_barang');
+                        }
+                    } else {
+                        // Kemiripan semantik
+                        const semanticResults = await semanticSearchBarang(itemName);
+
+                        if (semanticResults.length > 0) {
+                            const suggestionText = semanticResults.length > 1
+                                ? `Berdasarkan kemiripan makna, mungkin Anda mencari: ${semanticResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                                : `Berdasarkan kemiripan makna, mungkin Anda mencari "${semanticResults[0].nama}"?`;
+
+                            finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                            let allRows = [];
+                            for (const match of semanticResults) {
+                                const semanticRows = await queryBarangByName(match.nama, 'harga_barang');
+                                allRows = allRows.concat(semanticRows);
+                            }
+
+                            if (allRows.length > 0) {
+                                responseData = formatCardData(allRows, 'nama', 'harga_barang');
+                            }
+                        } else {
+                            finalResponse = `Maaf, harga untuk "${itemName}" tidak ditemukan. Coba gunakan kata kunci lain atau lihat panduan.`;
+                            suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
+                        }
+                    }
+                }
             } else {
-                finalResponse = `Maaf, harga untuk "${entities.item[0]}" tidak ditemukan.`;
+                finalResponse = responses.fallbackSpecific.harga_barang;
+                suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
             }
         }
 
-        // === INTENT: range_harga ===
+        // Intent: range_harga
         else if (intent === 'range_harga' && entities.price) {
-            const wordToNumber = {
-                'satu': '1', 'dua': '2', 'tiga': '3', 'empat': '4', 'lima': '5',
-                'enam': '6', 'tujuh': '7', 'delapan': '8', 'sembilan': '9'
-            };
 
             function parsePrice(priceStr, originalMessage) {
+                const wordToNumber = {
+                    'satu': '1', 'dua': '2', 'tiga': '3', 'empat': '4', 'lima': '5',
+                    'enam': '6', 'tujuh': '7', 'delapan': '8', 'sembilan': '9'
+                };
+
                 let workingStr = priceStr.toLowerCase();
                 let originalLower = originalMessage.toLowerCase();
+
                 Object.keys(wordToNumber).forEach(word => {
                     workingStr = workingStr.replace(new RegExp(word, 'g'), wordToNumber[word]);
                     originalLower = originalLower.replace(new RegExp(word, 'g'), wordToNumber[word]);
@@ -371,9 +642,10 @@ router.post('/chat', async (req, res) => {
                     }
                 }
 
-                let maxPrice = 0;
-                const number = parseFloat(fullPriceStr.replace(/[^\d.,]/g, '').replace(',', '.'));
+                const numberStr = fullPriceStr.replace(/[^\d.,]/g, '');
+                const number = parseFloat(numberStr.replace(',', '.'));
 
+                let maxPrice = 0;
                 if (fullPriceStr.includes('ratus juta')) {
                     maxPrice = number * 100000000;
                 } else if (fullPriceStr.includes('juta')) {
@@ -387,7 +659,7 @@ router.post('/chat', async (req, res) => {
                 } else if (fullPriceStr.includes('ratus')) {
                     maxPrice = number * 100;
                 } else {
-                    maxPrice = parseInt(fullPriceStr.replace(/[^\d]/g, ''));
+                    maxPrice = parseInt(numberStr.replace(/[.,]/g, ''));
                 }
 
                 return { maxPrice, displayStr: fullPriceStr };
@@ -411,100 +683,269 @@ router.post('/chat', async (req, res) => {
             }
         }
 
-        // === INTENT: jumlah_barang ===
-        else if (intent === 'jumlah_barang' && entities.item) {
-            const [rows] = await db.query(
-                `SELECT id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang, COUNT(*) as jumlah,
-                CASE 
-                    WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                    ELSE 0
-                END as relevance_score
-                FROM barang 
-                WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                GROUP BY id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang
-                ORDER BY relevance_score DESC, nama_barang, status_barang`,
-                [
-                    entities.item[0],
-                    `${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`
-                ]
-            );
+        // Intent: jumlah_barang
+        else if (intent === 'jumlah_barang') {
+            let itemName = entities.item ? entities.item[0] : null;
 
-            if (rows.length > 0) {
-                finalResponse = `Ditemukan ${rows.length} ${entities.item[0]}:`;
-                responseData = formatCardData(rows, 'nama', 'jumlah_barang');
+            // Fallback extraction
+            if (!itemName) {
+                const extracted = extractItemFromMessage(message, 'jumlah_barang');
+
+                if (extracted.length >= 3) {
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        itemName = fuzzyResults[0].nama;
+                    }
+                }
+            }
+
+            if (itemName) {
+                const [rows] = await db.query(
+                    `SELECT id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang, COUNT(*) as jumlah,
+                    CASE 
+                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                        ELSE 0
+                    END as relevance_score
+                    FROM barang 
+                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+                    GROUP BY id_barang, nama_barang, status_barang, lokasi_barang, kondisi_barang, gambar_barang, harga_barang
+                    ORDER BY relevance_score DESC, nama_barang, status_barang`,
+                    [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
+                );
+
+                if (rows.length > 0) {
+                    finalResponse = `Ditemukan ${rows.length} ${itemName}:`;
+                    responseData = formatCardData(rows, 'nama', 'jumlah_barang');
+                } else {
+                    // Fuzzy matching
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        const suggestionText = fuzzyResults.length > 1
+                            ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                            : `Mungkin yang Anda maksud "${fuzzyResults[0].nama}"?`;
+
+                        finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                        let allRows = [];
+                        for (const match of fuzzyResults) {
+                            const fuzzyRows = await queryBarangByName(match.nama, 'jumlah_barang');
+                            allRows = allRows.concat(fuzzyRows);
+                        }
+
+                        if (allRows.length > 0) {
+                            responseData = formatCardData(allRows, 'nama', 'jumlah_barang');
+                        }
+                    } else {
+                        // Kemiripan semantik
+                        const semanticResults = await semanticSearchBarang(itemName);
+
+                        if (semanticResults.length > 0) {
+                            const suggestionText = semanticResults.length > 1
+                                ? `Berdasarkan kemiripan makna, mungkin Anda mencari: ${semanticResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                                : `Berdasarkan kemiripan makna, mungkin Anda mencari "${semanticResults[0].nama}"?`;
+
+                            finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                            let allRows = [];
+                            for (const match of semanticResults) {
+                                const semanticRows = await queryBarangByName(match.nama, 'jumlah_barang');
+                                allRows = allRows.concat(semanticRows);
+                            }
+
+                            if (allRows.length > 0) {
+                                responseData = formatCardData(allRows, 'nama', 'jumlah_barang');
+                            }
+                        } else {
+                            finalResponse = `Maaf, jumlah untuk "${itemName}" tidak ditemukan.`;
+                            suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
+                        }
+                    }
+                }
             } else {
-                finalResponse = `Maaf, jumlah untuk "${entities.item[0]}" tidak ditemukan.`;
+                finalResponse = responses.fallbackSpecific.jumlah_barang;
+                suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
             }
         }
 
-        // === INTENT: lokasi_barang ===
-        else if (intent === 'lokasi_barang' && entities.item) {
-            const [rows] = await db.query(
-                `SELECT id_barang, nama_barang, lokasi_barang, status_barang, kondisi_barang, harga_barang, gambar_barang,
-                CASE 
-                    WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                    ELSE 0
-                END as relevance_score
-                FROM barang 
-                WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                ORDER BY relevance_score DESC, lokasi_barang, nama_barang`,
-                [
-                    entities.item[0],
-                    `${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`
-                ]
-            );
+        // Intent: lokasi_barang
+        else if (intent === 'lokasi_barang') {
+            let itemName = entities.item ? entities.item[0] : null;
 
-            if (rows.length > 0) {
-                finalResponse = `Ditemukan ${rows.length} barang ${entities.item[0]}:`;
-                responseData = formatCardData(rows, 'lokasi', 'lokasi_barang');
+            // Fallback extraction
+            if (!itemName) {
+                const extracted = extractItemFromMessage(message, 'lokasi_barang');
+
+                if (extracted.length >= 3) {
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        itemName = fuzzyResults[0].nama;
+                    }
+                }
+            }
+
+            if (itemName) {
+                const [rows] = await db.query(
+                    `SELECT id_barang, nama_barang, lokasi_barang, status_barang, kondisi_barang, harga_barang, gambar_barang,
+                    CASE 
+                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                        ELSE 0
+                    END as relevance_score
+                    FROM barang 
+                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+                    ORDER BY relevance_score DESC, lokasi_barang, nama_barang`,
+                    [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
+                );
+
+                if (rows.length > 0) {
+                    finalResponse = `Ditemukan ${rows.length} barang ${itemName}:`;
+                    responseData = formatCardData(rows, 'lokasi', 'lokasi_barang');
+                } else {
+                    // Fuzzy matching
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        const suggestionText = fuzzyResults.length > 1
+                            ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                            : `Mungkin yang Anda maksud "${fuzzyResults[0].nama}"?`;
+
+                        finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                        let allRows = [];
+                        for (const match of fuzzyResults) {
+                            const fuzzyRows = await queryBarangByName(match.nama, 'lokasi_barang');
+                            allRows = allRows.concat(fuzzyRows);
+                        }
+
+                        if (allRows.length > 0) {
+                            responseData = formatCardData(allRows, 'lokasi', 'lokasi_barang');
+                        }
+                    } else {
+                        // Kemiripan semantik
+                        const semanticResults = await semanticSearchBarang(itemName);
+
+                        if (semanticResults.length > 0) {
+                            const suggestionText = semanticResults.length > 1
+                                ? `Berdasarkan kemiripan makna, mungkin Anda mencari: ${semanticResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                                : `Berdasarkan kemiripan makna, mungkin Anda mencari "${semanticResults[0].nama}"?`;
+
+                            finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                            let allRows = [];
+                            for (const match of semanticResults) {
+                                const semanticRows = await queryBarangByName(match.nama, 'lokasi_barang');
+                                allRows = allRows.concat(semanticRows);
+                            }
+
+                            if (allRows.length > 0) {
+                                responseData = formatCardData(allRows, 'lokasi', 'lokasi_barang');
+                            }
+                        } else {
+                            finalResponse = `Maaf, lokasi untuk "${itemName}" tidak ditemukan.`;
+                            suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
+                        }
+                    }
+                }
             } else {
-                finalResponse = `Maaf, lokasi untuk "${entities.item[0]}" tidak ditemukan.`;
-                responseData = null;
+                finalResponse = responses.fallbackSpecific.lokasi_barang;
+                suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
             }
         }
 
-        // === INTENT: status_barang ===
-        else if (intent === 'status_barang' && entities.item) {
-            const [rows] = await db.query(
-                `SELECT id_barang, nama_barang, status_barang, kondisi_barang, lokasi_barang, harga_barang, gambar_barang,
-                CASE 
-                    WHEN LOWER(nama_barang) = LOWER(?) THEN 3
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
-                    WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
-                    ELSE 0
-                END as relevance_score
-                FROM barang 
-                WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
-                ORDER BY relevance_score DESC, status_barang, nama_barang`,
-                [
-                    entities.item[0],
-                    `${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`,
-                    `%${entities.item[0]}%`
-                ]
-            );
+        // Intent: status_barang
+        else if (intent === 'status_barang') {
+            let itemName = entities.item ? entities.item[0] : null;
 
-            if (rows.length > 0) {
-                finalResponse = `Status barang ${entities.item[0]} (${rows.length} item):`;
-                responseData = formatCardData(rows, 'status', 'status_barang');
+            // Fallback extraction
+            if (!itemName) {
+                const extracted = extractItemFromMessage(message, 'status_barang');
+
+                if (extracted.length >= 3) {
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        itemName = fuzzyResults[0].nama;
+                    }
+                }
+            }
+
+            if (itemName) {
+                const [rows] = await db.query(
+                    `SELECT id_barang, nama_barang, status_barang, kondisi_barang, lokasi_barang, harga_barang, gambar_barang,
+                    CASE 
+                        WHEN LOWER(nama_barang) = LOWER(?) THEN 3
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 2
+                        WHEN LOWER(nama_barang) LIKE LOWER(?) THEN 1
+                        ELSE 0
+                    END as relevance_score
+                    FROM barang 
+                    WHERE (LOWER(nama_barang) LIKE LOWER(?) OR LOWER(nama_barang) LIKE LOWER(?))
+                    ORDER BY relevance_score DESC, status_barang, nama_barang`,
+                    [itemName, `${itemName}%`, `%${itemName}%`, `%${itemName}%`, `%${itemName}%`]
+                );
+
+                if (rows.length > 0) {
+                    finalResponse = `Status barang ${itemName} (${rows.length} item):`;
+                    responseData = formatCardData(rows, 'status', 'status_barang');
+                } else {
+                    // Fuzzy matching
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+
+                    if (fuzzyResults.length > 0) {
+                        const suggestionText = fuzzyResults.length > 1
+                            ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                            : `Mungkin yang Anda maksud "${fuzzyResults[0].nama}"?`;
+
+                        finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                        let allRows = [];
+                        for (const match of fuzzyResults) {
+                            const fuzzyRows = await queryBarangByName(match.nama, 'status_barang');
+                            allRows = allRows.concat(fuzzyRows);
+                        }
+
+                        if (allRows.length > 0) {
+                            responseData = formatCardData(allRows, 'status', 'status_barang');
+                        }
+                    } else {
+                        // Kemiripan semantik
+                        const semanticResults = await semanticSearchBarang(itemName);
+
+                        if (semanticResults.length > 0) {
+                            const suggestionText = semanticResults.length > 1
+                                ? `Berdasarkan kemiripan makna, mungkin Anda mencari: ${semanticResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                                : `Berdasarkan kemiripan makna, mungkin Anda mencari "${semanticResults[0].nama}"?`;
+
+                            finalResponse = `Tidak menemukan "${itemName}". ${suggestionText} Menampilkan semua hasil...`;
+
+                            let allRows = [];
+                            for (const match of semanticResults) {
+                                const semanticRows = await queryBarangByName(match.nama, 'status_barang');
+                                allRows = allRows.concat(semanticRows);
+                            }
+
+                            if (allRows.length > 0) {
+                                responseData = formatCardData(allRows, 'status', 'status_barang');
+                            }
+                        } else {
+                            finalResponse = `Maaf, status untuk "${itemName}" tidak ditemukan.`;
+                            suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
+                        }
+                    }
+                }
             } else {
-                finalResponse = `Maaf, status untuk "${entities.item[0]}" tidak ditemukan.`;
-                responseData = null;
+                finalResponse = responses.fallbackSpecific.status_barang;
+                suggestions = [{ icon: 'guide', text: 'Lihat Panduan', query: 'bantuan' }];
             }
         }
 
-        // === INTENT: lelang_barang ===
+        // Intent: lelang_barang
         else if (intent === 'lelang_barang') {
             const [rows] = await db.query(
                 `SELECT b.id_barang, b.nama_barang, b.kondisi_barang, b.status_barang, b.lokasi_barang, b.gambar_barang, l.harga_lelang as harga_barang, l.status_lelang, l.waktu_mulai, l.waktu_selesai
@@ -522,60 +963,78 @@ router.post('/chat', async (req, res) => {
             }
         }
 
-        // === INTENT: sapaan ===
+        // Intent: sapaan
         else if (intent === 'sapaan') {
-            let sapa = language === 'en' ? 'Hello!' : 'Halo!';
+            let sapa = 'Halo!';
             const lowerMessage = message.toLowerCase();
 
-            if (language === 'en') {
-                if (lowerMessage.includes('hey')) sapa = 'Hey!';
-                else if (lowerMessage.includes('hi')) sapa = 'Hi!';
-                else if (lowerMessage.includes('good morning')) sapa = 'Good morning!';
-                else if (lowerMessage.includes('good afternoon')) sapa = 'Good afternoon!';
-                else if (lowerMessage.includes('good evening')) sapa = 'Good evening!';
-            } else {
-                if (lowerMessage.includes('hey')) sapa = 'Hey!';
-                else if (lowerMessage.includes('hai')) sapa = 'Hai!';
-                else if (lowerMessage.includes('yo')) sapa = 'Yo!';
-                else if (lowerMessage.includes('pagi')) sapa = 'Selamat pagi!';
-                else if (lowerMessage.includes('siang')) sapa = 'Selamat siang!';
-                else if (lowerMessage.includes('malam')) sapa = 'Selamat malam!';
-                else if (lowerMessage.includes('assalamualaikum')) sapa = 'Waalaikumsalam!';
-                else if (lowerMessage.includes('p')) sapa = 'yoi';
-                else if (lowerMessage.includes('punten')) sapa = 'Mangga!';
-            }
+            if (lowerMessage.includes('hey')) sapa = 'Hey!';
+            else if (lowerMessage.includes('hai')) sapa = 'Hai!';
+            else if (lowerMessage.includes('yo')) sapa = 'Yo!';
+            else if (lowerMessage.includes('pagi')) sapa = 'Selamat pagi!';
+            else if (lowerMessage.includes('siang')) sapa = 'Selamat siang!';
+            else if (lowerMessage.includes('malam')) sapa = 'Selamat malam!';
+            else if (lowerMessage.includes('assalamualaikum')) sapa = 'Waalaikumsalam!';
+            else if (lowerMessage.includes('p')) sapa = 'yoi';
+            else if (lowerMessage.includes('punten')) sapa = 'Mangga!';
 
-            const greetingResponse = getTranslation(language, 'greetingResponse');
-            finalResponse = `${sapa} ${greetingResponse}`;
+            finalResponse = `${sapa} ${responses.greetingResponse}`;
         }
 
-        // === INTENT: ucapan_terima_kasih ===
+        // Intent: ucapan_terima_kasih
         else if (intent === 'ucapan_terima_kasih') {
-            finalResponse = getTranslation(language, 'thanksResponse');
+            finalResponse = responses.thanksResponse;
         }
 
-        // === INTENT: fallback ===
+        // Intent: fallback
         else if (intent === 'fallback') {
-            finalResponse = getTranslation(language, 'fallbackGeneral');
-            suggestions = [{
-                icon: 'guide',  // <- IDENTIFIER BARU
-                text: language === 'en' ? 'Guide' : 'Panduan',
-                query: language === 'en' ? 'help' : 'bantuan'
-            }];
+            try {
+                const fuzzyResults = await fuzzySearchBarang(message, 50);
+
+                if (fuzzyResults.length > 0) {
+                    const suggestionText = fuzzyResults.length > 1
+                        ? `Mungkin yang Anda maksud: ${fuzzyResults.slice(0, 3).map(r => r.nama).join(', ')}?`
+                        : `Mungkin yang Anda maksud "${fuzzyResults[0].nama}"?`;
+
+                    finalResponse = `${suggestionText} Menampilkan semua hasil...`;
+
+                    let allRows = [];
+                    for (const match of fuzzyResults) {
+                        try {
+                            const rows = await queryBarangByName(match.nama, 'fallback');
+                            if (rows && rows.length > 0) {
+                                allRows = allRows.concat(rows);
+                            }
+                        } catch (queryError) {
+                            console.error(`Error querying ${match.nama}:`, queryError.message);
+                        }
+                    }
+
+                    if (allRows.length > 0) {
+                        responseData = formatCardData(allRows, 'nama', 'fallback');
+                    } else {
+                        finalResponse = `${suggestionText} Namun data tidak ditemukan.`;
+                    }
+                }
+            } catch (fallbackError) {
+                console.error('Fallback fuzzy search error:', fallbackError);
+                finalResponse = responses.fallbackGeneral;
+                suggestions = [{ icon: 'guide', text: 'Panduan', query: 'bantuan' }];
+            }
         }
 
-        // If entities are empty but intent is detected
+        // Handle empty entities
         if (!entities || Object.keys(entities).length === 0) {
             if (intent === 'harga_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').harga_barang;
+                finalResponse = responses.fallbackSpecific.harga_barang;
             } else if (intent === 'jumlah_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').jumlah_barang;
+                finalResponse = responses.fallbackSpecific.jumlah_barang;
             } else if (intent === 'lokasi_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').lokasi_barang;
+                finalResponse = responses.fallbackSpecific.lokasi_barang;
             } else if (intent === 'status_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').status_barang;
+                finalResponse = responses.fallbackSpecific.status_barang;
             } else if (intent === 'kepemilikan_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').kepemilikan_barang;
+                finalResponse = responses.fallbackSpecific.kepemilikan_barang;
             }
         }
 
@@ -584,26 +1043,6 @@ router.post('/chat', async (req, res) => {
             suggestions = generateSuggestions(intent, entities);
         }
 
-        // If entities are empty but intent is detected, try to help
-        if (!entities || Object.keys(entities).length === 0) {
-            if (intent === 'harga_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').harga_barang;
-            } else if (intent === 'jumlah_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').jumlah_barang;
-            } else if (intent === 'lokasi_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').lokasi_barang;
-            } else if (intent === 'status_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').status_barang;
-            } else if (intent === 'kepemilikan_barang') {
-                finalResponse = getTranslation(language, 'fallbackSpecific').kepemilikan_barang;
-            }
-        }
-
-        console.log('💬 Final response:', finalResponse);
-
-        if (intent !== 'fallback' && intent !== 'bantuan' && intent !== 'sapaan' && intent !== 'ucapan_terima_kasih') {
-            suggestions = generateSuggestions(intent, entities);
-        }
         res.json({
             intent,
             confidence: parseFloat(confidence) || 0,
@@ -618,7 +1057,7 @@ router.post('/chat', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('❌ Chatbot error:', error);
+        console.error('Chatbot error:', error);
 
         if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
             res.status(503).json({
@@ -639,23 +1078,6 @@ router.post('/chat', async (req, res) => {
     }
 });
 
-async function hybridSearch(itemQuery) {
-    try {
-        const response = await axios.post(`${CHATBOT_API_URL}/hybrid-search`, {
-            query: itemQuery
-        }, {
-            headers: { 'Content-Type': 'application/json' },
-            timeout: 10000
-        });
-
-        return response.data.results || [];
-    } catch (error) {
-        console.error('❌ Hybrid search error:', error.message);
-        return null; // null indicates search failed, trigger fallback
-    }
-}
-
-// Health check endpoint
 router.get('/health', (req, res) => {
     res.json({
         success: true,
@@ -664,7 +1086,6 @@ router.get('/health', (req, res) => {
     });
 });
 
-// Test endpoint
 router.get('/test', (req, res) => {
     res.json({
         success: true,
