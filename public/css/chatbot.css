@@ -468,8 +468,8 @@
     padding: 12px;
     margin-bottom: 15px;
     border-style: solid;
-    border-width: 1px;
-    border-color: #e0e0e0;
+    border-width: 0.1px;
+    border-color: #e0e0e04e;
     scroll-behavior: smooth;
 }
 
@@ -624,4 +624,26 @@
     color: white;
     margin-left: auto;
     border-radius: 18px 18px 4px 18px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.action-button {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.action-button:hover {
+    background: #0056b3;
 }
