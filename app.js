@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const sharp = require('sharp');
 const { initNotificationSystem } = require('./public/js/modules/notification-service');
 const app = express();
-const db = require('./db')
+const db = require('./db.js')
 const notificationService = initNotificationSystem(db);
 
 app.use(express.urlencoded({ extended: true }));
